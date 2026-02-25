@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucas Banega — Gracias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F0EBE1;--ivory:#E8E1D5;--gold:#9A7B4F;--gold-light:#C4A46B;
+  --ink:#2C2418;--warm:#6B5C44;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:flex-end;align-items:center;padding:1.8rem 3rem}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:640px){nav{padding:1.2rem 1.5rem}.nav-links{display:none}}
+
+.page{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.page::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(184,151,90,.07) 0%,transparent 70%);pointer-events:none;z-index:0}
+
+.content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.tag{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:fadeIn .9s .3s forwards}
+.line{width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin-bottom:2.5rem;opacity:0;animation:fadeIn .8s .7s forwards}
+.title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.1;letter-spacing:.01em;opacity:0;animation:fadeIn .9s 1s forwards}
+.title em{font-style:italic;color:var(--warm)}
+.sub{margin-top:1.6rem;font-size:.78rem;letter-spacing:.1em;line-height:1.9;color:var(--warm);max-width:360px;opacity:0;animation:fadeIn .8s 1.4s forwards}
+.back{margin-top:3rem;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(154,123,79,.3);padding-bottom:2px;transition:color .3s,border-color .3s;opacity:0;animation:fadeIn .8s 1.8s forwards}
+.back:hover{color:var(--ink);border-color:var(--ink)}
+
+footer{padding:2rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(44,36,24,.1);flex-wrap:wrap;gap:.5rem}
+footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28)}
+
+@keyframes fadeIn{to{opacity:1}}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/#filosofia">Filosofía</a></li>
+    <li><a href="/#explorador">Explorador</a></li>
+    <li><a href="/#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<main class="page">
+  <div class="content">
+    <p class="tag">Mensaje recibido</p>
+    <div class="line"></div>
+    <h1 class="title">Serás de los<br/>primeros en <em>saberlo</em></h1>
+    <p class="sub">Cuando la colección esté lista, sos de los primeros en enterarte. Gracias por el interés.</p>
+    <a class="back" href="/">Volver al inicio</a>
+  </div>
+</main>
+
+<footer>
+  <span>© 2025 Lucas Banega — Fragancias Nicho</span>
+  <span>Buenos Aires, Argentina</span>
+</footer>
+
+</body>
+</html>

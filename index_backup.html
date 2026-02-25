@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucas Banega — Fragancias Nicho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F0EBE1;--ivory:#E8E1D5;--gold:#9A7B4F;--gold-light:#C4A46B;
+  --ink:#2C2418;--warm:#6B5C44;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem}
+.nav-logo-img{height:28px;opacity:.9}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:640px){.nav-links{display:none};nav{padding:1.2rem 1.5rem}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5rem 2rem 4rem;position:relative;text-align:center}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(184,151,90,.07) 0%,transparent 70%);pointer-events:none}
+.hero-logo{width:min(460px,75vw);opacity:0;animation:fadeIn 1.6s .3s forwards}
+.hero-line{width:1px;height:56px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin:2.5rem auto;opacity:0;animation:fadeIn 1s 1.2s forwards}
+.hero-tag{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);opacity:0;animation:fadeIn .9s 1.6s forwards}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.05;letter-spacing:.01em;margin-top:.9rem;opacity:0;animation:fadeIn .9s 1.9s forwards}
+.hero-title em{font-style:italic;color:var(--warm)}
+.hero-sub{margin-top:2rem;font-size:.78rem;letter-spacing:.14em;color:var(--warm);text-transform:uppercase;opacity:0;animation:fadeIn .8s 2.3s forwards}
+.hero-spacer{flex:1}
+.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding-bottom:2.5rem;opacity:0;animation:fadeIn .8s 3s forwards;cursor:pointer;text-decoration:none}
+.hero-scroll span{font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── MANIFESTO ── */
+.manifesto{padding:7rem 2rem;max-width:660px;margin:0 auto;text-align:center}
+.section-tag{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem}
+.manifesto-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.45rem,3vw,2.1rem);line-height:1.7;color:var(--ink)}
+.manifesto-text em{font-style:italic;color:var(--warm)}
+
+/* ── EXPLORER WRAPPER ── */
+.explorer-section{background:var(--ink)}
+#explorer-root .app{background:transparent!important;min-height:auto}
+#explorer-root .header{background:transparent;border-bottom-color:rgba(240,235,225,.08)}
+#explorer-root .header-eyebrow{color:var(--gold-light)!important}
+#explorer-root .header-title{color:#F0EBE1!important}
+#explorer-root .header-title em{color:#C4A46B!important}
+#explorer-root .header-sub{color:rgba(240,235,225,.45)!important}
+
+/* ── NOTIFY ── */
+.notify{padding:7rem 2rem;text-align:center}
+.notify-inner{max-width:500px;margin:0 auto}
+.notify h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,2.8rem);line-height:1.2;margin:1rem 0}
+.notify h2 em{font-style:italic;color:var(--warm)}
+.notify p{font-size:.8rem;line-height:1.85;color:var(--warm);margin-bottom:2.5rem}
+.email-form{display:flex;border-bottom:1px solid var(--gold);max-width:360px;margin:0 auto}
+.email-form input{flex:1;background:transparent;border:none;outline:none;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.08em;color:var(--ink);padding:.8rem 0}
+.email-form input::placeholder{color:rgba(44,36,24,.32);letter-spacing:.15em;text-transform:uppercase;font-size:.66rem}
+.email-form button{background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);padding:.8rem 0 .8rem 1.2rem;transition:color .3s}
+.email-form button:hover{color:var(--ink)}
+.form-thanks{display:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--warm);margin-top:1.5rem}
+
+/* ── FOOTER ── */
+footer{padding:2rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(44,36,24,.1);flex-wrap:wrap;gap:.5rem}
+footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28)}
+
+/* ── UTILS ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeIn{to{opacity:1}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#explorador">Explorador</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="lucas_banega_logo_1080.png" alt="Lucas Banega"/>
+  <div class="hero-line"></div>
+  <p class="hero-tag">Fragancias Nicho · Buenos Aires</p>
+  <h1 class="hero-title">Una nueva forma<br/>de <em>sentir</em></h1>
+  <p class="hero-sub">Próximamente</p>
+  <div class="hero-spacer"></div>
+  <a class="hero-scroll" href="#filosofia">
+    <span>Descubrir</span>
+    <div class="scroll-line"></div>
+  </a>
+</section>
+
+<!-- MANIFESTO -->
+<section id="filosofia" class="manifesto">
+  <p class="section-tag reveal">La filosofía</p>
+  <p class="manifesto-text reveal">
+    El verdadero lujo no se anuncia.<br/>
+    <em>Se percibe.</em> En una nota que persiste,<br/>
+    en un acorde que no necesita explicación.<br/>
+    Fragancias para quienes<br/>
+    ya saben lo que buscan.
+  </p>
+</section>
+
+<!-- INGREDIENT EXPLORER (React) -->
+<section id="explorador" class="explorer-section">
+  <div id="explorer-root"></div>
+</section>
+
+<!-- NOTIFY -->
+<section id="contacto" class="notify">
+  <div class="notify-inner">
+    <p class="section-tag reveal">Sé el primero</p>
+    <h2 class="reveal">Avisame cuando<br/><em>esté listo</em></h2>
+    <p class="reveal">La colección está en desarrollo. Dejá tu email y te escribo antes del lanzamiento.</p>
+    <div class="email-form reveal" id="email-form">
+      <input type="email" placeholder="Tu email" id="email-input"/>
+      <button type="button" onclick="handleSubmit()">Notificarme</button>
+    </div>
+    <p class="form-thanks" id="form-thanks">Perfecto. Serás de los primeros en saberlo.</p>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Lucas Banega — Fragancias Nicho</span>
+  <span>Buenos Aires, Argentina</span>
+</footer>
+
+<!-- SCROLL REVEAL -->
+<script>
+function handleSubmit(){
+  const inp=document.getElementById('email-input');
+  if(!inp.value||!inp.value.includes('@'))return;
+  document.getElementById('email-form').style.display='none';
+  document.getElementById('form-thanks').style.display='block';
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<!-- REACT EXPLORER -->
+<script type="text/babel">
+const { useState } = React;
+
+const T = {
+  es: {
+    eyebrow:"Explorador de Ingredientes",
+    title1:"Materia",title2:"Prima",
+    subtitle:"Conocé los ingredientes detrás de cada fragancia nicho",
+    searchLabel:"Buscar ingrediente",
+    placeholder:"vetiver, bergamotto, oud...",
+    searchBtn:"Buscar",searching:"Consultando la materia prima...",
+    olfactoryProfile:"Perfil olfativo",pyramid:"Pirámide olfativa",
+    longevity:"Longevidad en piel",concentration:"Concentración recomendada",
+    origin:"Origen",extraction:"Método de extracción",density:"Densidad",
+    cas:"Número CAS",uses:"Aplicación en perfumería",blendsWith:"Armoniza con",
+    presentIn:"Presente en",ifraYes:"Restricciones IFRA vigentes",ifraNo:"Sin restricciones IFRA",
+    errorParse:"Error al procesar la respuesta. Intentá de nuevo.",
+    errorHttp:"Error de conexión. Verificá tu conexión e intentá de nuevo.",
+    errorGeneral:"No se pudo obtener información. Intentá de nuevo.",
+    min:"Mín",max:"Máx",
+    pyramidPositions:["Salida","Corazón","Fondo"],
+    longevityValues:{corta:"Corta",media:"Media",larga:"Larga","muy larga":"Muy larga"},
+    langBtn:"English",
+    suggestions:["Vetiver","Bergamotto","Cedro Atlas","Pimienta Blanca","Oud","Incienso","Labdanum","Neroli","Sándalo","Pachulí","Musgo de Roble","Iris"],
+    promptLang:"es"
+  },
+  en: {
+    eyebrow:"Ingredient Explorer",
+    title1:"Raw",title2:"Material",
+    subtitle:"Discover the ingredients behind every niche fragrance",
+    searchLabel:"Search ingredient",
+    placeholder:"vetiver, bergamot, oud...",
+    searchBtn:"Search",searching:"Looking up the raw material...",
+    olfactoryProfile:"Olfactory profile",pyramid:"Olfactory pyramid",
+    longevity:"Longevity on skin",concentration:"Recommended concentration",
+    origin:"Origin",extraction:"Extraction method",density:"Density",
+    cas:"CAS Number",uses:"Perfumery application",blendsWith:"Blends well with",
+    presentIn:"Present in",ifraYes:"IFRA restrictions apply",ifraNo:"No IFRA restrictions",
+    errorParse:"Error processing the response. Please try again.",
+    errorHttp:"Connection error. Please try again.",
+    errorGeneral:"Could not retrieve information. Please try again.",
+    min:"Min",max:"Max",
+    pyramidPositions:["Top","Heart","Base"],
+    longevityValues:{corta:"Short",media:"Medium",larga:"Long","muy larga":"Very long"},
+    langBtn:"Español",
+    suggestions:["Vetiver","Bergamot","Atlas Cedar","White Pepper","Oud","Frankincense","Labdanum","Neroli","Sandalwood","Patchouli","Oakmoss","Iris"],
+    promptLang:"en"
+  }
+};
+
+const LONGEVITY_MAP={"corta":20,"media":45,"larga":70,"muy larga":95,"short":20,"medium":45,"long":70,"very long":95};
+const safeArray=v=>Array.isArray(v)?v:[];
+const isValidNumber=v=>v!==null&&v!==undefined&&v!=="null"&&!isNaN(Number(v));
+
+const STYLES=`
+.explorer-app{font-family:'Jost',sans-serif;color:#F0EBE1}
+.ex-topbar{display:flex;justify-content:flex-end;padding:16px 32px;background:#2C2418}
+.ex-lang-btn{background:transparent;border:1px solid rgba(240,235,225,.2);padding:6px 18px;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,235,225,.5);cursor:pointer;transition:all .2s}
+.ex-lang-btn:hover{border-color:#C4A46B;color:#C4A46B}
+.ex-header{text-align:center;padding:48px 24px 52px;border-bottom:1px solid rgba(240,235,225,.08);position:relative}
+.ex-header::before{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:40px;height:1px;background:#9A7B4F}
+.ex-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A46B;margin-bottom:16px;font-weight:300}
+.ex-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,5vw,52px);line-height:1.1;color:#F0EBE1;margin-bottom:12px;letter-spacing:-.5px}
+.ex-title em{font-style:italic;color:#C4A46B}
+.ex-sub{font-weight:300;font-size:13px;letter-spacing:.8px;color:rgba(240,235,225,.4)}
+.ex-search-section{padding:48px 24px;max-width:640px;margin:0 auto}
+.ex-search-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#9A7B4F;font-weight:400;display:block;margin-bottom:12px}
+.ex-search-row{display:flex;border:1px solid rgba(240,235,225,.15);background:rgba(240,235,225,.04);transition:border-color .2s}
+.ex-search-row:focus-within{border-color:#9A7B4F}
+.ex-input{flex:1;padding:16px 20px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;background:transparent;border:none;outline:none;color:#F0EBE1;min-width:0}
+.ex-input::placeholder{color:rgba(240,235,225,.25);font-style:italic}
+.ex-btn{padding:16px 28px;background:#F0EBE1;color:#2C2418;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:400;transition:background .2s;flex-shrink:0}
+.ex-btn:hover:not(:disabled){background:#C4A46B;color:#2C2418}
+.ex-btn:disabled{opacity:.4;cursor:not-allowed}
+.ex-suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.ex-pill{padding:5px 14px;border:1px solid rgba(240,235,225,.12);background:transparent;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1px;color:rgba(240,235,225,.5);cursor:pointer;transition:all .15s}
+.ex-pill:hover:not(:disabled){border-color:#C4A46B;color:#C4A46B;background:rgba(196,164,107,.06)}
+.ex-pill:disabled{opacity:.35;cursor:not-allowed}
+.ex-results{max-width:900px;margin:0 auto;padding:0 24px 80px}
+.ex-loading{text-align:center;padding:60px 0}
+.ex-loading-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:rgba(240,235,225,.3);animation:exPulse 1.5s ease-in-out infinite}
+@keyframes exPulse{0%,100%{opacity:.3}50%{opacity:.8}}
+.ex-card{background:rgba(240,235,225,.04);border:1px solid rgba(240,235,225,.08);animation:exFadeIn .5s ease}
+@keyframes exFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.ex-card-header{padding:40px 48px 32px;border-bottom:1px solid rgba(240,235,225,.06);display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ex-ingredient-name{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,42px);font-weight:300;line-height:1;color:#F0EBE1}
+.ex-latin{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(240,235,225,.35);margin-top:6px;font-weight:300}
+.ex-family-badge{padding:6px 16px;background:rgba(196,164,107,.1);border:1px solid rgba(196,164,107,.2);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#C4A46B;font-weight:400;white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:6px}
+.ex-card-body{padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.ex-card-full{grid-column:1/-1}
+.ex-field-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#9A7B4F;font-weight:400;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ex-field-label::after{content:'';flex:1;height:1px;background:rgba(154,123,79,.15)}
+.ex-field-value{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#F0EBE1;line-height:1.3}
+.ex-field-value.sm{font-size:15px;font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.3px;line-height:1.65;color:rgba(240,235,225,.7)}
+.ex-field-value.mono{font-family:'Jost',sans-serif;font-size:14px;font-weight:300;letter-spacing:1px;color:rgba(240,235,225,.5)}
+.ex-odor{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(240,235,225,.85);line-height:1.7;font-weight:300}
+.ex-notes-row{display:flex;gap:8px;flex-wrap:wrap}
+.ex-tag{padding:4px 14px;border:1px solid rgba(240,235,225,.12);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(240,235,225,.5);font-weight:400}
+.ex-tag.active{background:rgba(240,235,225,.1);color:#F0EBE1;border-color:rgba(240,235,225,.3)}
+.ex-usage-range{display:flex;justify-content:space-between;margin-bottom:8px}
+.ex-usage-range span{font-size:12px;font-family:'Jost',sans-serif;font-weight:300;color:rgba(240,235,225,.4)}
+.ex-bar-track{height:2px;background:rgba(240,235,225,.08);width:100%}
+.ex-bar-fill{height:100%;background:#9A7B4F;transition:width .8s ease}
+.ex-error{text-align:center;padding:40px;font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(240,235,225,.35);font-size:18px}
+.ex-divider{height:1px;background:linear-gradient(to right,transparent,rgba(240,235,225,.06),transparent);margin:0 48px}
+.ex-card-footer{padding:20px 48px;display:flex;gap:24px;flex-wrap:wrap}
+.ex-meta{font-size:11px;font-weight:300;color:rgba(240,235,225,.3);letter-spacing:.5px}
+.ex-meta strong{font-weight:400;color:rgba(240,235,225,.5)}
+@media(max-width:640px){
+  .ex-card-body{grid-template-columns:1fr;gap:28px;padding:28px 20px}
+  .ex-card-header{padding:24px 20px}
+  .ex-card-footer{padding:16px 20px}
+  .ex-topbar{padding:12px 16px}
+  .ex-search-section{padding:36px 20px}
+}
+`;
+
+function FragranceExplorer(){
+  const [lang,setLang]=useState("es");
+  const [query,setQuery]=useState("");
+  const [loading,setLoading]=useState(false);
+  const [result,setResult]=useState(null);
+  const [error,setError]=useState(null);
+  const t=T[lang];
+
+  const toggleLang=()=>{setLang(l=>l==="es"?"en":"es");setResult(null);setError(null);setQuery("")};
+
+  const buildPrompt=(term,currentLang)=>{
+    const isEs=currentLang==="es";
+    const pyramidVals=isEs?'"Salida","Corazón","Fondo"':'"Top","Heart","Base"';
+    return `You are an expert perfumer. Provide complete technical and sensory information about the perfumery ingredient: "${term}".
+
+Respond ONLY with a valid JSON object. No extra text, no backticks, no markdown. Use exactly this structure:
+{"name":"official name","latin_name":"botanical or null","olfactory_family":"main family","cas_number":"CAS or null","odor_description":"poetic sensory description 2-3 sentences","odor_keywords":["w1","w2","w3","w4"],"pyramid_position":["value1"],"density_gcm3":"density or null","usage_min_pct":0.5,"usage_max_pct":5.0,"origin":"geographic origin","extraction_method":"method","perfumery_uses":"uses 2-3 sentences","longevity":"larga","ifra_restricted":false,"notable_examples":["Perfume 1","Perfume 2"],"blends_well_with":["ingredient1","ingredient2","ingredient3"]}
+
+RULES: longevity must be one of "corta","media","larga","muy larga". pyramid_position values from: ${pyramidVals}. usage_min_pct and usage_max_pct must be JSON numbers. ifra_restricted must be boolean. ALL text in ${isEs?"SPANISH":"ENGLISH"}.`;
+  };
+
+  const search=async(term)=>{
+    const searchTerm=(term||query).trim();
+    if(!searchTerm)return;
+    const currentLang=lang;
+    const currentT=T[currentLang];
+    setLoading(true);setResult(null);setError(null);
+    try{
+      const response=await fetch("/.netlify/functions/ask",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({term:searchTerm,lang:currentLang})
+      });
+      if(!response.ok)throw new Error(`HTTP ${response.status}`);
+      const data=await response.json();
+      if(data.error)throw new Error(data.error.message||"API error");
+      const text=(data.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("").trim();
+      if(!text)throw new Error("Empty response");
+      const clean=text.replace(/^```(?:json)?\s*/i,"").replace(/\s*```$/i,"").trim();
+      const parsed=JSON.parse(clean);
+      if(!parsed||!parsed.name)throw new Error("Invalid data");
+      setResult(parsed);
+    }catch(e){
+      console.error(e);
+      if(e instanceof SyntaxError)setError(currentT.errorParse);
+      else if(e.message?.startsWith("HTTP"))setError(currentT.errorHttp);
+      else setError(currentT.errorGeneral);
+    }finally{setLoading(false);}
+  };
+
+  const handleKey=(e)=>{if(e.key==="Enter")search()};
+  const handleSuggestion=(s)=>{setQuery(s);search(s)};
+
+  const longevityKey=result?.longevity?.toLowerCase().trim()||"";
+  const longevityPct=LONGEVITY_MAP[longevityKey]||50;
+  const longevityLabel=t.longevityValues[longevityKey]||result?.longevity||"—";
+  const pyramidPositions=safeArray(result?.pyramid_position);
+  const minPct=isValidNumber(result?.usage_min_pct)?Number(result.usage_min_pct):null;
+  const maxPct=isValidNumber(result?.usage_max_pct)?Number(result.usage_max_pct):null;
+  const hasUsage=minPct!==null&&maxPct!==null;
+  const barWidth=hasUsage?Math.min(Math.max(maxPct*5,5),100):50;
+
+  return (
+    <div className="explorer-app">
+      <style>{STYLES}</style>
+
+      <div className="ex-topbar">
+        <button className="ex-lang-btn" onClick={toggleLang}>{t.langBtn}</button>
+      </div>
+
+      <header className="ex-header">
+        <p className="ex-eyebrow">{t.eyebrow}</p>
+        <h2 className="ex-title">{t.title1} <em>{t.title2}</em></h2>
+        <p className="ex-sub">{t.subtitle}</p>
+      </header>
+
+      <section className="ex-search-section">
+        <label className="ex-search-label">{t.searchLabel}</label>
+        <div className="ex-search-row">
+          <input className="ex-input" placeholder={t.placeholder} value={query}
+            onChange={e=>setQuery(e.target.value)} onKeyDown={handleKey}/>
+          <button className="ex-btn" onClick={()=>search()} disabled={loading||!query.trim()}>
+            {loading?"···":t.searchBtn}
+          </button>
+        </div>
+        <div className="ex-suggestions">
+          {t.suggestions.map(s=>(
+            <button key={s} className="ex-pill" disabled={loading} onClick={()=>handleSuggestion(s)}>{s}</button>
+          ))}
+        </div>
+      </section>
+
+      <section className="ex-results">
+        {loading&&<div className="ex-loading"><p className="ex-loading-text">{t.searching}</p></div>}
+        {error&&!loading&&<p className="ex-error">{error}</p>}
+        {result&&!loading&&(
+          <div className="ex-card">
+            <div className="ex-card-header">
+              <div>
+                <h3 className="ex-ingredient-name">{result.name}</h3>
+                {result.latin_name&&result.latin_name!=="null"&&<p className="ex-latin">{result.latin_name}</p>}
+              </div>
+              {result.olfactory_family&&<span className="ex-family-badge">{result.olfactory_family}</span>}
+            </div>
+
+            <div className="ex-card-body">
+              {result.odor_description&&(
+                <div className="ex-card-full">
+                  <p className="ex-field-label">{t.olfactoryProfile}</p>
+                  <p className="ex-odor">"{result.odor_description}"</p>
+                  {safeArray(result.odor_keywords).length>0&&(
+                    <div className="ex-notes-row" style={{marginTop:16}}>
+                      {result.odor_keywords.map((k,i)=><span key={i} className="ex-tag">{k}</span>)}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div>
+                <p className="ex-field-label">{t.pyramid}</p>
+                <div className="ex-notes-row">
+                  {t.pyramidPositions.map((pos,i)=>{
+                    const raw=lang==="es"?["Salida","Corazón","Fondo"]:["Top","Heart","Base"];
+                    const isActive=pyramidPositions.includes(raw[i]);
+                    return <span key={pos} className={`ex-tag${isActive?" active":""}`}>{pos}</span>;
+                  })}
+                </div>
+              </div>
+
+              <div>
+                <p className="ex-field-label">{t.longevity}</p>
+                <p className="ex-field-value" style={{textTransform:"capitalize"}}>{longevityLabel}</p>
+                <div className="ex-bar-track" style={{marginTop:10}}>
+                  <div className="ex-bar-fill" style={{width:`${longevityPct}%`}}/>
+                </div>
+              </div>
+
+              <div>
+                <p className="ex-field-label">{t.concentration}</p>
+                {hasUsage?(
+                  <div>
+                    <div className="ex-usage-range">
+                      <span>{t.min} {minPct}%</span><span>{t.max} {maxPct}%</span>
+                    </div>
+                    <div className="ex-bar-track"><div className="ex-bar-fill" style={{width:`${barWidth}%`}}/></div>
+                  </div>
+                ):<p className="ex-field-value">—</p>}
+              </div>
+
+              {result.origin&&<div><p className="ex-field-label">{t.origin}</p><p className="ex-field-value sm">{result.origin}</p></div>}
+              {result.extraction_method&&<div><p className="ex-field-label">{t.extraction}</p><p className="ex-field-value sm">{result.extraction_method}</p></div>}
+              {result.density_gcm3&&result.density_gcm3!=="null"&&<div><p className="ex-field-label">{t.density}</p><p className="ex-field-value mono">{result.density_gcm3} g/cm³</p></div>}
+              {result.cas_number&&result.cas_number!=="null"&&<div><p className="ex-field-label">{t.cas}</p><p className="ex-field-value mono">{result.cas_number}</p></div>}
+
+              {result.perfumery_uses&&(
+                <div className="ex-card-full">
+                  <p className="ex-field-label">{t.uses}</p>
+                  <p className="ex-field-value sm">{result.perfumery_uses}</p>
+                </div>
+              )}
+
+              {safeArray(result.blends_well_with).length>0&&(
+                <div className="ex-card-full">
+                  <p className="ex-field-label">{t.blendsWith}</p>
+                  <div className="ex-notes-row">
+                    {result.blends_well_with.map((b,i)=>(
+                      <button key={i} className="ex-pill" onClick={()=>handleSuggestion(b)}>{b}</button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {safeArray(result.notable_examples).length>0&&(
+                <div className="ex-card-full">
+                  <p className="ex-field-label">{t.presentIn}</p>
+                  <div className="ex-notes-row">
+                    {result.notable_examples.map((ex,i)=><span key={i} className="ex-tag">{ex}</span>)}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="ex-divider"/>
+            <div className="ex-card-footer">
+              {result.ifra_restricted!==undefined&&result.ifra_restricted!==null&&(
+                <span className="ex-meta">
+                  <strong>IFRA:</strong> {result.ifra_restricted?t.ifraYes:t.ifraNo}
+                </span>
+              )}
+            </div>
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('explorer-root'));
+root.render(<FragranceExplorer />);
+</script>
+</body>
+</html>

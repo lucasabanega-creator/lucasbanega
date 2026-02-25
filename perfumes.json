@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "Santal 33",
+    "casa": "Le Labo",
+    "año": 2011,
+    "familia": "Amaderado",
+    "notas": ["Sándalo", "Cedro", "Violeta", "Cardamomo", "Cuero"],
+    "ocasion": "Todo momento",
+    "puntuacion": 9,
+    "resena": "Hay fragancias que definen una época. Santal 33 es una de ellas. Su apertura es seca, casi mineral — como madera recién cortada bajo el sol. Lo que lo hace extraordinario no es su complejidad, sino su claridad: sabe exactamente lo que quiere ser. Indiscutible en su categoría."
+  },
+  {
+    "nombre": "Oud Wood",
+    "casa": "Tom Ford",
+    "año": 2007,
+    "familia": "Oriental",
+    "notas": ["Oud", "Palisandro", "Sándalo", "Vainilla", "Pimienta"],
+    "ocasion": "Noche",
+    "puntuacion": 8,
+    "resena": "Tom Ford entendió que el oud no necesita gritar para imponerse. Oud Wood es contenido, casi silencioso — y ahí está su fuerza. La madera de palisandro suaviza la resina, la vainilla cierra sin empalagar. Una fragancia para quien ya no necesita demostrar nada."
+  },
+  {
+    "nombre": "Terre d'Hermès",
+    "casa": "Hermès",
+    "año": 2006,
+    "familia": "Aromático",
+    "notas": ["Naranja", "Pomelo", "Pimienta", "Vetiver", "Pedernal"],
+    "ocasion": "Día",
+    "puntuacion": 9,
+    "resena": "Jean-Claude Ellena dibujó un paisaje con esta fragancia. El pedernal — esa nota casi imposible de capturar — le da una textura que ninguna otra fragancia tiene. Mineral, cítrica, terrosa. Es lo más cercano que existe al olor del aire después de la lluvia sobre piedra caliza."
+  },
+  {
+    "nombre": "Oud Alezan",
+    "casa": "Hermès",
+    "año": 2024,
+    "familia": "ORiental Floral",
+    "notas": ["Rosas", "Oud"],
+    "ocasion": "Día/Noche",
+    "puntuacion": 9,
+    "resena": "La perfumista Christine Nagel demuestra la calidad de Hermès con esta fragancia de su colección privada. Elegante Oud, elegante combinación de rosas."
+  }
+]
