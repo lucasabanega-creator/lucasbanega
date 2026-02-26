@@ -85,10 +85,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .nav-prev-next a:hover{color:var(--ink)}
 
 /* FOOTER */
-footer{padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(44,36,24,.1);flex-wrap:wrap;gap:.5rem}
+footer{padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(44,36,24,.1);flex-wrap:wrap;gap:1rem}
 footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28)}
-
-/* REVEAL */
+.footer-right{display:flex;align-items:center;gap:2rem}
+.footer-ig{display:flex;align-items:center;gap:.6rem;text-decoration:none;opacity:.35;transition:opacity .3s}
+.footer-ig:hover{opacity:.7}
+.footer-ig svg{width:16px;height:16px}
+.footer-top{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s}
+.footer-top:hover{color:var(--ink)}
+.footer-top::after{content:'↑';font-size:.7rem}/* REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s}
 .reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:640px){
@@ -131,7 +136,17 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 
 <footer>
   <span>© 2025 Lucas Banega — Fragancias Nicho</span>
-  <span>Buenos Aires, Argentina</span>
+  <div class="footer-right">
+    <a class="footer-ig" href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" color="var(--warm)">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/>
+      </svg>
+      <span style="font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.4)">Instagram</span>
+    </a>
+    <a class="footer-top" href="#">Inicio</a>
+  </div>
 </footer>
 
 <script>
