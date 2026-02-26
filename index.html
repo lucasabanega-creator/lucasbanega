@@ -16,7 +16,7 @@
   --cream:#F0EBE1;--ivory:#E8E1D5;--gold:#9A7B4F;--gold-light:#C4A46B;
   --ink:#2C2418;--warm:#6B5C44;
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -220,6 +220,42 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Scroll elegante — como un suspiro
+function elegantScrollTo(target, duration){
+  const start = window.scrollY;
+  const end = target.getBoundingClientRect().top + start;
+  const distance = end - start;
+  let startTime = null;
+  function easeInOutQuart(t){
+    return t < 0.5 ? 8*t*t*t*t : 1 - 8*(--t)*t*t*t;
+  }
+  function step(timestamp){
+    if(!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    window.scrollTo(0, start + distance * easeInOutQuart(progress));
+    if(progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Descubrir — más lento, más ceremonioso
+document.querySelector('.hero-scroll').addEventListener('click', function(e){
+  e.preventDefault();
+  const target = document.getElementById('hero-intro');
+  if(target) elegantScrollTo(target, 2400);
+});
+
+// Nav links internos — suaves también
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  if(link.classList.contains('hero-scroll')) return;
+  link.addEventListener('click', function(e){
+    const id = this.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if(target){ e.preventDefault(); elegantScrollTo(target, 1800); }
+  });
+});
 
 // Hamburguesa
 const burger=document.getElementById('burger');
