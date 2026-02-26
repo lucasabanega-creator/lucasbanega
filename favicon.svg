@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#F0EBE1"/>
+  <text x="32" y="38" 
+    font-family="Georgia, serif" 
+    font-size="26" 
+    font-weight="400"
+    fill="#2C2418" 
+    text-anchor="middle" 
+    letter-spacing="1">LB</text>
+  <line x1="18" y1="46" x2="46" y2="46" stroke="#9A7B4F" stroke-width=".8"/>
+</svg>
