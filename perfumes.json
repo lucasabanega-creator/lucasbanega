@@ -38,5 +38,15 @@
     "ocasion": "Día/Noche",
     "puntuacion": 9,
     "resena": "La perfumista Christine Nagel demuestra la calidad de Hermès con esta fragancia de su colección privada. Elegante Oud, elegante combinación de rosas."
+  },
+  {
+    "nombre": "Brunello Cucinelli Pour Homme",
+    "casa": "Brunello Cucinelli",
+    "año": 2024,
+    "familia": "Aromático",
+    "notas": ["Rosas", "Oud"],
+    "ocasion": "Día",
+    "puntuacion": 9,
+    "resena": "La perfumista Christine Nagel demuestra la calidad de Hermès con esta fragancia de su colección privada. Elegante Oud, elegante combinación de rosas."
   }
 ]
