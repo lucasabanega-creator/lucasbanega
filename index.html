@@ -105,20 +105,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .email-form button:hover{color:var(--ink)}
 .form-thanks{display:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--warm);margin-top:1.5rem}
 
-/* ── GOLF TEASER ── */
-.golf-teaser{position:relative;overflow:hidden;height:70vh;min-height:480px;display:flex;align-items:flex-end;text-decoration:none;color:inherit;cursor:pointer}
-.golf-teaser-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:saturate(.85) brightness(.9);transform:scale(1.04);transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
-.golf-teaser:hover .golf-teaser-img{transform:scale(1.0)}
-.golf-teaser-fade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(44,36,24,.55) 70%,rgba(44,36,24,.82) 100%);pointer-events:none}
-.golf-teaser-content{position:relative;z-index:1;padding:3.5rem;width:100%}
-.golf-teaser-tag{font-size:.54rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(200,220,195,.75);margin-bottom:1.2rem}
-.golf-teaser-title{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(2.4rem,5vw,4rem);line-height:.95;letter-spacing:-.02em;color:rgba(240,235,225,.95)}
-.golf-teaser-title em{font-style:italic;color:rgba(160,195,160,.9)}
-.golf-teaser-cta{display:inline-flex;align-items:center;gap:.8rem;margin-top:2rem;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,220,195,.8);border-bottom:1px solid rgba(160,195,160,.3);padding-bottom:2px;transition:color .3s,border-color .3s}
-.golf-teaser:hover .golf-teaser-cta{color:rgba(220,235,220,1);border-color:rgba(160,195,160,.7)}
-.golf-teaser-cta::after{content:'→';margin-left:.4rem;transition:transform .4s cubic-bezier(.16,1,.3,1)}
-.golf-teaser:hover .golf-teaser-cta::after{transform:translateX(5px)}
-@media(max-width:640px){.golf-teaser{height:55vh;min-height:360px}.golf-teaser-content{padding:2.5rem 1.5rem}}
+.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+/* ── GOLF ── */
+.golf-pause{padding:9rem 3rem;position:relative;overflow:hidden;background:var(--cream)}
+.golf-pause::before{content:'';position:absolute;inset:0;background-image:url('golf_hero.jpg');background-size:cover;background-position:center 30%;opacity:0;filter:saturate(.6) brightness(.92);transition:opacity 1.8s cubic-bezier(.16,1,.3,1)}
+.golf-pause:hover::before{opacity:.06}
+.golf-pause-inner{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;position:relative;z-index:1}
+.golf-pause-left{}
+.golf-pause-tag{font-size:.52rem;letter-spacing:.44em;text-transform:uppercase;color:var(--green-soft, #5A6B4A);margin-bottom:2.2rem;opacity:.8}
+.golf-pause-title{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(3rem,6vw,5.5rem);line-height:.9;letter-spacing:-.025em;color:var(--ink)}
+.golf-pause-title em{font-style:italic;color:var(--green, #3D4A35)}
+.golf-pause-right{padding-bottom:.4rem}
+.golf-pause-body{font-size:.82rem;line-height:2.05;color:var(--warm);letter-spacing:.02em;margin-bottom:3rem;max-width:340px}
+.golf-pause-link{display:inline-flex;align-items:center;gap:.9rem;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--green, #3D4A35);text-decoration:none;border-bottom:1px solid rgba(61,74,53,.22);padding-bottom:3px;transition:gap .5s cubic-bezier(.16,1,.3,1),color .3s,border-color .3s}
+.golf-pause-link:hover{gap:1.6rem;border-color:rgba(61,74,53,.6)}
+.golf-pause-link::after{content:'→';font-size:.7rem}
+.golf-pause-rule{display:block;width:1px;height:72px;background:linear-gradient(to bottom,rgba(61,74,53,.4),transparent);margin-bottom:3rem}
+@media(max-width:640px){
+  .golf-pause{padding:6rem 1.5rem}
+  .golf-pause-inner{grid-template-columns:1fr;gap:2.5rem}
+  .golf-pause-title{font-size:clamp(2.8rem,12vw,4rem)}
+  .golf-pause-rule{display:none}
+  .golf-pause-body{max-width:100%}
+}
 
 /* ── FOOTER ── */
 footer{padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(44,36,24,.1);flex-wrap:wrap;gap:1rem}
@@ -213,6 +225,21 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 </section>
 
 <!-- NOTIFY -->
+<section id="golf" class="golf-pause">
+  <div class="golf-pause-inner">
+    <div class="golf-pause-left reveal-left">
+      <p class="golf-pause-tag">Golf <em style="font-style:italic">by</em> Lucas Banega</p>
+      <h2 class="golf-pause-title">El golf<br/>y el <em>silencio</em></h2>
+    </div>
+    <div class="golf-pause-right reveal-right">
+      <span class="golf-pause-rule"></span>
+      <p class="golf-pause-body">Hay algo en ese cruce entre el golf y la perfumería que todavía no tiene nombre. Pasto recién cortado es solo el comienzo.</p>
+      <a class="golf-pause-link" href="golf.html">Descubrirlo</a>
+    </div>
+  </div>
+</section>
+
+
 <section id="contacto" class="notify">
   <div class="notify-inner">
     <p class="section-tag reveal">Sé el primero</p>
@@ -225,18 +252,6 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
       <button type="submit">Notificarme</button>
     </form>
   </div>
-</section>
-
-<section id="golf" class="reveal">
-  <a class="golf-teaser" href="golf.html">
-    <img class="golf-teaser-img" src="golf_hero.jpg" alt="Golf"/>
-    <div class="golf-teaser-fade"></div>
-    <div class="golf-teaser-content">
-      <p class="golf-teaser-tag">Golf <em style="font-style:italic;color:rgba(160,195,160,.8)">by</em> Lucas Banega</p>
-      <h2 class="golf-teaser-title">Más que pasto<br/>recién <em>cortado</em></h2>
-      <span class="golf-teaser-cta">Leer más</span>
-    </div>
-  </a>
 </section>
 
 <footer>
@@ -259,7 +274,7 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
 
 // Scroll elegante — como un suspiro
 function elegantScrollTo(target, duration){
