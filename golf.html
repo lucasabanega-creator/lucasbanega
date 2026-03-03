@@ -16,39 +16,18 @@ body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;background:transparent;transition:background .5s,border-color .5s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;background:transparent;transition:background .5s}
 nav.scrolled{background:rgba(240,235,225,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--faint)}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,225,.95);text-decoration:none;transition:color .5s}
 nav.scrolled .nav-logo{color:var(--ink)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,225,.75);text-decoration:none;transition:color .3s}
-nav.scrolled .nav-links a{color:var(--warm)}
-.nav-links a:hover{color:rgba(240,235,225,1)}
-nav.scrolled .nav-links a:hover,.nav-links a.active{color:var(--ink)}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:300}
-.nav-burger span{display:block;width:22px;height:1px;background:rgba(240,235,225,.9);transition:all .4s cubic-bezier(.23,1,.32,1)}
-nav.scrolled .nav-burger span{background:var(--warm)}
-.nav-burger.open span{background:var(--warm)}
-.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.nav-overlay{display:none;position:fixed;inset:0;z-index:280;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:3rem;opacity:0;transition:opacity .4s ease}
-.nav-overlay.open{opacity:1}
-.overlay-close{position:absolute;top:2rem;right:2rem;background:none;border:none;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;opacity:.35;transition:opacity .3s}
-.overlay-close:hover{opacity:1}
-.overlay-close::before,.overlay-close::after{content:'';position:absolute;width:20px;height:1px;background:var(--ink)}
-.overlay-close::before{transform:rotate(45deg)}
-.overlay-close::after{transform:rotate(-45deg)}
-.nav-overlay a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;letter-spacing:.08em;color:var(--warm);text-decoration:none;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease,color .3s}
-.nav-overlay.open a{opacity:1;transform:translateY(0)}
-.nav-overlay.open a:nth-child(2){transition-delay:.08s}
-.nav-overlay.open a:nth-child(3){transition-delay:.16s}
-.nav-overlay.open a:nth-child(4){transition-delay:.24s}
-.nav-overlay.open a:nth-child(5){transition-delay:.32s}
-.nav-overlay.open a:nth-child(6){transition-delay:.40s}
-.nav-overlay a:hover{color:var(--ink)}
-.nav-overlay-tag{position:absolute;bottom:2.5rem;font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);opacity:.6}
-@media(max-width:640px){.nav-links{display:none}.nav-burger{display:flex}nav{padding:1.4rem 1.5rem}}
+.nav-right{display:flex;align-items:center;gap:2.5rem}
+.nav-item{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(240,235,225,.7);text-decoration:none;transition:color .3s}
+nav.scrolled .nav-item{color:var(--warm)}
+.nav-item:hover{color:rgba(240,235,225,1)}
+nav.scrolled .nav-item:hover{color:var(--ink)}
+.nav-lecarnet{font-style:italic;border-bottom:1px solid rgba(240,235,225,.25);padding-bottom:1px;transition:color .3s,border-color .3s}
+nav.scrolled .nav-lecarnet{border-color:rgba(107,92,68,.3)}
+@media(max-width:640px){nav{padding:1.4rem 1.5rem}.nav-item:not(.nav-lecarnet){display:none}}
 
 /* HERO */
 .hero{position:relative;height:100vh;min-height:680px;overflow:hidden}
@@ -61,7 +40,9 @@ nav.scrolled .nav-burger span{background:var(--warm)}
 .hero-title{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(3.2rem,10vw,7.5rem);line-height:.9;letter-spacing:-.02em;color:var(--ink);opacity:0;animation:heroUp 1s cubic-bezier(.16,1,.3,1) 1.4s forwards}
 .hero-title em{font-style:italic;color:var(--green)}
 .hero-sub{margin-top:1.4rem;font-size:.68rem;letter-spacing:.22em;color:var(--warm);opacity:0;animation:heroFade .9s ease 2s forwards;text-transform:uppercase}
-.hero-line{width:1px;height:52px;background:linear-gradient(to bottom,var(--warm),transparent);margin:2.8rem auto 0;opacity:0;animation:heroFade .8s ease 2.5s forwards}
+.hero-scroll{display:flex;justify-content:center;margin:2.8rem auto 0;opacity:0;animation:heroFade .8s ease 2.5s forwards}
+.hero-tee{width:20px;height:48px;animation:teeBob 3s ease-in-out 3s infinite}
+@keyframes teeBob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 @keyframes heroUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes heroFade{from{opacity:0}to{opacity:1}}
 @media(max-width:640px){.hero-content{padding:0 1.5rem 4.5rem}.hero-title{font-size:clamp(2.8rem,12vw,5rem)}}
@@ -138,27 +119,11 @@ footer>span{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color
 
 <nav id="main-nav">
   <a class="nav-logo" href="/">Lucas Banega</a>
-  <ul class="nav-links">
-    <li><a href="/#filosofia">Filosofía</a></li>
-    <li><a href="golf.html" class="active">Golf</a></li>
-    <li><a href="/#explorador">Explorador</a></li>
-    <li><a href="/#contacto">Contacto</a></li>
-    <li><a href="https://le-carnet.netlify.app" target="_blank" style="font-style:italic">Le Carnet</a></li>
-  </ul>
-  <button class="nav-burger" id="burger" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <a class="nav-item" href="/">Inicio</a>
+    <a class="nav-item nav-lecarnet" href="https://le-carnet.netlify.app" target="_blank">Le Carnet</a>
+  </div>
 </nav>
-
-<div class="nav-overlay" id="nav-overlay">
-  <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú"></button>
-  <a href="/#filosofia" onclick="closeMenu()">Filosofía</a>
-  <a href="golf.html" onclick="closeMenu()">Golf</a>
-  <a href="/#explorador" onclick="closeMenu()">Explorador</a>
-  <a href="/#contacto" onclick="closeMenu()">Contacto</a>
-  <a href="https://le-carnet.netlify.app" target="_blank" onclick="closeMenu()" style="font-style:italic">Le Carnet</a>
-  <span class="nav-overlay-tag">Lucas Banega · Fragancias Nicho</span>
-</div>
 
 <section class="hero">
   <img class="hero-img" src="golf_hero.jpg" alt=""/>
@@ -168,7 +133,16 @@ footer>span{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color
     <p class="hero-eyebrow">Lucas Banega</p>
     <h1 class="hero-title">Golf &amp; el <em>silencio</em></h1>
     <p class="hero-sub">Más que un deporte. Más que pasto recién cortado.</p>
-    <div class="hero-line"></div>
+    <div class="hero-scroll">
+      <svg class="hero-tee" viewBox="0 0 20 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- tee head -->
+        <rect x="2" y="0" width="16" height="3" rx="1.5" fill="var(--warm)" opacity=".7"/>
+        <!-- tee neck -->
+        <rect x="8.5" y="3" width="3" height="28" rx="1.5" fill="var(--warm)" opacity=".7"/>
+        <!-- fade line down -->
+        <line x1="10" y1="34" x2="10" y2="48" stroke="var(--warm)" stroke-width="1" opacity=".3" stroke-dasharray="2 3"/>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -263,26 +237,6 @@ const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 }, {passive: true});
-
-// Burger menu
-const burger = document.getElementById('burger');
-const overlay = document.getElementById('nav-overlay');
-function closeMenu() {
-  burger.classList.remove('open');
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-  setTimeout(() => { overlay.style.display = 'none'; }, 420);
-}
-burger.addEventListener('click', () => {
-  const open = burger.classList.toggle('open');
-  if (open) {
-    overlay.style.display = 'flex';
-    requestAnimationFrame(() => overlay.classList.add('open'));
-    document.body.style.overflow = 'hidden';
-  } else {
-    closeMenu();
-  }
-});
 
 // Scroll reveal — directional variants
 const revealClasses = ['reveal', 'reveal-left', 'reveal-right', 'reveal-slow'];
