@@ -24,6 +24,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;o
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
+.nav-logo:hover{color:var(--ink)}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
 .nav-links a:hover{color:var(--ink)}
@@ -124,6 +126,7 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 
 <!-- NAV -->
 <nav>
+  <a class="nav-logo" href="#" aria-label="Inicio">Lucas Banega</a>
   <ul class="nav-links">
     <li><a href="#filosofia">Filosofía</a></li>
     <li><a href="golf.html">Golf</a></li>

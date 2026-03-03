@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#F0EBE1;--ivory:#E8E1D5;--gold:#9A7B4F;--ink:#2C2418;--warm:#6B5C44;--green:#3D4A35;--green-soft:#5A6B4A;--faint:rgba(44,36,24,.08)}
+:root{--cream:#F0EBE1;--ivory:#E8E1D5;--gold:#9A7B4F;--ink:#2C2418;--warm:#6B5C44;--green:#2E4A38;--green-soft:#4A6B52;--green-eng:#2C4A32;--faint:rgba(44,36,24,.08)}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -36,7 +36,7 @@ nav.scrolled .nav-lecarnet{border-color:rgba(107,92,68,.3)}
 .hero-fade-top{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,36,24,.15) 0%,transparent 22%);pointer-events:none}
 .hero-fade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 32%,rgba(240,235,225,.4) 58%,rgba(240,235,225,1) 100%);pointer-events:none}
 .hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 3rem 5.5rem;text-align:center}
-.hero-eyebrow{font-size:.54rem;letter-spacing:.48em;text-transform:uppercase;color:var(--warm);opacity:0;animation:heroUp .8s cubic-bezier(.16,1,.3,1) 1.1s forwards;margin-bottom:1rem}
+.hero-eyebrow{font-size:.54rem;letter-spacing:.38em;text-transform:uppercase;color:rgba(90,107,74,.9);opacity:0;animation:heroUp .8s cubic-bezier(.16,1,.3,1) 1.1s forwards;margin-bottom:1rem}
 .hero-title{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(3.2rem,10vw,7.5rem);line-height:.9;letter-spacing:-.02em;color:var(--ink);opacity:0;animation:heroUp 1s cubic-bezier(.16,1,.3,1) 1.4s forwards}
 .hero-title em{font-style:italic;color:var(--green)}
 .hero-sub{margin-top:1.4rem;font-size:.68rem;letter-spacing:.22em;color:var(--warm);opacity:0;animation:heroFade .9s ease 2s forwards;text-transform:uppercase}
@@ -67,7 +67,7 @@ nav.scrolled .nav-lecarnet{border-color:rgba(107,92,68,.3)}
 .editorial-title em{font-style:italic;color:var(--green)}
 .editorial-body{font-size:.82rem;line-height:2.1;color:var(--warm);letter-spacing:.02em}
 .editorial-body p+p{margin-top:1.4rem}
-.editorial-accent{width:28px;height:1px;background:var(--green-soft);margin:1.8rem 0;opacity:.5}
+.editorial-accent{width:28px;height:1px;background:var(--green-soft);margin:1.8rem 0;opacity:.7}
 @media(max-width:680px){.editorial-block{grid-template-columns:1fr;gap:2rem;direction:ltr}.editorial-block.reverse{direction:ltr}.editorial-num{font-size:4rem}}
 
 /* QUOTE */
@@ -120,7 +120,7 @@ footer>span{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color
 <nav id="main-nav">
   <a class="nav-logo" href="/">Lucas Banega</a>
   <div class="nav-right">
-    <a class="nav-item" href="/">Inicio</a>
+    <a class="nav-item nav-inicio" href="/">Inicio</a>
     <a class="nav-item nav-lecarnet" href="https://le-carnet.netlify.app" target="_blank">Le Carnet</a>
   </div>
 </nav>
@@ -130,24 +130,24 @@ footer>span{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color
   <div class="hero-fade-top"></div>
   <div class="hero-fade"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Lucas Banega</p>
+    <p class="hero-eyebrow">Golf <span style="color:var(--green-soft);font-style:italic">by</span> Lucas Banega</p>
     <h1 class="hero-title">Golf &amp; el <em>silencio</em></h1>
     <p class="hero-sub">Más que un deporte. Más que pasto recién cortado.</p>
-    <div class="hero-scroll">
+    <div class="hero-scroll" onclick="document.getElementById('first-section').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" role="button" aria-label="Deslizar hacia abajo">
       <svg class="hero-tee" viewBox="0 0 20 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- tee head -->
-        <rect x="2" y="0" width="16" height="3" rx="1.5" fill="var(--warm)" opacity=".7"/>
+        <rect x="2" y="0" width="16" height="3" rx="1.5" fill="var(--gold)" opacity=".85"/>
         <!-- tee neck -->
-        <rect x="8.5" y="3" width="3" height="28" rx="1.5" fill="var(--warm)" opacity=".7"/>
+        <rect x="8.5" y="3" width="3" height="28" rx="1.5" fill="var(--gold)" opacity=".85"/>
         <!-- fade line down -->
-        <line x1="10" y1="34" x2="10" y2="48" stroke="var(--warm)" stroke-width="1" opacity=".3" stroke-dasharray="2 3"/>
+        <line x1="10" y1="34" x2="10" y2="48" stroke="var(--gold)" stroke-width="1" opacity=".4" stroke-dasharray="2 3"/>
       </svg>
     </div>
   </div>
 </section>
 
 <div class="wrapper">
-  <section class="opening">
+  <section class="opening" id="first-section">
     <p class="opening-tag reveal delay-1">Una afinidad natural</p>
     <p class="opening-text reveal delay-2">Hay algo en el golf que ningún otro deporte tiene.<br/>No es la técnica. No es la cancha.<br/>Es el <em>silencio</em> que lo rodea todo.</p>
   </section>
