@@ -30,7 +30,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.nav-overlay{display:none;position:fixed;inset:0;z-index:150;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:3rem;opacity:0;transition:opacity .4s ease}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:280;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:3rem;opacity:0;transition:opacity .4s ease}
 .nav-overlay.open{opacity:1}
 .nav-overlay a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;letter-spacing:.08em;color:var(--warm);text-decoration:none;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease,color .3s}
 .nav-overlay.open a{opacity:1;transform:translateY(0)}
@@ -38,6 +38,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .nav-overlay.open a:nth-child(2){transition-delay:.18s}
 .nav-overlay.open a:nth-child(3){transition-delay:.26s}
 .nav-overlay.open a:nth-child(4){transition-delay:.34s}
+.nav-overlay.open a:nth-child(5){transition-delay:.42s}
 .nav-overlay a:hover{color:var(--ink)}
 .nav-overlay-tag{position:absolute;bottom:2.5rem;font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);opacity:.6}
 @media(max-width:640px){.nav-links{display:none}.nav-burger{display:flex}nav{padding:1.4rem 1.5rem}}
@@ -96,10 +97,10 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
   <a class="nav-logo" href="/">Lucas Banega</a>
   <ul class="nav-links">
     <li><a href="/#filosofia">Filosofía</a></li>
-    <li><a href="https://le-carnet.netlify.app" target="_blank" style="font-style:italic">Le Carnet</a></li>
     <li><a href="golf.html">Golf</a></li>
     <li><a href="/#explorador">Explorador</a></li>
     <li><a href="/#contacto">Contacto</a></li>
+    <li><a href="https://le-carnet.netlify.app" target="_blank" style="font-style:italic">Le Carnet</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -107,10 +108,10 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 </nav>
 <div class="nav-overlay" id="nav-overlay">
   <a href="/#filosofia" onclick="closeMenu()">Filosofía</a>
-  <a href="https://le-carnet.netlify.app" target="_blank" onclick="closeMenu()" style="font-style:italic">Le Carnet</a>
   <a href="golf.html" onclick="closeMenu()">Golf</a>
   <a href="/#explorador" onclick="closeMenu()">Explorador</a>
   <a href="/#contacto" onclick="closeMenu()">Contacto</a>
+  <a href="https://le-carnet.netlify.app" target="_blank" onclick="closeMenu()" style="font-style:italic">Le Carnet</a>
   <span class="nav-overlay-tag">Lucas Banega · Fragancias Nicho</span>
 </div>
 
