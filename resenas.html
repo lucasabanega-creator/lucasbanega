@@ -34,12 +34,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .nav-overlay.open{opacity:1}
 .nav-overlay a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;letter-spacing:.08em;color:var(--warm);text-decoration:none;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease,color .3s}
 .nav-overlay.open a{opacity:1;transform:translateY(0)}
-.nav-overlay.open a:nth-child(2){transition-delay:.06s}
-.nav-overlay.open a:nth-child(3){transition-delay:.13s}
-.nav-overlay.open a:nth-child(4){transition-delay:.20s}
-.nav-overlay.open a:nth-child(5){transition-delay:.27s}
-.nav-overlay.open a:nth-child(6){transition-delay:.34s}
-.nav-overlay.open a:nth-child(7){transition-delay:.41s}
+.nav-overlay.open a:nth-child(2){transition-delay:0.0s}
+.nav-overlay.open a:nth-child(3){transition-delay:0.08s}
+.nav-overlay.open a:nth-child(4){transition-delay:0.16s}
+.nav-overlay.open a:nth-child(5){transition-delay:0.24s}
+.nav-overlay.open a:nth-child(6){transition-delay:0.32s}
+.nav-overlay.open a:nth-child(7){transition-delay:0.4s}
 .nav-overlay a:hover{color:var(--ink)}
 .overlay-close{position:absolute;top:2rem;right:2rem;background:none;border:none;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;opacity:.4;transition:opacity .3s}
 .overlay-close:hover{opacity:1}
@@ -114,6 +114,7 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
   </button>
 </nav>
 <div class="nav-overlay" id="nav-overlay">
+  <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú"></button>
   <a href="/" onclick="closeMenu()">Inicio</a>
   <a href="/#filosofia" onclick="closeMenu()">Filosofía</a>
   <a href="golf.html" onclick="closeMenu()">Golf</a>
