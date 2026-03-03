@@ -63,11 +63,12 @@ nav.scrolled{background:rgba(240,235,225,.95);backdrop-filter:blur(10px);border-
 }
 
 
-/* Nav over dark sections */
-nav.over-dark .nav-logo{color:rgba(240,235,225,.92)}
-nav.over-dark .nav-links a{color:rgba(240,235,225,.65)}
-nav.over-dark .nav-links a:hover{color:rgba(240,235,225,1)}
-nav.over-dark .nav-burger span{background:rgba(240,235,225,.85)}
+/* Nav over dark golf section — overrides scrolled */
+nav.over-dark,nav.over-dark.scrolled{background:transparent!important;backdrop-filter:none!important;border-bottom-color:transparent!important;transition:background .6s,border-color .6s}
+nav.over-dark .nav-logo,nav.over-dark.scrolled .nav-logo{color:rgba(240,235,225,.92)!important;transition:color .4s}
+nav.over-dark .nav-links a,nav.over-dark.scrolled .nav-links a{color:rgba(240,235,225,.65)!important;transition:color .4s}
+nav.over-dark .nav-links a:hover,nav.over-dark.scrolled .nav-links a:hover{color:rgba(240,235,225,1)!important}
+nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{background:rgba(240,235,225,.85)!important}
 /* ── HERO ── */
 .hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;text-align:center}
 .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(184,151,90,.07) 0%,transparent 70%);pointer-events:none}
@@ -361,14 +362,9 @@ const golfSection = document.getElementById('golf');
 if (golfSection) {
   const golfObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      // Only apply over-dark when NOT scrolled (so scrolled state takes priority)
-      if (!mainNav.classList.contains('scrolled')) {
-        mainNav.classList.toggle('over-dark', e.isIntersecting);
-      } else {
-        mainNav.classList.remove('over-dark');
-      }
+      mainNav.classList.toggle('over-dark', e.isIntersecting);
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
   golfObs.observe(golfSection);
 }
 </script>
@@ -426,7 +422,9 @@ const T = {
 
 const LONGEVITY_MAP={"corta":20,"media":45,"larga":70,"muy larga":95,"short":20,"medium":45,"long":70,"very long":95};
 const safeArray=v=>Array.isArray(v)?v:[];
-const isValidNumber=v=>v!.explorer-app{font-family:'Jost',sans-serif;color:var(--ink)}
+const isValidNumber=v=>v!==null&&v!==undefined;
+const STYLES=`
+.explorer-app{font-family:'Jost',sans-serif;color:var(--ink)}
 .ex-topbar{display:flex;justify-content:flex-end;padding:16px 32px;background:var(--cream)}
 .ex-lang-btn{background:transparent;border:1px solid rgba(44,36,24,.18);padding:6px 18px;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(44,36,24,.5);cursor:pointer;transition:all .2s}
 .ex-lang-btn:hover{border-color:#C4A46B;color:#C4A46B}
