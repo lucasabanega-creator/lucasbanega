@@ -4,15 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-<title>Lucas Banega — Fragancias Nicho</title>
+<title>Lucas Banega</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#F0EBE1;--ivory:#E8E1D5;--gold:#9A7B4F;--gold-light:#C4A46B;
-  --ink:#2C2418;--warm:#6B5C44;
+  --cream:#F0EBE1;--ivory:#E8E1D5;--gold:#7C6B58;--gold-light:#A08C78;
+  --ink:#1C1814;--warm:#5C4F3D;--faint:rgba(28,24,20,.09);
 }
 html{scroll-behavior:auto}
 body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
@@ -20,16 +20,16 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;o
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;background:transparent;transition:background .5s,border-color .5s}
-nav.scrolled{background:rgba(240,235,225,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--faint)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:1.8rem 3rem;background:transparent;transition:background .5s,border-color .5s}
+nav.scrolled{background:rgba(240,235,225,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--faint)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s;grid-column:2;text-align:center;white-space:nowrap}
 .nav-logo:hover{color:var(--ink)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links{display:flex;gap:2.5rem;list-style:none;justify-self:end;grid-column:3}
 .nav-links a{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
 .nav-links a:hover{color:var(--ink)}
 
 /* hamburguesa */
-.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none;z-index:300;width:28px;height:28px;justify-content:center;align-items:center}
+.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none;z-index:300;width:28px;height:28px;justify-content:center;align-items:center;grid-column:3;justify-self:end}
 .nav-burger span{display:block;width:22px;height:1px;background:var(--warm);transition:transform .45s cubic-bezier(.23,1,.32,1),opacity .3s ease,width .35s cubic-bezier(.23,1,.32,1);transform-origin:center}
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0;width:0}
@@ -133,6 +133,16 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
   .golf-cinema-sub{max-width:100%}
 }
 
+/* ── GOLF CARD (Loro Piana style) ── */
+.golf-card{position:absolute;bottom:4rem;left:4.5rem;background:var(--cream);padding:2.4rem 2.8rem;min-width:240px;z-index:2;opacity:0;transform:translateY(12px);transition:opacity .6s .2s,transform .6s .2s}
+.golf-cinema.visible .golf-card{opacity:1;transform:translateY(0)}
+.golf-card-eyebrow{font-size:.5rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.golf-card-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.7rem;line-height:1;letter-spacing:.02em;color:var(--ink);margin-bottom:.3rem}
+.golf-card-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--warm);margin-bottom:2rem}
+.golf-card-cta{font-size:.54rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(92,79,61,.3);padding-bottom:2px;transition:color .3s,border-color .3s;display:inline-block}
+.golf-card-cta:hover{color:var(--ink);border-color:var(--ink)}
+@media(max-width:640px){.golf-card{bottom:2.5rem;left:1.8rem;padding:1.8rem 2rem;min-width:0;right:1.8rem}}
+
 /* ── FOOTER ── */
 footer{padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(44,36,24,.1);flex-wrap:wrap;gap:1rem}
 footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28)}
@@ -173,12 +183,12 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
   <a href="#golf" onclick="closeMenu()">Golf</a>
   <a href="#contacto" onclick="closeMenu()">Contacto</a>
   <a href="https://le-carnet.netlify.app" target="_blank" onclick="closeMenu()" style="font-style:italic">Le Carnet</a>
-  <span class="nav-overlay-tag">Lucas Banega · Fragancias Nicho</span>
+  <span class="nav-overlay-tag">Lucas Banega</span>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-tag">Fragancias Nicho · Buenos Aires</p>
+  <p class="hero-tag">Buenos Aires · Argentina</p>
   <img class="hero-logo" src="lucas_banega_logo_1080.png" alt="Lucas Banega"/>
   <a class="hero-scroll" href="#hero-intro">
     <span>Descubrir</span>
@@ -190,7 +200,7 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 <section id="hero-intro" class="hero-intro">
   <div class="hero-line reveal"></div>
   <h1 class="hero-title reveal">Una nueva forma<br/>de <em>sentir</em></h1>
-  <p class="hero-sub reveal">Próximamente</p>
+  
 </section>
 
 <!-- MANIFESTO -->
@@ -234,12 +244,15 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
     <div class="golf-cinema-overlay"></div>
     <div class="golf-cinema-noise"></div>
     <div class="golf-cinema-content">
-      <p class="golf-cinema-tag">Golf <em>by</em> Lucas Banega</p>
-      <h2 class="golf-cinema-title">Más que pasto<br/>recién <em>cortado</em></h2>
-      <div class="golf-cinema-bottom">
-        <p class="golf-cinema-sub">El golf y la perfumería comparten algo que pocos nombran — un silencio, una paciencia, una elegancia que no busca ser vista.</p>
+      <div class="golf-cinema-bottom" style="height:100%;align-items:flex-end">
         <span class="golf-cinema-cta">Descubrirlo</span>
       </div>
+    </div>
+    <div class="golf-card">
+      <p class="golf-card-eyebrow">Eau de Parfum</p>
+      <p class="golf-card-title">Golf N°1</p>
+      <p class="golf-card-sub">by Lucas Banega</p>
+      <a class="golf-card-cta" href="golf.html">Descubrir</a>
     </div>
   </a>
 </section>
@@ -259,7 +272,7 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 </section>
 
 <footer>
-  <span>© 2025 Lucas Banega — Fragancias Nicho</span>
+  <span>© 2025 Lucas Banega</span>
   <div class="footer-right">
     <a class="footer-ig" href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" color="var(--warm)">
@@ -279,6 +292,7 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:.1});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+document.querySelectorAll('.golf-cinema').forEach(el=>obs.observe(el));
 
 // Scroll elegante — como un suspiro
 function elegantScrollTo(target, duration){
