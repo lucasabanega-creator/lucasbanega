@@ -70,25 +70,11 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
 .hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;text-align:center;overflow:hidden}
 /* Grain de papel — textura orgánica */
 .hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(ellipse 80% 70% at 50% 50%,transparent 30%,rgba(44,20,12,.06) 100%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.038'/%3E%3C/svg%3E");
-  background-size:cover,200px 200px}
-/* Marcas de esquina — como registro de imprenta */
-.hero::before{content:'';position:absolute;inset:2.2rem;pointer-events:none;z-index:1;
-  background:
-    linear-gradient(var(--gold),var(--gold)) top left / 14px 1px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) top left / 1px 14px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) top right / 14px 1px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) top right / 1px 14px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) bottom left / 14px 1px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) bottom left / 1px 14px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) bottom right / 14px 1px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) bottom right / 1px 14px no-repeat;
-  opacity:.18}
+  background:radial-gradient(ellipse 80% 70% at 50% 50%,transparent 30%,rgba(44,20,12,.06) 100%)}
+/* sin marcas de esquina */
 .hero-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:0;opacity:0;animation:fadeIn 1.8s .5s forwards;position:relative;z-index:2}
-.hero-logo{width:min(460px,78vw)}
-.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.8rem;position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn 1s 2.4s forwards;cursor:pointer;text-decoration:none;z-index:2}
+.hero-logo{width:min(460px,78vw);mix-blend-mode:multiply}
+.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.8rem;position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn .8s 1.6s forwards;cursor:pointer;text-decoration:none;z-index:2}
 .hero-scroll span{font-size:.46rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.55}
 .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.8s ease-in-out infinite;transform-origin:top}
 @keyframes scrollPulse{0%{opacity:.2;transform:scaleY(.6) translateY(-8px)}50%{opacity:.6;transform:scaleY(1) translateY(0)}100%{opacity:.2;transform:scaleY(.6) translateY(-8px)}}
@@ -316,7 +302,7 @@ footer{background:#3D1E14;display:flex;flex-direction:column;align-items:stretch
 <div class="golf-breath"></div>
 
 <section id="golf">
-  <a class="golf-cinema" href="golf.html">
+  <div class="golf-cinema" data-href="golf.html" style="cursor:pointer">
     <img class="golf-cinema-img" src="golf_hero.jpg" alt="Golf by Lucas Banega"/>
     <div class="golf-cinema-overlay"></div>
     <div class="golf-cinema-noise"></div>
@@ -383,18 +369,25 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.05});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
 
-// Golf card — scroll trigger directo, sin IntersectionObserver
+// Golf cinema — click navega a golf.html (era <a>, ahora <div>)
+const golfCinema = document.querySelector('.golf-cinema');
+if(golfCinema){
+  golfCinema.addEventListener('click', function(e){
+    if(e.target.closest('a')) return; // deja que los <a> internos funcionen solos
+    window.location.href = this.dataset.href;
+  });
+}
+
+// Golf card — IntersectionObserver confiable con threshold bajo
 const golfCard = document.querySelector('.golf-card');
 if(golfCard){
-  function checkCard(){
-    const rect = golfCard.closest('.golf-cinema').getBoundingClientRect();
-    if(rect.top < window.innerHeight * 0.95){
+  const cardObserver = new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
       golfCard.classList.add('card-visible');
-      window.removeEventListener('scroll', checkCard);
+      cardObserver.disconnect();
     }
-  }
-  window.addEventListener('scroll', checkCard, {passive:true});
-  checkCard(); // por si ya está visible al cargar
+  },{threshold:0.01,rootMargin:'0px 0px 0px 0px'});
+  cardObserver.observe(golfCinema);
 }
 
 
@@ -465,15 +458,16 @@ window.addEventListener('scroll', () => {
 }, {passive: true});
 
 // White nav over golf dark image
+// Nav over dark — posición de scroll, más confiable
 const golfSection = document.getElementById('golf');
-if (golfSection) {
-  const golfObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      mainNav.classList.toggle('over-dark', e.isIntersecting);
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
-  golfObs.observe(golfSection);
+function updateNavDark(){
+  if(!golfSection) return;
+  const rect = golfSection.getBoundingClientRect();
+  const inSection = rect.top <= 80 && rect.bottom > 80;
+  mainNav.classList.toggle('over-dark', inSection);
 }
+window.addEventListener('scroll', updateNavDark, {passive:true});
+updateNavDark();
 </script>
 
 <!-- REACT EXPLORER -->
