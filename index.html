@@ -97,11 +97,42 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
 .hero-title em{font-style:italic;color:var(--warm)}
 .hero-sub{margin-top:1.6rem;font-size:.72rem;letter-spacing:.22em;color:var(--gold-light);text-transform:uppercase}
 
-/* ── MANIFESTO ── */
-.manifesto{padding:7rem 2rem;max-width:660px;margin:0 auto;text-align:center}
+/* ── FILOSOFÍA EDITORIAL ── */
 .section-tag{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem}
-.manifesto-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.45rem,3vw,2.1rem);line-height:1.7;color:var(--ink)}
+.manifesto{padding:0;background:var(--cream);display:grid;grid-template-columns:1fr 1fr;min-height:92vh}
+
+/* Columna izquierda — texto */
+.manifesto-left{padding:8rem 5rem 8rem 8vw;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(28,24,20,.08)}
+.manifesto-eyebrow{font-size:.54rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:3.5rem;opacity:0;animation:fadeIn .8s .3s forwards}
+.manifesto-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.85;color:var(--ink)}
 .manifesto-text em{font-style:italic;color:var(--warm)}
+.manifesto-text+.manifesto-text{margin-top:2.2rem}
+.manifesto-rule{width:32px;height:1px;background:var(--gold);opacity:.35;margin-top:3.5rem}
+
+/* Columna derecha — panel atmosférico */
+.manifesto-right{position:relative;background:var(--ivory);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.manifesto-right-inner{position:relative;z-index:2;text-align:center;padding:4rem}
+.manifesto-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(2.2rem,4vw,3.8rem);line-height:1.05;color:var(--ink);letter-spacing:-.02em;opacity:.82}
+.manifesto-quote em{color:var(--warm);font-style:italic}
+.manifesto-quote-attr{font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-top:2rem;opacity:.6;display:block}
+/* Deco: número grande de fondo */
+.manifesto-deco{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;user-select:none;overflow:hidden}
+.manifesto-deco-text{font-family:'Cormorant Garamond',serif;font-size:32vw;font-weight:300;line-height:1;color:var(--ink);opacity:.028;letter-spacing:-.04em;white-space:nowrap}
+/* Corner marks en la columna derecha */
+.manifesto-right::before{content:'';position:absolute;inset:2.5rem;pointer-events:none;z-index:1;
+  background:
+    linear-gradient(var(--gold),var(--gold)) top left / 12px 1px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) top left / 1px 12px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) bottom right / 12px 1px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) bottom right / 1px 12px no-repeat;
+  opacity:.2}
+
+@media(max-width:900px){
+  .manifesto{grid-template-columns:1fr;min-height:auto}
+  .manifesto-left{padding:6rem 2rem;border-right:none;border-bottom:1px solid rgba(28,24,20,.08)}
+  .manifesto-right{min-height:60vw;padding:4rem 2rem}
+  .manifesto-deco-text{font-size:52vw}
+}
 
 /* ── EXPLORER WRAPPER ── */
 
@@ -234,27 +265,45 @@ footer{background:#3D1E14;display:flex;flex-direction:column;align-items:stretch
 
 <!-- MANIFESTO -->
 <section id="filosofia" class="manifesto">
-  <p class="section-tag reveal">Filosofía</p>
-  <p class="manifesto-text reveal">
-    Hay un momento en que dejás de buscar lo que todos usan<br/>
-    y empezás a buscar lo que te representa.<br/>
-    Para mí fue una prenda, una marca, una forma de entender<br/>
-    que el verdadero valor no se grita — <em>se siente.</em><br/>
-    Que la exclusividad no es precio, es criterio.
-  </p>
-  <p class="manifesto-text reveal" style="margin-top:2.5rem">
-    De ahí a las fragancias el camino fue natural.<br/>
-    Una fragancia no se ve. No aparece en una foto.<br/>
-    Solo la percibe quien está cerca.<br/>
-    Es la forma más discreta y más íntima<br/>
-    de <em>decir algo sobre uno mismo.</em>
-  </p>
-  <p class="manifesto-text reveal" style="margin-top:2.5rem">
-    Este sitio es el registro de ese camino.<br/>
-    Las reseñas que escribo no buscan ser exhaustivas<br/>
-    — buscan ser <em>honestas.</em><br/>
-    Lo que vale la pena, vale la pena decirlo bien.
-  </p>
+
+  <!-- Columna izquierda: texto -->
+  <div class="manifesto-left">
+    <p class="manifesto-eyebrow">Filosofía</p>
+    <p class="manifesto-text reveal">
+      Hay un momento en que dejás de buscar lo que todos usan
+      y empezás a buscar lo que te representa.
+      Para mí fue una prenda, una marca, una forma de entender
+      que el verdadero valor no se grita — <em>se siente.</em>
+      Que la exclusividad no es precio, es criterio.
+    </p>
+    <p class="manifesto-text reveal">
+      De ahí a las fragancias el camino fue natural.
+      Una fragancia no se ve. No aparece en una foto.
+      Solo la percibe quien está cerca.
+      Es la forma más discreta y más íntima
+      de <em>decir algo sobre uno mismo.</em>
+    </p>
+    <p class="manifesto-text reveal">
+      Este sitio es el registro de ese camino.
+      Las reseñas que escribo no buscan ser exhaustivas
+      — buscan ser <em>honestas.</em>
+    </p>
+    <span class="manifesto-rule reveal"></span>
+  </div>
+
+  <!-- Columna derecha: panel atmosférico -->
+  <div class="manifesto-right">
+    <div class="manifesto-deco" aria-hidden="true">
+      <span class="manifesto-deco-text">LB</span>
+    </div>
+    <div class="manifesto-right-inner reveal">
+      <p class="manifesto-quote">
+        "Lo que vale<br/>la pena, vale<br/>la pena <em>decirlo</em><br/>bien."
+      </p>
+      <span class="manifesto-quote-attr">Lucas Banega</span>
+    </div>
+  </div>
+
 </section>
 
 <!-- INGREDIENT EXPLORER (React) -->
@@ -334,7 +383,12 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:.05});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
-document.querySelectorAll('.golf-cinema').forEach(el=>obs.observe(el));
+
+// Golf card — observer dedicado, se activa apenas entra la sección
+const cardObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.01});
+document.querySelectorAll('.golf-cinema').forEach(el=>cardObs.observe(el));
 
 // Scroll elegante — como un suspiro
 function elegantScrollTo(target, duration){
