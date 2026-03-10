@@ -11,8 +11,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#F0EBE1;--ivory:#E8E1D5;--gold:#7C6B58;--gold-light:#A08C78;
-  --ink:#1C1814;--warm:#5C4F3D;--faint:rgba(28,24,20,.09);
+  --cream:#F0EBE1;--ivory:#E8E1D5;--gold:#8C5A48;--gold-light:#B87A68;
+  --ink:#1C1814;--warm:#7A4A3A;--faint:rgba(28,24,20,.09);
 }
 html{scroll-behavior:auto}
 body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
@@ -62,19 +62,34 @@ nav.scrolled{background:rgba(240,235,225,.96);backdrop-filter:blur(12px);border-
 
 /* Nav over dark golf section — overrides scrolled */
 nav.over-dark,nav.over-dark.scrolled{background:transparent!important;backdrop-filter:none!important;border-bottom-color:transparent!important;transition:background .6s,border-color .6s}
-nav.over-dark .nav-logo,nav.over-dark.scrolled .nav-logo{color:rgba(240,235,225,.92)!important;transition:color .4s}
+nav.over-dark .nav-logo,nav.over-dark.scrolled .nav-logo{color:rgba(240,225,218,.92)!important;transition:color .4s}
 nav.over-dark .nav-links a,nav.over-dark.scrolled .nav-links a{color:rgba(240,235,225,.65)!important;transition:color .4s}
 nav.over-dark .nav-links a:hover,nav.over-dark.scrolled .nav-links a:hover{color:rgba(240,235,225,1)!important}
 nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{background:rgba(240,235,225,.85)!important}
 /* ── HERO ── */
-.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;text-align:center}
-.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(184,151,90,.07) 0%,transparent 70%);pointer-events:none}
-.hero-tag{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);opacity:0;animation:fadeIn .9s .3s forwards;margin-bottom:2.4rem}
-.hero-logo{width:min(520px,80vw);opacity:0;animation:fadeIn 1.6s .8s forwards}
-.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.5rem;position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn .8s 2.2s forwards;cursor:pointer;text-decoration:none}
-.hero-scroll span{font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
-.scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s infinite}
-@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:1}}
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;text-align:center;overflow:hidden}
+/* Vignette suave — da profundidad al cream */
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 50% 50%,transparent 35%,rgba(44,20,12,.05) 100%);pointer-events:none;z-index:0}
+/* Marcas de esquina — como registro de imprenta */
+.hero::before{content:'';position:absolute;inset:2.2rem;pointer-events:none;z-index:1;
+  background:
+    linear-gradient(var(--gold),var(--gold)) top left / 14px 1px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) top left / 1px 14px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) top right / 14px 1px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) top right / 1px 14px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) bottom left / 14px 1px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) bottom left / 1px 14px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) bottom right / 14px 1px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) bottom right / 1px 14px no-repeat;
+  opacity:.18}
+.hero-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:0;opacity:0;animation:fadeIn 1.8s .5s forwards;position:relative;z-index:2}
+.hero-logo-frame{display:flex;align-items:center}
+.hero-logo{width:min(380px,68vw)}
+.hero-rule{width:32px;height:1px;background:var(--gold);margin:1.8rem auto 0;opacity:.3}
+.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.6rem;position:absolute;bottom:2.8rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn .8s 2.2s forwards;cursor:pointer;text-decoration:none;z-index:2}
+.hero-scroll span{font-size:.5rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gold);opacity:.7}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.4s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.28;transform:scaleY(.85)}50%{opacity:.7;transform:scaleY(1)}}
 /* ── HERO INTRO ── */
 .hero-intro{padding:7rem 2rem 5rem;text-align:center;display:flex;flex-direction:column;align-items:center}
 .hero-line{width:1px;height:56px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin-bottom:3rem}
@@ -91,18 +106,8 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
 /* ── EXPLORER WRAPPER ── */
 
 
-/* ── NOTIFY ── */
-.notify{padding:7rem 2rem;text-align:center}
-.notify-inner{max-width:500px;margin:0 auto}
-.notify h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,2.8rem);line-height:1.2;margin:1rem 0}
-.notify h2 em{font-style:italic;color:var(--warm)}
-.notify p{font-size:.8rem;line-height:1.85;color:var(--warm);margin-bottom:2.5rem}
-.email-form{display:flex;border-bottom:1px solid var(--gold);max-width:360px;margin:0 auto}
-.email-form input{flex:1;background:transparent;border:none;outline:none;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.08em;color:var(--ink);padding:.8rem 0}
-.email-form input::placeholder{color:rgba(44,36,24,.32);letter-spacing:.15em;text-transform:uppercase;font-size:.66rem}
-.email-form button{background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);padding:.8rem 0 .8rem 1.2rem;transition:color .3s}
-.email-form button:hover{color:var(--ink)}
-.form-thanks{display:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--warm);margin-top:1.5rem}
+/* ── NOTIFY — dentro del footer oscuro ── */
+.notify{display:none}
 
 .reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal-left.visible{opacity:1;transform:translateX(0)}
@@ -114,17 +119,17 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
 .golf-cinema{position:relative;height:100vh;min-height:600px;overflow:hidden;display:block;text-decoration:none;color:inherit}
 .golf-cinema-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:saturate(.82) brightness(.88);transform:scale(1.05);transition:transform 2s cubic-bezier(.16,1,.3,1)}
 .golf-cinema:hover .golf-cinema-img{transform:scale(1.0)}
-.golf-cinema-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,44,28,.72) 0%,rgba(30,44,28,.18) 50%,transparent 100%)}
+.golf-cinema-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,20,12,.68) 0%,rgba(44,20,12,.18) 50%,transparent 100%)}
 .golf-cinema-noise{position:absolute;inset:0;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .golf-cinema-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:4.5rem}
-.golf-cinema-tag{font-size:.52rem;letter-spacing:.46em;text-transform:uppercase;color:rgba(190,215,190,.7);margin-bottom:1.6rem}
+.golf-cinema-tag{font-size:.52rem;letter-spacing:.46em;text-transform:uppercase;color:rgba(240,200,185,.7);margin-bottom:1.6rem}
 .golf-cinema-tag em{font-style:italic}
 .golf-cinema-title{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:-.025em;color:rgba(242,238,228,.96);max-width:700px}
-.golf-cinema-title em{font-style:italic;color:rgba(170,205,170,.92)}
+.golf-cinema-title em{font-style:italic;color:rgba(235,190,175,.88)}
 .golf-cinema-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:3rem;flex-wrap:wrap;gap:2rem}
-.golf-cinema-sub{font-size:.72rem;line-height:1.85;color:rgba(210,225,210,.65);max-width:320px;letter-spacing:.02em}
-.golf-cinema-cta{display:inline-flex;align-items:center;gap:1rem;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(190,215,190,.85);border-bottom:1px solid rgba(170,200,170,.3);padding-bottom:3px;white-space:nowrap;transition:gap .5s cubic-bezier(.16,1,.3,1),color .3s,border-color .3s}
-.golf-cinema:hover .golf-cinema-cta{gap:1.7rem;color:rgba(215,235,215,1);border-color:rgba(170,200,170,.7)}
+.golf-cinema-sub{font-size:.72rem;line-height:1.85;color:rgba(225,200,190,.55);max-width:320px;letter-spacing:.02em}
+.golf-cinema-cta{display:inline-flex;align-items:center;gap:1rem;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(235,200,190,.8);border-bottom:1px solid rgba(170,200,170,.3);padding-bottom:3px;white-space:nowrap;transition:gap .5s cubic-bezier(.16,1,.3,1),color .3s,border-color .3s}
+.golf-cinema:hover .golf-cinema-cta{gap:1.7rem;color:rgba(245,215,205,1);border-color:rgba(200,160,145,.7)}
 .golf-cinema-cta::after{content:'→';font-size:.75rem}
 @media(max-width:640px){
   .golf-cinema{height:72vh;min-height:460px}
@@ -144,15 +149,35 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
 @media(max-width:640px){.golf-card{bottom:2.5rem;left:1.8rem;padding:1.8rem 2rem;min-width:0;right:1.8rem}}
 
 /* ── FOOTER ── */
-footer{padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(44,36,24,.1);flex-wrap:wrap;gap:1rem}
-footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28)}
+footer{background:#3D1E14;display:flex;flex-direction:column;align-items:stretch}
+.footer-top-section{padding:5rem 3rem 4.5rem;display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;border-bottom:1px solid rgba(240,235,225,.07)}
+.footer-notify-tag{font-size:.52rem;letter-spacing:.38em;text-transform:uppercase;color:rgba(240,235,225,.28);margin-bottom:1.4rem}
+.footer-notify-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;color:rgba(240,235,225,.88);margin-bottom:.7rem}
+.footer-notify-title em{font-style:italic;color:rgba(240,235,225,.45)}
+.footer-notify-sub{font-size:.72rem;line-height:1.9;color:rgba(240,235,225,.3);margin-bottom:2.8rem;max-width:340px}
+.footer-email-form{display:flex;border-bottom:1px solid rgba(240,235,225,.2);max-width:340px;width:100%;margin:0 auto}
+.footer-email-form input{flex:1;background:transparent;border:none;outline:none;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.06em;color:rgba(240,235,225,.85);padding:.9rem 0}
+.footer-email-form input::placeholder{color:rgba(240,235,225,.2);letter-spacing:.18em;text-transform:uppercase;font-size:.6rem}
+.footer-email-form button{background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(240,235,225,.35);padding:.9rem 0 .9rem 1.2rem;transition:color .3s;white-space:nowrap}
+.footer-email-form button:hover{color:rgba(240,235,225,.75)}
+.footer-mid-section{padding:3rem;display:flex;flex-direction:column;align-items:center;gap:2.2rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:.95rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(240,235,225,.4);text-decoration:none;transition:color .4s}
+.footer-logo:hover{color:rgba(240,235,225,.75)}
+.footer-rule{width:32px;height:1px;background:rgba(240,235,225,.1)}
+.footer-links{display:flex;gap:2.2rem;list-style:none;flex-wrap:wrap;justify-content:center}
+.footer-links a{font-size:.52rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(240,235,225,.22);text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:rgba(240,235,225,.6)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:1rem;padding:2rem 3rem;border-top:1px solid rgba(240,235,225,.05)}
+.footer-copy{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,225,.14)}
 .footer-right{display:flex;align-items:center;gap:2rem}
-.footer-ig{display:flex;align-items:center;gap:.6rem;text-decoration:none;opacity:.35;transition:opacity .3s}
-.footer-ig:hover{opacity:.7}
-.footer-ig svg{width:16px;height:16px}
-.footer-top{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s}
-.footer-top:hover{color:var(--ink)}
-.footer-top::after{content:'↑';font-size:.7rem}
+.footer-ig{display:flex;align-items:center;gap:.5rem;text-decoration:none;opacity:.18;transition:opacity .3s}
+.footer-ig:hover{opacity:.5}
+.footer-ig svg{width:14px;height:14px;color:rgba(240,235,225,.8)}
+.footer-ig span{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,225,.4)}
+.footer-top-btn{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,235,225,.16);text-decoration:none;transition:color .3s}
+.footer-top-btn:hover{color:rgba(240,235,225,.5)}
+.footer-top-btn::after{content:' ↑'}
+@media(max-width:640px){.footer-top-section{padding:4rem 1.5rem 3.5rem}.footer-mid-section{padding:2.5rem 1.5rem}.footer-bottom{padding:1.5rem;flex-direction:column;align-items:center;text-align:center}}
 
 /* ── UTILS ── */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s}
@@ -188,8 +213,12 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-tag">Buenos Aires · Argentina</p>
-  <img class="hero-logo" src="lucas_banega_logo_1080.png" alt="Lucas Banega"/>
+  <div class="hero-logo-wrap">
+    <div class="hero-logo-frame">
+      <img class="hero-logo" src="lucas_banega_logo_1080.png" alt="Lucas Banega"/>
+    </div>
+    <span class="hero-rule"></span>
+  </div>
   <a class="hero-scroll" href="#hero-intro">
     <span>Descubrir</span>
     <div class="scroll-line"></div>
@@ -239,7 +268,7 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 <div class="golf-breath"></div>
 
 <section id="golf">
-  <a class="golf-cinema reveal" href="golf.html">
+  <a class="golf-cinema" href="golf.html">
     <img class="golf-cinema-img" src="golf_hero.jpg" alt="Golf by Lucas Banega"/>
     <div class="golf-cinema-overlay"></div>
     <div class="golf-cinema-noise"></div>
@@ -257,32 +286,45 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
   </a>
 </section>
 
-<section id="contacto" class="notify">
-  <div class="notify-inner">
-    <p class="section-tag reveal">Sé el primero</p>
-    <h2 class="reveal">Avisame cuando<br/><em>esté listo</em></h2>
-    <p class="reveal">La colección está en desarrollo. Dejá tu email y te escribo antes del lanzamiento.</p>
-    <form class="email-form reveal" name="notificaciones" netlify netlify-honeypot="bot-field" action="/gracias">
+<!-- contacto integrado en footer -->
+
+<footer>
+  <!-- Notify integrado -->
+  <div class="footer-top-section">
+    <p class="footer-notify-tag">Lanzamiento</p>
+    <h2 class="footer-notify-title">Avisame cuando<br/><em>esté listo</em></h2>
+    <p class="footer-notify-sub">La colección está en desarrollo. Dejá tu email y te escribo antes del lanzamiento.</p>
+    <form class="footer-email-form" name="notificaciones" netlify netlify-honeypot="bot-field" action="/gracias">
       <input type="hidden" name="form-name" value="notificaciones"/>
       <input type="hidden" name="bot-field"/>
       <input type="email" name="email" placeholder="Tu email" required/>
-      <button type="submit">Notificarme</button>
+      <button type="submit">Notificarme →</button>
     </form>
   </div>
-</section>
-
-<footer>
-  <span>© 2025 Lucas Banega</span>
-  <div class="footer-right">
-    <a class="footer-ig" href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" color="var(--warm)">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/>
-      </svg>
-      <span style="font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.4)">Instagram</span>
-    </a>
-    <a class="footer-top" href="#">Inicio</a>
+  <!-- Logo + links -->
+  <div class="footer-mid-section">
+    <a class="footer-logo" href="#">Lucas Banega</a>
+    <div class="footer-rule"></div>
+    <ul class="footer-links">
+      <li><a href="#filosofia">Filosofía</a></li>
+      <li><a href="#golf">Golf</a></li>
+      <li><a href="https://le-carnet.netlify.app" target="_blank" style="font-style:italic">Le Carnet</a></li>
+    </ul>
+  </div>
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Lucas Banega</span>
+    <div class="footer-right">
+      <a class="footer-ig" href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/>
+        </svg>
+        <span>Instagram</span>
+      </a>
+      <a class="footer-top-btn" href="#">Inicio</a>
+    </div>
   </div>
 </footer>
 
@@ -290,7 +332,7 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 <script>
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:.1});
+},{threshold:.05});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
 document.querySelectorAll('.golf-cinema').forEach(el=>obs.observe(el));
 
