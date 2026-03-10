@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#F0EBE1;--ivory:#E8E1D5;--gold:#9A7B4F;--ink:#2C2418;--warm:#6B5C44;--green:#2E4A38;--green-soft:#4A6B52;--green-eng:#2C4A32;--faint:rgba(44,36,24,.08)}
+:root{--cream:#F0EBE1;--ivory:#E8E1D5;--gold:#8C5A48;--gold-light:#B87A68;--ink:#1C1814;--warm:#7A4A3A;--green:#2E4A38;--green-soft:#4A6B52;--green-eng:#2C4A32;--faint:rgba(28,24,20,.09)}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -89,14 +89,18 @@ nav.scrolled .nav-lecarnet{border-color:rgba(107,92,68,.3)}
 .cierre-link.verde:hover{color:var(--green);border-color:var(--green)}
 
 /* FOOTER */
-footer{padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--faint);flex-wrap:wrap;gap:1rem}
-footer>span{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28)}
+footer{background:#3D1E14;padding:3.5rem 3rem 2.5rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.footer-logo-golf{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:.95rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(240,235,225,.38);text-decoration:none;transition:color .4s}
+.footer-logo-golf:hover{color:rgba(240,235,225,.72)}
+.footer-rule-golf{width:28px;height:1px;background:rgba(240,235,225,.1)}
+.footer-bottom-golf{display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:1rem;padding-top:1.8rem;border-top:1px solid rgba(240,235,225,.05)}
+.footer-copy-golf{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,225,.14)}
 .footer-right{display:flex;align-items:center;gap:2rem}
-.footer-ig{display:flex;align-items:center;gap:.6rem;text-decoration:none;opacity:.35;transition:opacity .3s}
-.footer-ig:hover{opacity:.7}
-.footer-ig svg{width:16px;height:16px}
-.footer-top{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28);text-decoration:none;transition:color .3s}
-.footer-top:hover{color:var(--ink)}
+.footer-ig{display:flex;align-items:center;gap:.5rem;text-decoration:none;opacity:.18;transition:opacity .3s}
+.footer-ig:hover{opacity:.5}
+.footer-ig svg{width:14px;height:14px;color:rgba(240,235,225,.8)}
+.footer-top{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,235,225,.16);text-decoration:none;transition:color .3s}
+.footer-top:hover{color:rgba(240,235,225,.5)}
 .footer-top::after{content:' ↑'}
 @media(max-width:640px){footer{padding:2rem 1.5rem}}
 
@@ -217,17 +221,21 @@ footer>span{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color
 </div>
 
 <footer>
-  <span>© 2025 Lucas Banega — Fragancias Nicho</span>
-  <div class="footer-right">
-    <a class="footer-ig" href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" color="var(--warm)">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/>
-      </svg>
-      <span style="font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.4)">Instagram</span>
-    </a>
-    <a class="footer-top" href="#">Inicio</a>
+  <a class="footer-logo-golf" href="index.html">Lucas Banega</a>
+  <div class="footer-rule-golf"></div>
+  <div class="footer-bottom-golf">
+    <span class="footer-copy-golf">© 2025 Lucas Banega</span>
+    <div class="footer-right">
+      <a class="footer-ig" href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/>
+        </svg>
+        <span style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,225,.3)">Instagram</span>
+      </a>
+      <a class="footer-top" href="#">Inicio</a>
+    </div>
   </div>
 </footer>
 

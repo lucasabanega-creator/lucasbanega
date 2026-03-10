@@ -68,8 +68,12 @@ nav.over-dark .nav-links a:hover,nav.over-dark.scrolled .nav-links a:hover{color
 nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{background:rgba(240,235,225,.85)!important}
 /* ── HERO ── */
 .hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;text-align:center;overflow:hidden}
-/* Vignette suave — da profundidad al cream */
-.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 50% 50%,transparent 35%,rgba(44,20,12,.05) 100%);pointer-events:none;z-index:0}
+/* Grain de papel — textura orgánica */
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%,transparent 30%,rgba(44,20,12,.06) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.038'/%3E%3C/svg%3E");
+  background-size:cover,200px 200px}
 /* Marcas de esquina — como registro de imprenta */
 .hero::before{content:'';position:absolute;inset:2.2rem;pointer-events:none;z-index:1;
   background:
@@ -83,13 +87,11 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
     linear-gradient(var(--gold),var(--gold)) bottom right / 1px 14px no-repeat;
   opacity:.18}
 .hero-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:0;opacity:0;animation:fadeIn 1.8s .5s forwards;position:relative;z-index:2}
-.hero-logo-frame{display:flex;align-items:center}
-.hero-logo{width:min(380px,68vw)}
-.hero-rule{width:32px;height:1px;background:var(--gold);margin:1.8rem auto 0;opacity:.3}
-.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.6rem;position:absolute;bottom:2.8rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn .8s 2.2s forwards;cursor:pointer;text-decoration:none;z-index:2}
-.hero-scroll span{font-size:.5rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gold);opacity:.7}
-.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.4s ease-in-out infinite}
-@keyframes scrollPulse{0%,100%{opacity:.28;transform:scaleY(.85)}50%{opacity:.7;transform:scaleY(1)}}
+.hero-logo{width:min(460px,78vw)}
+.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.8rem;position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn 1s 2.4s forwards;cursor:pointer;text-decoration:none;z-index:2}
+.hero-scroll span{font-size:.46rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.55}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.8s ease-in-out infinite;transform-origin:top}
+@keyframes scrollPulse{0%{opacity:.2;transform:scaleY(.6) translateY(-8px)}50%{opacity:.6;transform:scaleY(1) translateY(0)}100%{opacity:.2;transform:scaleY(.6) translateY(-8px)}}
 /* ── HERO INTRO ── */
 .hero-intro{padding:7rem 2rem 5rem;text-align:center;display:flex;flex-direction:column;align-items:center}
 .hero-line{width:1px;height:56px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin-bottom:3rem}
@@ -170,8 +172,8 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
 }
 
 /* ── GOLF CARD (Loro Piana style) ── */
-.golf-card{position:absolute;bottom:4rem;left:4.5rem;background:var(--cream);padding:2.4rem 2.8rem;min-width:240px;z-index:2;opacity:0;transform:translateY(12px);transition:opacity .6s .2s,transform .6s .2s}
-.golf-cinema.visible .golf-card{opacity:1;transform:translateY(0)}
+.golf-card{position:absolute;bottom:4rem;left:4.5rem;background:var(--cream);padding:2.4rem 2.8rem;min-width:240px;z-index:2;opacity:0;transform:translateY(14px)}
+.golf-card.card-visible{transition:opacity .9s .1s,transform .9s .1s cubic-bezier(.16,1,.3,1);opacity:1;transform:translateY(0)}
 .golf-card-eyebrow{font-size:.5rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
 .golf-card-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.7rem;line-height:1;letter-spacing:.02em;color:var(--ink);margin-bottom:.3rem}
 .golf-card-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--warm);margin-bottom:2rem}
@@ -245,10 +247,7 @@ footer{background:#3D1E14;display:flex;flex-direction:column;align-items:stretch
 <!-- HERO -->
 <section class="hero">
   <div class="hero-logo-wrap">
-    <div class="hero-logo-frame">
-      <img class="hero-logo" src="lucas_banega_logo_1080.png" alt="Lucas Banega"/>
-    </div>
-    <span class="hero-rule"></span>
+    <img class="hero-logo" src="lucas_banega_logo_1080.png" alt="Lucas Banega"/>
   </div>
   <a class="hero-scroll" href="#hero-intro">
     <span>Descubrir</span>
@@ -384,11 +383,20 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.05});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
 
-// Golf card — observer dedicado, se activa apenas entra la sección
-const cardObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-},{threshold:0.01});
-document.querySelectorAll('.golf-cinema').forEach(el=>cardObs.observe(el));
+// Golf card — scroll trigger directo, sin IntersectionObserver
+const golfCard = document.querySelector('.golf-card');
+if(golfCard){
+  function checkCard(){
+    const rect = golfCard.closest('.golf-cinema').getBoundingClientRect();
+    if(rect.top < window.innerHeight * 0.95){
+      golfCard.classList.add('card-visible');
+      window.removeEventListener('scroll', checkCard);
+    }
+  }
+  window.addEventListener('scroll', checkCard, {passive:true});
+  checkCard(); // por si ya está visible al cargar
+}
+
 
 // Scroll elegante — como un suspiro
 function elegantScrollTo(target, duration){
