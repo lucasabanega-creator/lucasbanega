@@ -20,16 +20,16 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;o
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:1.8rem 3rem;background:transparent;transition:background .5s,border-color .5s}
-nav.scrolled{background:rgba(248,246,243,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--faint)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s;grid-column:2;text-align:center;white-space:nowrap}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;flex-direction:column;align-items:center;gap:.7rem;padding:1.6rem 3rem 1.2rem;background:transparent;transition:background .5s,border-color .5s}
+nav.scrolled{background:rgba(248,246,243,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--faint);padding-bottom:1rem}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s;text-align:center;white-space:nowrap}
 .nav-logo:hover{color:var(--ink)}
-.nav-links{display:flex;gap:2.5rem;list-style:none;justify-self:end;grid-column:3}
+.nav-links{display:flex;gap:2.5rem;list-style:none;justify-content:center}
 .nav-links a{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
 .nav-links a:hover{color:var(--ink)}
 
 /* hamburguesa */
-.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none;z-index:300;width:28px;height:28px;justify-content:center;align-items:center;grid-column:3;justify-self:end}
+.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none;z-index:300;width:28px;height:28px;justify-content:center;align-items:center;position:absolute;top:1.6rem;right:2rem}
 .nav-burger span{display:block;width:22px;height:1px;background:var(--warm);transition:transform .45s cubic-bezier(.23,1,.32,1),opacity .3s ease,width .35s cubic-bezier(.23,1,.32,1);transform-origin:center}
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0;width:0}
@@ -77,14 +77,14 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
 /* sin marcas de esquina */
 .hero-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:0;opacity:0;animation:fadeIn 1.8s .5s forwards;position:relative;z-index:2}
 .hero-logo{width:min(460px,78vw);mix-blend-mode:multiply}
-.hero-card{position:absolute;bottom:4rem;left:4.5rem;background:var(--cream);padding:2.4rem 2.8rem;width:min(320px,42vw);z-index:2;opacity:0;animation:fadeIn 1.2s .8s forwards;text-align:left}
+.hero-card{position:absolute;bottom:6rem;left:6rem;background:var(--cream);padding:2.8rem 3.2rem;width:min(300px,38vw);z-index:2;opacity:0;animation:fadeIn 1.2s .8s forwards;text-align:left}
 .hero-card-eyebrow{font-size:.5rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
 .hero-card-title{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.1;letter-spacing:.01em;color:var(--ink)}
 .hero-card-title em{font-style:italic;color:var(--warm)}
 .hero-card-sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:.9rem;color:var(--warm);margin-top:.5rem;margin-bottom:1.8rem}
 .hero-card-cta{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(168,145,110,.3);padding-bottom:2px;transition:color .3s,border-color .3s;display:inline-block}
 .hero-card-cta:hover{color:var(--ink);border-color:var(--ink)}
-@media(max-width:640px){.hero-card{bottom:6rem;left:1.5rem;right:1.5rem;padding:1.8rem 2rem}}
+@media(max-width:640px){.hero-card{bottom:5rem;left:2rem;right:2rem;padding:2rem 2.2rem}}
 .hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.8rem;position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn .8s 1.6s forwards;cursor:pointer;text-decoration:none;z-index:2}
 .hero-scroll span{font-size:.46rem;letter-spacing:.42em;text-transform:uppercase;color:var(--ink);opacity:.6}
 .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--ink),transparent);animation:scrollPulse 2.8s ease-in-out infinite;transform-origin:top}
@@ -222,7 +222,7 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
   <a class="nav-logo" href="#" aria-label="Inicio">Lucas Banega</a>
   <ul class="nav-links">
     <li><a href="#filosofia">Filosofía</a></li>
-    <li><a href="#golf">Golf</a></li>
+    <li><a href="#golf">Colección</a></li>
     <li><a href="#contacto">Contacto</a></li>
     <li><a href="https://le-carnet.netlify.app" target="_blank" style="font-style:italic">Le Carnet</a></li>
   </ul>
@@ -235,7 +235,7 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
 <div class="nav-overlay" id="nav-overlay">
   <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú"></button>
   <a href="#filosofia" onclick="closeMenu()">Filosofía</a>
-  <a href="#golf" onclick="closeMenu()">Golf</a>
+  <a href="#golf" onclick="closeMenu()">Colección</a>
   <a href="#contacto" onclick="closeMenu()">Contacto</a>
   <a href="https://le-carnet.netlify.app" target="_blank" onclick="closeMenu()" style="font-style:italic">Le Carnet</a>
   <span class="nav-overlay-tag">Lucas Banega</span>
@@ -244,7 +244,7 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
 <!-- HERO -->
 <section class="hero">
   <div class="hero-card">
-    <p class="hero-card-eyebrow">Perfumería de autor · Argentina</p>
+    <p class="hero-card-eyebrow">Buenos Aires · 2026</p>
     <h2 class="hero-card-title">Lo bello<br/>no necesita<br/><em>explicación</em></h2>
     <p class="hero-card-sub">Golf N°1 · Próximamente</p>
     <a class="hero-card-cta" href="#filosofia">Descubrir</a>
