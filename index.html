@@ -68,7 +68,7 @@ nav.over-dark .nav-links a:hover,nav.over-dark.scrolled .nav-links a:hover{color
 nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{background:#1C1814!important}
 /* ── HERO ── */
 .hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;text-align:center;overflow:hidden;background:url("hero_cashmere.png") center center/cover no-repeat}
-.hero::before{content:"";position:absolute;inset:0;background:rgba(248,246,243,.38);z-index:1}
+.hero::before{content:"";position:absolute;inset:0;background:rgba(248,246,243,.22);z-index:1}
 .hero-logo-wrap{position:relative;z-index:2}
 .hero-scroll{z-index:2}
 /* Grain de papel — textura orgánica */
@@ -247,16 +247,11 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
     <p class="hero-card-eyebrow">Perfumería de autor · Argentina</p>
     <h2 class="hero-card-title">Lo bello<br/>no necesita<br/><em>explicación</em></h2>
     <p class="hero-card-sub">Golf N°1 · Próximamente</p>
-    <a class="hero-card-cta" href="#hero-intro">Descubrir</a>
+    <a class="hero-card-cta" href="#filosofia">Descubrir</a>
   </div>
 </section>
 
-<!-- HERO INTRO -->
-<section id="hero-intro" class="hero-intro">
-  <div class="hero-line reveal"></div>
-  <h1 class="hero-title reveal">Una nueva forma<br/>de <em>sentir</em></h1>
-  
-</section>
+
 
 <!-- MANIFESTO -->
 <section id="filosofia" class="manifesto">
@@ -424,7 +419,7 @@ function elegantScrollTo(target, duration){
 const heroScroll = document.querySelector('.hero-scroll');
 if(heroScroll) heroScroll.addEventListener('click', function(e){
   e.preventDefault();
-  const target = document.getElementById('hero-intro');
+  const target = document.getElementById('filosofia');
   if(target) elegantScrollTo(target, 2400);
 });
 
