@@ -74,7 +74,7 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
 /* sin marcas de esquina */
 .hero-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:0;opacity:0;animation:fadeIn 1.8s .5s forwards;position:relative;z-index:2}
 .hero-escudo{width:min(88px,16vw);mix-blend-mode:multiply;margin-bottom:.6rem;opacity:.92}
-.hero-logo{width:min(460px,78vw);mix-blend-mode:multiply}
+.hero-logo{width:min(460px,78vw)}
 .hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.8rem;position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn .8s 1.6s forwards;cursor:pointer;text-decoration:none;z-index:2}
 .hero-scroll span{font-size:.46rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.55}
 .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.8s ease-in-out infinite;transform-origin:top}
@@ -234,8 +234,7 @@ footer{background:#3D1E14;display:flex;flex-direction:column;align-items:stretch
 <!-- HERO -->
 <section class="hero">
   <div class="hero-logo-wrap">
-    <img class="hero-escudo" src="escudo.png" alt="Escudo Maison Lucas Banega"/>
-    <img class="hero-logo" src="lucas_banega_logo_1080.png" alt="Lucas Banega"/>
+    <img class="hero-logo" src="LucasBanegaLogoSinFondo.png" alt="Lucas Banega"/>
   </div>
   <a class="hero-scroll" href="#hero-intro">
     <span>Descubrir</span>
@@ -245,6 +244,7 @@ footer{background:#3D1E14;display:flex;flex-direction:column;align-items:stretch
 
 <!-- HERO INTRO -->
 <section id="hero-intro" class="hero-intro">
+  <div class="hero-line reveal"></div>
   <h1 class="hero-title reveal">Una nueva forma<br/>de <em>sentir</em></h1>
   
 </section>
