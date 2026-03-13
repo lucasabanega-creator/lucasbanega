@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
   <rect width="1080" height="1080" fill="#F8F6F3"/>
   <text
-    x="540" y="510"
+    x="540" y="514"
     font-family="'Cormorant Garamond', 'Georgia', serif"
-    font-size="72"
-    font-weight="400"
-    letter-spacing="22"
+    font-size="68"
+    font-weight="300"
+    letter-spacing="24"
     text-anchor="middle"
     fill="#1C1814">LUCAS BANEGA</text>
-  <line x1="492" y1="538" x2="588" y2="538" stroke="#9E8272" stroke-width="1.2"/>
+  <line x1="492" y1="542" x2="588" y2="542" stroke="#9E8272" stroke-width="1"/>
 </svg>
