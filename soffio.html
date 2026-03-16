@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#F0EBE1;--ivory:#E8E1D5;--gold:#8C5A48;--gold-light:#B87A68;--ink:#1C1814;--warm:#7A4A3A;--green:#2E4A38;--green-soft:#4A6B52;--green-eng:#2C4A32;--faint:rgba(28,24,20,.09)}
+:root{--cream:#F8F6F3;--ivory:#F2F0EC;--gold:#A8916E;--gold-light:#C4B2A0;--ink:#1C1814;--warm:#7D6A62;--faint:rgba(28,24,20,.08)}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -56,7 +56,7 @@ nav.scrolled .nav-lecarnet{border-color:rgba(107,92,68,.3)}
 .opening{padding:7rem 0 5rem;text-align:center}
 .opening-tag{font-size:.54rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:2.2rem}
 .opening-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.45rem,2.8vw,2.05rem);line-height:1.85;color:var(--ink);max-width:640px;margin:0 auto}
-.opening-text em{font-style:normal;color:var(--green-soft)}
+.opening-text em{font-style:normal;color:var(--gold)}
 
 /* EDITORIAL */
 .editorial-block{display:grid;grid-template-columns:1fr 1fr;gap:5rem;padding:5rem 0;border-top:1px solid var(--faint);align-items:start}
@@ -64,15 +64,15 @@ nav.scrolled .nav-lecarnet{border-color:rgba(107,92,68,.3)}
 .editorial-block.reverse > *{direction:ltr}
 .editorial-num{font-family:'Cormorant Garamond',serif;font-size:5.5rem;font-weight:200;line-height:1;color:rgba(44,36,24,.06);letter-spacing:-.04em;margin-bottom:-.5rem}
 .editorial-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.7rem,2.8vw,2.4rem);line-height:1.1;color:var(--ink);margin-bottom:1.6rem}
-.editorial-title em{font-style:italic;color:var(--green)}
+.editorial-title em{font-style:italic;color:var(--gold)}
 .editorial-body{font-size:.82rem;line-height:2.1;color:var(--warm);letter-spacing:.02em}
 .editorial-body p+p{margin-top:1.4rem}
-.editorial-accent{width:28px;height:1px;background:var(--green-soft);margin:1.8rem 0;opacity:.7}
+.editorial-accent{width:28px;height:1px;background:var(--gold);margin:1.8rem 0;opacity:.7}
 @media(max-width:680px){.editorial-block{grid-template-columns:1fr;gap:2rem;direction:ltr}.editorial-block.reverse{direction:ltr}.editorial-num{font-size:4rem}}
 
 /* QUOTE */
 .quote-wrap{background:var(--ivory);padding:6rem 3rem;text-align:center;margin:0 -3rem}
-.quote-mark{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:200;color:var(--green);opacity:.2;line-height:.4;margin-bottom:2rem}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:200;color:var(--gold);opacity:.3;line-height:.4;margin-bottom:2rem}
 .quote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.72;color:var(--ink);max-width:600px;margin:0 auto}
 .quote-attr{margin-top:2.2rem;font-size:.56rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold)}
 @media(max-width:640px){.quote-wrap{margin:0 -1.5rem;padding:5rem 1.5rem}}
@@ -80,26 +80,26 @@ nav.scrolled .nav-lecarnet{border-color:rgba(107,92,68,.3)}
 /* CIERRE */
 .cierre{padding:7rem 0;text-align:center}
 .cierre-title{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(2.2rem,6vw,5rem);line-height:.95;letter-spacing:-.02em;margin-bottom:2.5rem}
-.cierre-title em{font-style:italic;color:var(--green)}
+.cierre-title em{font-style:italic;color:var(--gold)}
 .cierre-body{font-size:.8rem;line-height:2;color:var(--warm);max-width:440px;margin:0 auto}
 .cierre-links{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:3.5rem}
 .cierre-link{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(107,92,68,.28);padding-bottom:2px;transition:color .3s,border-color .3s}
 .cierre-link:hover{color:var(--ink);border-color:var(--ink)}
-.cierre-link.verde{color:var(--green-soft);border-color:rgba(90,107,74,.3)}
-.cierre-link.verde:hover{color:var(--green);border-color:var(--green)}
+.cierre-link.verde{color:var(--gold);border-color:rgba(168,145,110,.3)}
+.cierre-link.verde:hover{color:var(--ink);border-color:var(--ink)}
 
 /* FOOTER */
-footer{background:#3D1E14;padding:3.5rem 3rem 2.5rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
-.footer-logo-golf{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:.95rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(240,235,225,.38);text-decoration:none;transition:color .4s}
-.footer-logo-golf:hover{color:rgba(240,235,225,.72)}
-.footer-rule-golf{width:28px;height:1px;background:rgba(240,235,225,.1)}
-.footer-bottom-golf{display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:1rem;padding-top:1.8rem;border-top:1px solid rgba(240,235,225,.05)}
-.footer-copy-golf{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,225,.14)}
+footer{background:#F2F0EC;padding:3.5rem 3rem 2.5rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.footer-logo-golf{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:.95rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(28,24,20,.35);text-decoration:none;transition:color .4s}
+.footer-logo-golf:hover{color:rgba(28,24,20,.7)}
+.footer-rule-golf{width:28px;height:1px;background:rgba(28,24,20,.1)}
+.footer-bottom-golf{display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:1rem;padding-top:1.8rem;border-top:1px solid rgba(28,24,20,.07)}
+.footer-copy-golf{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(28,24,20,.25)}
 .footer-right{display:flex;align-items:center;gap:2rem}
-.footer-ig{display:flex;align-items:center;gap:.5rem;text-decoration:none;opacity:.18;transition:opacity .3s}
+.footer-ig{display:flex;align-items:center;gap:.5rem;text-decoration:none;opacity:.35;transition:opacity .3s}
 .footer-ig:hover{opacity:.5}
-.footer-ig svg{width:14px;height:14px;color:rgba(240,235,225,.8)}
-.footer-top{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,235,225,.16);text-decoration:none;transition:color .3s}
+.footer-ig svg{width:14px;height:14px;color:rgba(28,24,20,.6)}
+.footer-top{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(28,24,20,.2);text-decoration:none;transition:color .3s}
 .footer-top:hover{color:rgba(240,235,225,.5)}
 .footer-top::after{content:' ↑'}
 @media(max-width:640px){footer{padding:2rem 1.5rem}}
@@ -136,24 +136,18 @@ footer{background:#3D1E14;padding:3.5rem 3rem 2.5rem;display:flex;flex-direction
   <div class="hero-content">
     <p class="hero-eyebrow">Eau de Parfum · Próximamente</p>
     <h1 class="hero-title">Soffio · <em>un soplo</em></h1>
-    <p class="hero-sub">Más que un deporte. Más que pasto recién cortado.</p>
-    <div class="hero-scroll" onclick="document.getElementById('first-section').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" role="button" aria-label="Deslizar hacia abajo">
-      <svg class="hero-tee" viewBox="0 0 20 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- tee head -->
-        <rect x="2" y="0" width="16" height="3" rx="1.5" fill="var(--gold)" opacity=".85"/>
-        <!-- tee neck -->
-        <rect x="8.5" y="3" width="3" height="28" rx="1.5" fill="var(--gold)" opacity=".85"/>
-        <!-- fade line down -->
-        <line x1="10" y1="34" x2="10" y2="48" stroke="var(--gold)" stroke-width="1" opacity=".4" stroke-dasharray="2 3"/>
-      </svg>
+    <p class="hero-sub">Eau de Parfum · Lucas Banega · Próximamente</p>
+    <div class="hero-scroll" onclick="document.getElementById('first-section').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:.7rem;margin-top:2.8rem" role="button">
+      <span style="font-size:.46rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(248,246,243,.6)">Descubrir</span>
+      <div style="width:1px;height:44px;background:linear-gradient(to bottom,rgba(248,246,243,.6),transparent)"></div>
     </div>
   </div>
 </section>
 
 <div class="wrapper">
   <section class="opening" id="first-section">
-    <p class="opening-tag reveal delay-1">Una afinidad natural</p>
-    <p class="opening-text reveal delay-2">Hay algo en el golf que ningún otro deporte tiene.<br/>No es la técnica. No es la cancha.<br/>Es el <em>silencio</em> que lo rodea todo.</p>
+    <p class="opening-tag reveal delay-1">Soffio · Un soplo</p>
+    <p class="opening-text reveal delay-2">Hay fragancias que llegan.<br/>Y hay fragancias que <em>permanecen.</em><br/>Soffio es de las segundas.</p>
   </section>
 </div>
 
@@ -163,39 +157,39 @@ footer{background:#3D1E14;padding:3.5rem 3rem 2.5rem;display:flex;flex-direction
   <div class="editorial-block">
     <div class="reveal-left">
       <div class="editorial-num">01</div>
-      <h2 class="editorial-title">El aire<br/>de la <em>mañana</em></h2>
+      <h2 class="editorial-title">La salida:<br/><em>neroli y azahar</em></h2>
       <div class="editorial-accent"></div>
     </div>
     <div class="reveal-right delay-2">
-      <p class="editorial-body">Seis de la mañana en la cancha. El rocío todavía está sobre el pasto. No hay nadie. Solo el sonido de los propios pasos y el olor de una tierra que acaba de despertar.</p>
-      <p class="editorial-body" style="margin-top:1.4rem">Ese momento tiene un aroma particular — verde, húmedo, con algo mineral debajo — que ningún perfumista ha logrado capturar del todo. No porque sea imposible, sino porque pertenece a un contexto. Solo existe ahí.</p>
-      <p class="editorial-body" style="margin-top:1.4rem">Las grandes fragancias funcionan igual. No se explican fuera de la piel, fuera del momento, fuera de la persona que las lleva.</p>
+      <p class="editorial-body">Soffio abre con neroli y azahar — cítrico-floral, limpio, sin acidez. Frío y luminoso como el aire de la mañana antes de que el día empiece.</p>
+      <p class="editorial-body" style="margin-top:1.4rem">Los aldehídos suaves amplifican la apertura sin endulzarla. Es la transparencia en su forma más pura: una fragancia que no anuncia su llegada, sino que simplemente está.</p>
+      <p class="editorial-body" style="margin-top:1.4rem">En los primeros treinta minutos, Soffio es aire. Nada más, nada menos.</p>
     </div>
   </div>
 
   <div class="editorial-block reverse">
     <div class="reveal-right">
       <div class="editorial-num">02</div>
-      <h2 class="editorial-title">La paciencia<br/>como <em>disciplina</em></h2>
+      <h2 class="editorial-title">El corazón:<br/><em>tuberose e iris</em></h2>
       <div class="editorial-accent"></div>
     </div>
     <div class="reveal-left delay-2">
-      <p class="editorial-body">El golf enseña que el resultado no es inmediato. Que hay que esperar. Que la preparación importa más que el golpe. Que el proceso tiene valor en sí mismo.</p>
-      <p class="editorial-body" style="margin-top:1.4rem">La perfumería nicho también pide paciencia. Una fragancia no se juzga en la primera inhalación — se juzga en la drydown, en la base, en lo que queda tres horas después. En lo que persiste cuando todo lo demás ya desapareció.</p>
-      <p class="editorial-body" style="margin-top:1.4rem">Ambos mundos recompensan a quien sabe esperar.</p>
+      <p class="editorial-body">El corazón de Soffio es floral blanco transparente. La tuberose no es exuberante — es apenas un soplo. La magnolia le da redondez. El iris aporta una textura polvorienta casi inexistente.</p>
+      <p class="editorial-body" style="margin-top:1.4rem">Es el corazón de una fragancia que no necesita que la noten de lejos. Está hecha para la distancia corta — la que percibe quien está cerca, quien presta atención.</p>
+      <p class="editorial-body" style="margin-top:1.4rem">Una fragancia no se juzga en la primera inhalación. Se juzga en lo que persiste cuando todo lo demás desapareció.</p>
     </div>
   </div>
 
   <div class="editorial-block">
     <div class="reveal-left">
       <div class="editorial-num">03</div>
-      <h2 class="editorial-title">Lo que no<br/><em>se anuncia</em></h2>
+      <h2 class="editorial-title">La base:<br/><em>cashmeran y musk</em></h2>
       <div class="editorial-accent"></div>
     </div>
     <div class="reveal-right delay-2">
-      <p class="editorial-body">En el golf, la elegancia no se grita. Se nota en los detalles — en cómo se sostiene el palo, en el ritmo del swing, en la calma antes del golpe. El que más sabe, menos necesita demostrar.</p>
-      <p class="editorial-body" style="margin-top:1.4rem">En el mundo de las fragancias nicho pasa exactamente lo mismo. El que lleva un buen perfume no necesita que nadie lo note de lejos. Alcanza con que lo perciba quien está cerca.</p>
-      <p class="editorial-body" style="margin-top:1.4rem">Eso es lujo en su forma más pura: algo que no busca ser visto, sino sentido.</p>
+      <p class="editorial-body">La base de Soffio es cálida, táctil, de fibra fina. El Cashmeran es esencial — esa sensación de tejido suave sobre piel que no tiene nombre pero que todos reconocen.</p>
+      <p class="editorial-body" style="margin-top:1.4rem">El musk blanco ancla todo sin volverse animal. El sándalo blanco y el cedro claro dan estructura sin protagonismo. Es la base de algo que dura — no ocho horas, sino en la memoria.</p>
+      <p class="editorial-body" style="margin-top:1.4rem">Eso es lujo en su forma más pura: algo que no busca ser visto, sino <em style="color:var(--gold)">sentido.</em></p>
     </div>
   </div>
 </div>
@@ -203,14 +197,14 @@ footer{background:#3D1E14;padding:3.5rem 3rem 2.5rem;display:flex;flex-direction
 <div class="wrapper">
   <div class="quote-wrap">
     <div class="quote-mark reveal">“</div>
-    <p class="quote-text reveal delay-2">El golf no es un juego de perfección. Es un juego de gestionar la imperfección con la mayor elegancia posible.</p>
-    <p class="quote-attr reveal delay-3">Una verdad que también aplica a la perfumería</p>
+    <p class="quote-text reveal delay-2">Un soplo. Lo que queda en el aire después de que alguien que vale la pena se aleja.</p>
+    <p class="quote-attr reveal delay-3">Soffio · Lucas Banega</p>
   </div>
 </div>
 
 <div class="wrapper">
   <section class="cierre">
-    <h2 class="cierre-title reveal">Un universo<br/>en <em>construcción</em></h2>
+    <h2 class="cierre-title reveal">Soffio<br/><em>Próximamente</em></h2>
     <p class="cierre-body reveal delay-2">Soffio es esa fragancia. Un soplo. Lo que queda en el aire después de que alguien que vale la pena se aleja. Próximamente.</p>
     <div class="cierre-links reveal delay-3">
       <a class="cierre-link" href="/">Lucas Banega</a>
