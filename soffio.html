@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <title>Lucas Banega — Soffio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -16,7 +16,7 @@ body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;background:transparent;transition:background .5s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top) + 1.4rem) 3rem 1.2rem;background:transparent;transition:background .5s}
 nav.scrolled{background:rgba(240,235,225,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--faint)}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,225,.95);text-decoration:none;transition:color .5s}
 nav.scrolled .nav-logo{color:var(--ink)}
@@ -27,7 +27,7 @@ nav.scrolled .nav-item{color:var(--warm)}
 nav.scrolled .nav-item:hover{color:var(--ink)}
 .nav-lecarnet{font-style:italic;border-bottom:1px solid rgba(240,235,225,.25);padding-bottom:1px;transition:color .3s,border-color .3s}
 nav.scrolled .nav-lecarnet{border-color:rgba(107,92,68,.3)}
-@media(max-width:640px){nav{padding:1rem 1.5rem}.nav-item:not(.nav-lecarnet){display:none}}
+@media(max-width:640px){nav{padding:calc(env(safe-area-inset-top) + .8rem) 1.5rem .8rem}.nav-item:not(.nav-lecarnet){display:none}}
 
 /* HERO */
 .hero{position:relative;height:100vh;min-height:680px;overflow:hidden}
