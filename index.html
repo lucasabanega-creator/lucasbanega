@@ -11,156 +11,113 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#F8F6F3;--ivory:#F2F0EC;--gold:#A8916E;--gold-light:#C4B2A0;
-  --ink:#1C1814;--warm:#A8916E;--faint:rgba(28,24,20,.09);
+  --bone:#F4F1EB;--bone-deep:#EBE6DC;--ink:#211E19;--taupe:#847C6E;
+  --line:rgba(33,30,25,.12);--line-soft:rgba(33,30,25,.06);--bone-text:rgba(244,241,235,.94);
 }
 html{scroll-behavior:auto}
-body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{background:var(--bone);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;flex-direction:column;align-items:center;gap:.7rem;padding:calc(env(safe-area-inset-top) + 1.4rem) 3rem 1.2rem;background:transparent;transition:background .5s,border-color .5s}
-nav.scrolled{background:rgba(248,246,243,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--faint);padding-bottom:1rem}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s;text-align:center;white-space:nowrap}
-.nav-logo:hover{color:var(--ink)}
-.nav-links{display:flex;gap:2.5rem;list-style:none;justify-content:center}
-.nav-links a{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
-.nav-links a:hover{color:var(--ink)}
+/* ── HEADER ── */
+header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;flex-direction:column;align-items:center;padding:2.6rem 3rem 1.4rem;background:transparent;transition:background .6s ease,padding .5s ease,box-shadow .5s ease}
+header.scrolled{background:var(--bone);padding:1.15rem 3rem;box-shadow:0 1px 0 var(--line)}
+.brand-row{overflow:hidden;max-height:60px;opacity:1;margin-bottom:1.1rem;transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .4s ease,margin .5s ease}
+header.scrolled .brand-row{max-height:0;opacity:0;margin-bottom:0}
+.brand{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.05rem;letter-spacing:.32em;text-transform:uppercase;color:var(--bone-text);text-decoration:none;transition:color .5s;white-space:nowrap}
+.nav-row{display:flex;gap:2.6rem;list-style:none;justify-content:center}
+.nav-row a{font-size:.62rem;letter-spacing:.17em;text-transform:uppercase;color:rgba(244,241,235,.8);text-decoration:none;transition:color .4s}
+header.scrolled .nav-row a{color:var(--taupe)}
+header.scrolled .nav-row a:hover{color:var(--ink)}
+.nav-row a:hover{color:var(--bone-text)}
 
-/* hamburguesa */
-.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none;z-index:300;width:28px;height:28px;justify-content:center;align-items:center;position:absolute;top:1.6rem;right:2rem}
-.nav-burger span{display:block;width:22px;height:1px;background:var(--warm);transition:transform .45s cubic-bezier(.23,1,.32,1),opacity .3s ease,width .35s cubic-bezier(.23,1,.32,1);transform-origin:center}
+.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none;z-index:300;width:28px;height:28px;justify-content:center;align-items:center;position:absolute;top:1.7rem;right:2rem}
+.nav-burger span{display:block;width:22px;height:1px;background:var(--bone-text);transition:transform .45s cubic-bezier(.23,1,.32,1),opacity .3s ease,width .35s cubic-bezier(.23,1,.32,1),background .4s;transform-origin:center}
+header.scrolled .nav-burger span{background:var(--ink)}
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0;width:0}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* overlay mobile */
-.nav-overlay{display:none;position:fixed;inset:0;z-index:280;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:3rem;transform:translateY(-100%);transition:transform .55s cubic-bezier(.23,1,.32,1)}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:280;background:var(--bone);flex-direction:column;align-items:center;justify-content:center;gap:2.8rem;transform:translateY(-100%);transition:transform .55s cubic-bezier(.23,1,.32,1)}
 .nav-overlay.open{transform:translateY(0)}
-.nav-overlay a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;letter-spacing:.08em;color:var(--warm);text-decoration:none;opacity:0;transform:translateY(20px);transition:opacity .45s ease,transform .45s cubic-bezier(.23,1,.32,1),color .3s}
+.nav-overlay a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.1rem;letter-spacing:.06em;color:var(--ink);text-decoration:none;opacity:0;transform:translateY(20px);transition:opacity .45s ease,transform .45s cubic-bezier(.23,1,.32,1),color .3s}
 .nav-overlay.open a{opacity:1;transform:translateY(0)}
 .nav-overlay.open a:nth-child(1){transition-delay:.2s}
 .nav-overlay.open a:nth-child(2){transition-delay:.28s}
 .nav-overlay.open a:nth-child(3){transition-delay:.36s}
 .nav-overlay.open a:nth-child(4){transition-delay:.44s}
-.nav-overlay.open a:nth-child(5){transition-delay:.52s}
-.nav-overlay a:hover{color:var(--ink)}
+.nav-overlay a:hover{color:var(--taupe)}
 .overlay-close{position:absolute;top:2rem;right:2rem;background:none;border:none;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;opacity:.4;transition:opacity .3s}
 .overlay-close:hover{opacity:1}
 .overlay-close::before,.overlay-close::after{content:'';position:absolute;width:20px;height:1px;background:var(--ink)}
 .overlay-close::before{transform:rotate(45deg)}
 .overlay-close::after{transform:rotate(-45deg)}
-.nav-overlay-tag{position:absolute;bottom:2.5rem;font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);opacity:.6}
+.nav-overlay-tag{position:absolute;bottom:2.5rem;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--taupe);opacity:.7}
 
 @media(max-width:640px){
-  .nav-links{display:none}
+  .nav-row{display:none}
   .nav-burger{display:flex}
-  nav{padding:1.4rem 1.5rem}
+  header{padding:1.5rem 1.5rem}
+  header.scrolled{padding:1.1rem 1.5rem}
 }
 
-
-/* Nav over dark golf section — overrides scrolled */
-nav.over-dark,nav.over-dark.scrolled{background:transparent!important;backdrop-filter:none!important;border-bottom-color:transparent!important;transition:background .6s,border-color .6s}
-nav.over-dark .nav-logo,nav.over-dark.scrolled .nav-logo{color:rgba(240,225,218,.92)!important;transition:color .4s}
-nav.over-dark .nav-links a,nav.over-dark.scrolled .nav-links a{color:rgba(248,246,243,.65)!important;transition:color .4s}
-nav.over-dark .nav-links a:hover,nav.over-dark.scrolled .nav-links a:hover{color:rgba(248,246,243,1)!important}
-nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{background:#1C1814!important}
 /* ── HERO ── */
-.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;text-align:center;overflow:hidden;background:url("hero_cashmere.png") center center/cover no-repeat}
-.hero::before{content:"";position:absolute;inset:0;background:rgba(248,246,243,.22);z-index:1}
-.hero-logo-wrap{position:relative;z-index:2}
-.hero-scroll{z-index:2}
-/* Grain de papel — textura orgánica */
-.hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse 80% 70% at 50% 50%,transparent 30%,rgba(28,24,20,.06) 100%)}
-/* sin marcas de esquina */
-.hero-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:0;opacity:0;animation:fadeIn 1.8s .5s forwards;position:relative;z-index:2}
-.hero-logo{width:min(460px,78vw);mix-blend-mode:multiply}
-.hero-card{position:absolute;bottom:6rem;left:6rem;background:var(--cream);padding:2.8rem 3.2rem;width:min(300px,38vw);z-index:2;opacity:0;animation:fadeIn 1.2s .8s forwards;text-align:left}
-.hero-card-eyebrow{font-size:.5rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
-.hero-card-title{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.1;letter-spacing:.01em;color:var(--ink)}
-.hero-card-title em{font-style:italic;color:var(--warm)}
-.hero-card-sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:.9rem;color:var(--warm);margin-top:.5rem;margin-bottom:1.8rem}
-.hero-card-cta{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(168,145,110,.3);padding-bottom:2px;transition:color .3s,border-color .3s;display:inline-block}
-.hero-card-cta:hover{color:var(--ink);border-color:var(--ink)}
-@media(max-width:640px){.hero-card{bottom:3rem;left:1.5rem;right:1.5rem;padding:1.8rem 2rem;width:auto}}
-.hero-scroll{display:flex;flex-direction:column;align-items:center;gap:.8rem;position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn .8s 1.6s forwards;cursor:pointer;text-decoration:none;z-index:2}
-.hero-scroll span{font-size:.46rem;letter-spacing:.42em;text-transform:uppercase;color:var(--ink);opacity:.6}
-.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--ink),transparent);animation:scrollPulse 2.8s ease-in-out infinite;transform-origin:top}
+.hero{height:100vh;min-height:640px;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-video{z-index:1}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,13,10,.35) 0%,rgba(15,13,10,.05) 26%,rgba(15,13,10,.08) 70%,rgba(15,13,10,.4) 100%);z-index:1}
+.hero-scroll{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.9rem;margin-bottom:3rem;opacity:0;animation:fadeIn .9s 1.3s forwards;cursor:pointer;text-decoration:none}
+.hero-scroll span{font-size:.48rem;letter-spacing:.4em;text-transform:uppercase;color:var(--bone-text)}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--bone-text),transparent);animation:scrollPulse 2.8s ease-in-out infinite;transform-origin:top}
 @keyframes scrollPulse{0%{opacity:.2;transform:scaleY(.6) translateY(-8px)}50%{opacity:.6;transform:scaleY(1) translateY(0)}100%{opacity:.2;transform:scaleY(.6) translateY(-8px)}}
+
 /* ── HERO INTRO ── */
 .hero-intro{padding:7rem 2rem 5rem;text-align:center;display:flex;flex-direction:column;align-items:center}
-.hero-line{width:1px;height:56px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin-bottom:3rem}
-.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.05;letter-spacing:.01em}
-.hero-title em{font-style:italic;color:var(--warm)}
-.hero-sub{margin-top:1.6rem;font-size:.72rem;letter-spacing:.22em;color:var(--gold-light);text-transform:uppercase}
+.hero-line{width:1px;height:56px;background:linear-gradient(to bottom,transparent,var(--line),transparent);margin-bottom:3rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,6vw,4.4rem);line-height:1.08;letter-spacing:.01em}
+.hero-title em{font-style:italic;color:var(--taupe)}
+.hero-sub{margin-top:1.6rem;font-size:.7rem;letter-spacing:.2em;color:var(--taupe);text-transform:uppercase}
 
 /* ── FILOSOFÍA EDITORIAL ── */
-.section-tag{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem}
-.manifesto{padding:0;background:var(--cream);display:grid;grid-template-columns:1fr 1fr;min-height:92vh}
+.section-tag{font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.6rem}
+.manifesto{padding:0;background:var(--bone);display:grid;grid-template-columns:1fr 1fr;min-height:88vh}
 
-/* Columna izquierda — texto */
-.manifesto-left{padding:8rem 5rem 8rem 8vw;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(28,24,20,.08)}
-.manifesto-eyebrow{font-size:.54rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:3.5rem;opacity:0;animation:fadeIn .8s .3s forwards}
-.manifesto-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.85;color:var(--ink)}
-.manifesto-text em{font-style:italic;color:var(--warm)}
+.manifesto-left{padding:8rem 5rem 8rem 8vw;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--line)}
+.manifesto-eyebrow{font-size:.54rem;letter-spacing:.36em;text-transform:uppercase;color:var(--taupe);margin-bottom:3.5rem;opacity:0;animation:fadeIn .8s .3s forwards}
+.manifesto-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.25rem,2.1vw,1.65rem);line-height:1.85;color:var(--ink)}
+.manifesto-text em{font-style:italic;color:var(--taupe)}
 .manifesto-text+.manifesto-text{margin-top:2.2rem}
-.manifesto-rule{width:32px;height:1px;background:var(--gold);opacity:.35;margin-top:3.5rem}
+.manifesto-rule{width:32px;height:1px;background:var(--ink);opacity:.2;margin-top:3.5rem}
 
-/* Columna derecha — panel atmosférico */
-.manifesto-right{position:relative;background:var(--ivory);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.manifesto-right{position:relative;background:var(--bone-deep);overflow:hidden;display:flex;align-items:center;justify-content:center}
 .manifesto-right-inner{position:relative;z-index:2;text-align:center;padding:4rem}
-.manifesto-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(2.2rem,4vw,3.8rem);line-height:1.05;color:var(--ink);letter-spacing:-.02em;opacity:.82}
-.manifesto-quote em{color:var(--warm);font-style:italic}
-.manifesto-quote-attr{font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-top:2rem;opacity:.6;display:block}
-/* Deco: número grande de fondo */
-.manifesto-deco{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;user-select:none;overflow:hidden}
-.manifesto-deco-text{font-family:'Cormorant Garamond',serif;font-size:32vw;font-weight:300;line-height:1;color:var(--ink);opacity:.028;letter-spacing:-.04em;white-space:nowrap}
-/* Corner marks en la columna derecha */
-.manifesto-right::before{content:'';position:absolute;inset:2.5rem;pointer-events:none;z-index:1;
-  background:
-    linear-gradient(var(--gold),var(--gold)) top left / 12px 1px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) top left / 1px 12px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) bottom right / 12px 1px no-repeat,
-    linear-gradient(var(--gold),var(--gold)) bottom right / 1px 12px no-repeat;
-  opacity:.2}
+.manifesto-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(2rem,3.6vw,3.4rem);line-height:1.1;color:var(--ink);letter-spacing:-.01em;opacity:.86}
+.manifesto-quote-attr{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--taupe);margin-top:2rem;opacity:.8;display:block}
 
 @media(max-width:900px){
   .manifesto{grid-template-columns:1fr;min-height:auto}
-  .manifesto-left{padding:6rem 2rem;border-right:none;border-bottom:1px solid rgba(28,24,20,.08)}
-  .manifesto-right{min-height:60vw;padding:4rem 2rem}
-  .manifesto-deco-text{font-size:52vw}
+  .manifesto-left{padding:6rem 2rem;border-right:none;border-bottom:1px solid var(--line)}
+  .manifesto-right{min-height:50vw;padding:4rem 2rem}
 }
-
-/* ── EXPLORER WRAPPER ── */
-
-
-/* ── NOTIFY — dentro del footer oscuro ── */
-.notify{display:none}
 
 .reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal-left.visible{opacity:1;transform:translateX(0)}
 .reveal-right{opacity:0;transform:translateX(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal-right.visible{opacity:1;transform:translateX(0)}
 
-/* ── GOLF ── */
-.golf-breath{height:5rem;background:var(--cream)}
+/* ── COLECCIÓN ── */
+.golf-breath{height:5rem;background:var(--bone)}
 .golf-cinema{position:relative;height:100vh;min-height:600px;overflow:hidden;display:block;text-decoration:none;color:inherit}
-.golf-cinema-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;filter:saturate(.9) brightness(.92);transform:scale(1.05);transition:transform 2s cubic-bezier(.16,1,.3,1)}
+.golf-cinema-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;filter:saturate(.85) brightness(.9);transform:scale(1.05);transition:transform 2s cubic-bezier(.16,1,.3,1)}
 .golf-cinema:hover .golf-cinema-img{transform:scale(1.0)}
-.golf-cinema-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(28,24,20,.55) 0%,rgba(28,24,20,.12) 60%,transparent 100%)}
-.golf-cinema-noise{position:absolute;inset:0;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.golf-cinema-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,18,15,.55) 0%,rgba(20,18,15,.15) 60%,transparent 100%)}
 .golf-cinema-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:4.5rem}
-.golf-cinema-tag{font-size:.52rem;letter-spacing:.46em;text-transform:uppercase;color:rgba(248,246,243,.7);margin-bottom:1.6rem}
-.golf-cinema-tag em{font-style:italic}
-.golf-cinema-title{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:-.025em;color:rgba(248,246,243,.96);max-width:700px}
-.golf-cinema-title em{font-style:italic;color:rgba(235,190,175,.88)}
+.golf-cinema-tag{font-size:.5rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(244,241,235,.7);margin-bottom:1.6rem}
+.golf-cinema-title{font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(2.8rem,6.5vw,5.4rem);line-height:.95;letter-spacing:-.02em;color:rgba(244,241,235,.96);max-width:700px}
+.golf-cinema-title em{font-style:italic;color:rgba(244,241,235,.75)}
 .golf-cinema-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:3rem;flex-wrap:wrap;gap:2rem}
-.golf-cinema-sub{font-size:.72rem;line-height:1.85;color:rgba(225,200,190,.55);max-width:320px;letter-spacing:.02em}
-.golf-cinema-cta{display:inline-flex;align-items:center;gap:1rem;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(235,200,190,.8);border-bottom:1px solid rgba(170,200,170,.3);padding-bottom:3px;white-space:nowrap;transition:gap .5s cubic-bezier(.16,1,.3,1),color .3s,border-color .3s}
-.golf-cinema:hover .golf-cinema-cta{gap:1.7rem;color:rgba(245,215,205,1);border-color:rgba(200,160,145,.7)}
-.golf-cinema-cta::after{content:'→';font-size:.75rem}
+.golf-cinema-sub{font-size:.72rem;line-height:1.85;color:rgba(244,241,235,.55);max-width:320px;letter-spacing:.02em}
+.golf-cinema-cta{display:inline-flex;align-items:center;gap:1rem;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,241,235,.85);border-bottom:1px solid rgba(244,241,235,.3);padding-bottom:3px;white-space:nowrap;transition:gap .5s cubic-bezier(.16,1,.3,1),color .3s,border-color .3s}
+.golf-cinema:hover .golf-cinema-cta{gap:1.7rem;color:rgba(244,241,235,1);border-color:rgba(244,241,235,.7)}
+.golf-cinema-cta::after{content:'→';font-size:.72rem}
 @media(max-width:640px){
   .golf-cinema{height:72vh;min-height:460px}
   .golf-cinema-content{padding:2.8rem 1.8rem}
@@ -168,44 +125,43 @@ nav.over-dark .nav-burger span,nav.over-dark.scrolled .nav-burger span{backgroun
   .golf-cinema-sub{max-width:100%}
 }
 
-/* ── GOLF CARD (Loro Piana style) ── */
-.golf-card{position:absolute;bottom:4rem;left:4.5rem;background:var(--cream);padding:2.4rem 2.8rem;min-width:240px;z-index:2;opacity:0;transform:translateY(14px)}
+.golf-card{position:absolute;bottom:4rem;left:4.5rem;background:var(--bone);padding:2.4rem 2.8rem;min-width:240px;z-index:2;opacity:0;transform:translateY(14px)}
 .golf-card.card-visible{transition:opacity .9s .1s,transform .9s .1s cubic-bezier(.16,1,.3,1);opacity:1;transform:translateY(0)}
-.golf-card-eyebrow{font-size:.5rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.golf-card-eyebrow{font-size:.5rem;letter-spacing:.32em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.2rem}
 .golf-card-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.7rem;line-height:1;letter-spacing:.02em;color:var(--ink);margin-bottom:.3rem}
-.golf-card-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--warm);margin-bottom:2rem}
-.golf-card-cta{font-size:.54rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(92,79,61,.3);padding-bottom:2px;transition:color .3s,border-color .3s;display:inline-block}
-.golf-card-cta:hover{color:var(--ink);border-color:var(--ink)}
+.golf-card-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--taupe);margin-bottom:2rem}
+.golf-card-cta{font-size:.54rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .3s,border-color .3s;display:inline-block}
+.golf-card-cta:hover{color:var(--taupe);border-color:var(--taupe)}
 @media(max-width:640px){.golf-card{bottom:2.5rem;left:1.8rem;padding:1.8rem 2rem;min-width:0;right:1.8rem}}
 
 /* ── FOOTER ── */
-footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch}
-.footer-top-section{padding:5rem 3rem 4.5rem;display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;border-bottom:1px solid rgba(28,24,20,.07)}
-.footer-notify-tag{font-size:.52rem;letter-spacing:.38em;text-transform:uppercase;color:rgba(28,24,20,.28);margin-bottom:1.4rem}
-.footer-notify-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;color:#1C1814;margin-bottom:.7rem}
-.footer-notify-title em{font-style:italic;color:#A8916E}
-.footer-notify-sub{font-size:.72rem;line-height:1.9;color:rgba(28,24,20,.35);margin-bottom:2.8rem;max-width:340px}
-.footer-email-form{display:flex;border-bottom:1px solid rgba(28,24,20,.15);max-width:340px;width:100%;margin:0 auto}
-.footer-email-form input{flex:1;background:transparent;border:none;outline:none;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.06em;color:#1C1814;padding:.9rem 0}
-.footer-email-form input::placeholder{color:rgba(28,24,20,.15);letter-spacing:.18em;text-transform:uppercase;font-size:.6rem}
-.footer-email-form button{background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(28,24,20,.35);padding:.9rem 0 .9rem 1.2rem;transition:color .3s;white-space:nowrap}
-.footer-email-form button:hover{color:#1C1814}
+footer{background:var(--bone-deep);display:flex;flex-direction:column;align-items:stretch}
+.footer-top-section{padding:5rem 3rem 4.5rem;display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;border-bottom:1px solid var(--line)}
+.footer-notify-tag{font-size:.5rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(33,30,25,.32);margin-bottom:1.4rem}
+.footer-notify-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.7rem,3.6vw,2.4rem);line-height:1.1;color:var(--ink);margin-bottom:.7rem}
+.footer-notify-title em{font-style:italic;color:var(--taupe)}
+.footer-notify-sub{font-size:.72rem;line-height:1.9;color:rgba(33,30,25,.4);margin-bottom:2.8rem;max-width:340px}
+.footer-email-form{display:flex;border-bottom:1px solid var(--line);max-width:340px;width:100%;margin:0 auto}
+.footer-email-form input{flex:1;background:transparent;border:none;outline:none;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.06em;color:var(--ink);padding:.9rem 0}
+.footer-email-form input::placeholder{color:rgba(33,30,25,.25);letter-spacing:.16em;text-transform:uppercase;font-size:.6rem}
+.footer-email-form button{background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(33,30,25,.4);padding:.9rem 0 .9rem 1.2rem;transition:color .3s;white-space:nowrap}
+.footer-email-form button:hover{color:var(--ink)}
 .footer-mid-section{padding:3rem;display:flex;flex-direction:column;align-items:center;gap:2.2rem}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:.95rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(28,24,20,.35);text-decoration:none;transition:color .4s}
-.footer-logo:hover{color:#1C1814}
-.footer-rule{width:32px;height:1px;background:rgba(28,24,20,.1)}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(33,30,25,.4);text-decoration:none;transition:color .4s}
+.footer-logo:hover{color:var(--ink)}
+.footer-rule{width:32px;height:1px;background:var(--line)}
 .footer-links{display:flex;gap:2.2rem;list-style:none;flex-wrap:wrap;justify-content:center}
-.footer-links a{font-size:.52rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(28,24,20,.25);text-decoration:none;transition:color .3s}
-.footer-links a:hover{color:#1C1814}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:1rem;padding:2rem 3rem;border-top:1px solid rgba(28,24,20,.06)}
-.footer-copy{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(28,24,20,.2)}
+.footer-links a{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.32);text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:var(--ink)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:1rem;padding:2rem 3rem;border-top:1px solid var(--line-soft)}
+.footer-copy{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(33,30,25,.28)}
 .footer-right{display:flex;align-items:center;gap:2rem}
-.footer-ig{display:flex;align-items:center;gap:.5rem;text-decoration:none;opacity:.18;transition:opacity .3s}
-.footer-ig:hover{opacity:.5}
-.footer-ig svg{width:14px;height:14px;color:rgba(248,246,243,.8)}
-.footer-ig span{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(28,24,20,.35)}
-.footer-top-btn{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(28,24,20,.2);text-decoration:none;transition:color .3s}
-.footer-top-btn:hover{color:rgba(248,246,243,.5)}
+.footer-ig{display:flex;align-items:center;gap:.5rem;text-decoration:none;opacity:.35;transition:opacity .3s}
+.footer-ig:hover{opacity:.7}
+.footer-ig svg{width:14px;height:14px;color:var(--ink)}
+.footer-ig span{font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(33,30,25,.4)}
+.footer-top-btn{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.28);text-decoration:none;transition:color .3s}
+.footer-top-btn:hover{color:var(--ink)}
 .footer-top-btn::after{content:' ↑'}
 @media(max-width:640px){.footer-top-section{padding:4rem 1.5rem 3.5rem}.footer-mid-section{padding:2.5rem 1.5rem}.footer-bottom{padding:1.5rem;flex-direction:column;align-items:center;text-align:center}}
 
@@ -217,10 +173,12 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="main-nav">
-  <a class="nav-logo" href="#" aria-label="Inicio">Lucas Banega</a>
-  <ul class="nav-links">
+<!-- HEADER -->
+<header id="main-nav">
+  <div class="brand-row">
+    <a class="brand" href="#" aria-label="Inicio">Lucas Banega</a>
+  </div>
+  <ul class="nav-row">
     <li><a href="#filosofia">Filosofía</a></li>
     <li><a href="#golf">Colección</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -229,7 +187,7 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
   <button class="nav-burger" id="burger" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
-</nav>
+</header>
 
 <!-- OVERLAY MOBILE -->
 <div class="nav-overlay" id="nav-overlay">
@@ -243,20 +201,19 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-card">
-    <p class="hero-card-eyebrow">Buenos Aires · 2026</p>
-    <h2 class="hero-card-title">Lo bello<br/>no necesita<br/><em>explicación</em></h2>
-    <p class="hero-card-sub">Soffio · Eau de Parfum · Próximamente</p>
-    <a class="hero-card-cta" href="#filosofia">Descubrir</a>
-  </div>
+  <img class="hero-media" src="hero_cashmere.png" alt="Lucas Banega"/>
+  <video class="hero-media hero-video" autoplay muted loop playsinline onerror="this.style.display='none'">
+    <source src="hero.mp4" type="video/mp4"/>
+  </video>
+  <a class="hero-scroll" href="#filosofia">
+    <span>Descubrir</span>
+    <span class="scroll-line"></span>
+  </a>
 </section>
-
-
 
 <!-- MANIFESTO -->
 <section id="filosofia" class="manifesto">
 
-  <!-- Columna izquierda: texto -->
   <div class="manifesto-left">
     <p class="manifesto-eyebrow">Filosofía</p>
     <p class="manifesto-text reveal">
@@ -281,11 +238,7 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
     <span class="manifesto-rule reveal"></span>
   </div>
 
-  <!-- Columna derecha: panel atmosférico -->
   <div class="manifesto-right">
-    <div class="manifesto-deco" aria-hidden="true">
-      <span class="manifesto-deco-text">LB</span>
-    </div>
     <div class="manifesto-right-inner reveal">
       <p class="manifesto-quote">
         "Lo que vale<br/>la pena, vale<br/>la pena <em>decirlo</em><br/>bien."
@@ -296,21 +249,12 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
 
 </section>
 
-<!-- INGREDIENT EXPLORER (React) -->
-
-
-<!-- NOTIFY -->
-
-
-
-
 <div class="golf-breath"></div>
 
 <section id="golf">
   <div class="golf-cinema" data-href="soffio.html" style="cursor:pointer">
     <img class="golf-cinema-img" src="soffio_bg.png" alt="Soffio by Lucas Banega"/>
     <div class="golf-cinema-overlay"></div>
-    <div class="golf-cinema-noise"></div>
 
     <div class="golf-card">
       <p class="golf-card-eyebrow">Eau de Parfum</p>
@@ -318,13 +262,10 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
       <p class="golf-card-sub">by Lucas Banega · Próximamente</p>
       <a class="golf-card-cta" href="soffio.html">Descubrir</a>
     </div>
-  </a>
+  </div>
 </section>
 
-<!-- contacto integrado en footer -->
-
 <footer id="contacto">
-  <!-- Notify integrado -->
   <div class="footer-top-section">
     <p class="footer-notify-tag">Lanzamiento</p>
     <h2 class="footer-notify-title">Avisame cuando<br/><em>esté listo</em></h2>
@@ -336,7 +277,6 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
       <button type="submit">Notificarme →</button>
     </form>
   </div>
-  <!-- Logo + links -->
   <div class="footer-mid-section">
     <a class="footer-logo" href="#">Lucas Banega</a>
     <div class="footer-rule"></div>
@@ -346,7 +286,6 @@ footer{background:#F2F0EC;display:flex;flex-direction:column;align-items:stretch
       <li><a href="https://le-carnet.netlify.app" target="_blank" style="font-style:italic">Casa Banega</a></li>
     </ul>
   </div>
-  <!-- Bottom bar -->
   <div class="footer-bottom">
     <span class="footer-copy">© 2026 Lucas Banega</span>
     <div class="footer-right">
@@ -370,16 +309,14 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.05});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
 
-// Golf cinema — click navega a golf.html (era <a>, ahora <div>)
 const golfCinema = document.querySelector('.golf-cinema');
 if(golfCinema){
   golfCinema.addEventListener('click', function(e){
-    if(e.target.closest('a')) return; // deja que los <a> internos funcionen solos
+    if(e.target.closest('a')) return;
     window.location.href = this.dataset.href;
   });
 }
 
-// Golf card — IntersectionObserver confiable con threshold bajo
 const golfCard = document.querySelector('.golf-card');
 if(golfCard){
   const cardObserver = new IntersectionObserver(entries=>{
@@ -391,8 +328,6 @@ if(golfCard){
   cardObserver.observe(golfCinema);
 }
 
-
-// Scroll elegante — como un suspiro
 function elegantScrollTo(target, duration){
   const start = window.scrollY;
   const end = target.getBoundingClientRect().top + start;
@@ -411,7 +346,6 @@ function elegantScrollTo(target, duration){
   requestAnimationFrame(step);
 }
 
-// Descubrir — más lento, más ceremonioso
 const heroScroll = document.querySelector('.hero-scroll');
 if(heroScroll) heroScroll.addEventListener('click', function(e){
   e.preventDefault();
@@ -419,7 +353,6 @@ if(heroScroll) heroScroll.addEventListener('click', function(e){
   if(target) elegantScrollTo(target, 2400);
 });
 
-// Nav links internos — suaves también
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   if(link.classList.contains('hero-scroll')) return;
   link.addEventListener('click', function(e){
@@ -429,7 +362,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// Hamburguesa
 const burger=document.getElementById('burger');
 const overlay=document.getElementById('nav-overlay');
 function closeMenu(){
@@ -451,29 +383,12 @@ burger.addEventListener('click',()=>{
   }
 });
 
-// Nav scroll + dark section detection
 const mainNav = document.getElementById('main-nav');
-
 window.addEventListener('scroll', () => {
   const scrolled = window.scrollY > 60;
   mainNav.classList.toggle('scrolled', scrolled);
 }, {passive: true});
-
-// White nav over golf dark image
-// Nav over dark — posición de scroll, más confiable
-const golfSection = document.getElementById('golf');
-function updateNavDark(){
-  if(!golfSection) return;
-  const rect = golfSection.getBoundingClientRect();
-  const inSection = rect.top <= 80 && rect.bottom > 80;
-  mainNav.classList.toggle('over-dark', inSection);
-}
-window.addEventListener('scroll', updateNavDark, {passive:true});
-updateNavDark();
 </script>
-
-<!-- REACT EXPLORER -->
-
 
 </body>
 </html>

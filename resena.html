@@ -10,48 +10,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --cream:#F0EBE1;--ivory:#E8E1D5;--gold:#9A7B4F;--gold-light:#C4A46B;
-  --ink:#2C2418;--warm:#6B5C44;
-}
+:root{--bone:#F4F1EB;--bone-deep:#EBE6DC;--ink:#211E19;--taupe:#847C6E;--line:rgba(33,30,25,.1)}
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.04;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{background:var(--bone);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;background:rgba(240,235,225,.92);backdrop-filter:blur(8px)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);text-decoration:none}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;background:rgba(244,241,235,.92);backdrop-filter:blur(8px)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap}
+.nav-links{display:flex;gap:1.8rem;list-style:none;white-space:nowrap}
+.nav-links a{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);text-decoration:none;transition:color .3s}
 .nav-links a:hover{color:var(--ink)}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:300}
-.nav-burger span{display:block;width:22px;height:1px;background:var(--warm);transition:all .4s cubic-bezier(.23,1,.32,1)}
+.nav-burger span{display:block;width:22px;height:1px;background:var(--taupe);transition:all .4s cubic-bezier(.23,1,.32,1)}
 .nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.nav-overlay{display:none;position:fixed;inset:0;z-index:280;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:3rem;opacity:0;transition:opacity .4s ease}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:280;background:var(--bone);flex-direction:column;align-items:center;justify-content:center;gap:3rem;opacity:0;transition:opacity .4s ease}
 .nav-overlay.open{opacity:1}
-.nav-overlay a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;letter-spacing:.08em;color:var(--warm);text-decoration:none;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease,color .3s}
+.nav-overlay a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;letter-spacing:.06em;color:var(--ink);text-decoration:none;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease,color .3s}
 .nav-overlay.open a{opacity:1;transform:translateY(0)}
 .nav-overlay.open a:nth-child(2){transition-delay:0.0s}
 .nav-overlay.open a:nth-child(3){transition-delay:0.08s}
 .nav-overlay.open a:nth-child(4){transition-delay:0.16s}
 .nav-overlay.open a:nth-child(5){transition-delay:0.24s}
-.nav-overlay.open a:nth-child(6){transition-delay:0.32s}
-.nav-overlay.open a:nth-child(7){transition-delay:0.4s}
-.nav-overlay a:hover{color:var(--ink)}
+.nav-overlay a:hover{color:var(--taupe)}
 .overlay-close{position:absolute;top:2rem;right:2rem;background:none;border:none;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;opacity:.4;transition:opacity .3s}
 .overlay-close:hover{opacity:1}
 .overlay-close::before,.overlay-close::after{content:'';position:absolute;width:20px;height:1px;background:var(--ink)}
 .overlay-close::before{transform:rotate(45deg)}
 .overlay-close::after{transform:rotate(-45deg)}
-.nav-overlay-tag{position:absolute;bottom:2.5rem;font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);opacity:.6}
-@media(max-width:640px){.nav-links{display:none}.nav-burger{display:flex}nav{padding:1.4rem 1.5rem}}
+.nav-overlay-tag{position:absolute;bottom:2.5rem;font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--taupe);opacity:.7}
+@media(max-width:900px){.nav-links{display:none}.nav-burger{display:flex}nav{padding:1.4rem 1.5rem}}
 
 /* BACK */
 .back-bar{padding:8rem 3rem 0;max-width:820px;margin:0 auto;width:100%}
-.back-link{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;transition:color .3s}
+.back-link{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;transition:color .3s}
 .back-link:hover{color:var(--ink)}
 .back-link::before{content:'←';font-size:.8rem}
 
@@ -59,49 +52,50 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .article{flex:1;max-width:820px;margin:0 auto;padding:3rem 3rem 8rem;width:100%}
 
 /* HEADER ARTICLE */
-.article-header{padding-bottom:3rem;border-bottom:1px solid rgba(44,36,24,.1);margin-bottom:4rem}
+.article-header{padding-bottom:3rem;border-bottom:1px solid var(--line);margin-bottom:4rem}
 .article-meta-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
-.article-familia{font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(154,123,79,.3);padding:5px 14px}
-.article-ocasion{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--warm)}
-.article-nombre{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.8rem,7vw,5rem);line-height:1;letter-spacing:-.01em;margin-bottom:.6rem}
-.article-casa{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm)}
+.article-familia{font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);border:1px solid var(--line);padding:5px 14px}
+.article-ocasion{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+.article-nombre{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1;letter-spacing:-.01em;margin-bottom:.6rem}
+.article-casa{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe)}
 .article-score-row{display:flex;align-items:baseline;gap:1rem;margin-top:2.5rem}
 .article-score{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;line-height:1;color:var(--ink)}
-.article-score-label{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.score-bar-track{height:1px;background:rgba(44,36,24,.1);flex:1;margin-left:1rem;align-self:center}
-.score-bar-fill{height:100%;background:var(--gold);transition:width 1.2s ease}
+.article-score-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+.score-bar-track{height:1px;background:var(--line);flex:1;margin-left:1rem;align-self:center}
+.score-bar-fill{height:100%;background:var(--ink);transition:width 1.2s ease}
 
 /* NOTAS */
 .article-notas-section{margin-bottom:3.5rem}
-.section-label{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.section-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.2rem}
 .notas-row{display:flex;flex-wrap:wrap;gap:8px}
-.nota-tag{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(44,36,24,.5);border:1px solid rgba(44,36,24,.14);padding:5px 14px}
+.nota-tag{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(33,30,25,.5);border:1px solid var(--line);padding:5px 14px}
 
 /* RESENA TEXTO */
 .article-resena{margin-bottom:4rem}
 .resena-body{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.2rem,2.5vw,1.5rem);line-height:2;color:var(--ink)}
 
 /* DATOS */
-.article-datos{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:2.5rem;background:var(--ivory);margin-bottom:4rem}
+.article-datos{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:2.5rem;background:var(--bone-deep);margin-bottom:4rem}
 .dato{display:flex;flex-direction:column;gap:.4rem}
-.dato-label{font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.dato-label{font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe)}
 .dato-value{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--ink)}
 
 /* VOLVER */
-.article-footer{border-top:1px solid rgba(44,36,24,.08);padding-top:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.nav-prev-next a{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .3s}
+.article-footer{border-top:1px solid var(--line);padding-top:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.nav-prev-next a{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);text-decoration:none;transition:color .3s}
 .nav-prev-next a:hover{color:var(--ink)}
 
 /* FOOTER */
-footer{padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(44,36,24,.1);flex-wrap:wrap;gap:1rem}
-footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28)}
+footer{padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);flex-wrap:wrap;gap:1rem}
+footer span{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.28)}
 .footer-right{display:flex;align-items:center;gap:2rem}
 .footer-ig{display:flex;align-items:center;gap:.6rem;text-decoration:none;opacity:.35;transition:opacity .3s}
 .footer-ig:hover{opacity:.7}
 .footer-ig svg{width:16px;height:16px}
-.footer-top{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.28);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s}
+.footer-top{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.28);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s}
 .footer-top:hover{color:var(--ink)}
-.footer-top::after{content:'↑';font-size:.7rem}/* REVEAL */
+.footer-top::after{content:'↑';font-size:.7rem}
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s}
 .reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:640px){
@@ -115,13 +109,13 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 <body>
 
 <nav>
-  <a class="nav-logo" href="/">Lucas Banega</a>
+  <a class="nav-logo" href="index.html">Lucas Banega</a>
   <ul class="nav-links">
-    <li><a href="/">Inicio</a></li>
-    <li><a href="/#filosofia">Filosofía</a></li>
-    <li><a href="golf.html">Golf</a></li>
-    <li><a href="/#explorador">Explorador</a></li>
-    <li><a href="/#contacto">Contacto</a></li>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="index.html#filosofia">Filosofía</a></li>
+    <li><a href="index.html#golf">Colección</a></li>
+    <li><a href="resenas.html">Reseñas</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
     <li><a href="https://le-carnet.netlify.app" target="_blank" style="font-style:italic">Casa Banega</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Menú">
@@ -130,11 +124,11 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
 </nav>
 <div class="nav-overlay" id="nav-overlay">
   <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú"></button>
-  <a href="/" onclick="closeMenu()">Inicio</a>
-  <a href="/#filosofia" onclick="closeMenu()">Filosofía</a>
-  <a href="golf.html" onclick="closeMenu()">Golf</a>
-  <a href="/#explorador" onclick="closeMenu()">Explorador</a>
-  <a href="/#contacto" onclick="closeMenu()">Contacto</a>
+  <a href="index.html" onclick="closeMenu()">Inicio</a>
+  <a href="index.html#filosofia" onclick="closeMenu()">Filosofía</a>
+  <a href="index.html#golf" onclick="closeMenu()">Colección</a>
+  <a href="resenas.html" onclick="closeMenu()">Reseñas</a>
+  <a href="index.html#contacto" onclick="closeMenu()">Contacto</a>
   <a href="https://le-carnet.netlify.app" target="_blank" onclick="closeMenu()" style="font-style:italic">Casa Banega</a>
   <span class="nav-overlay-tag">Lucas Banega · Fragancias Nicho</span>
 </div>
@@ -151,12 +145,12 @@ footer span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color
   <span>© 2026 Lucas Banega — Fragancias Nicho</span>
   <div class="footer-right">
     <a class="footer-ig" href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" color="var(--warm)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
         <circle cx="12" cy="12" r="4"/>
         <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/>
       </svg>
-      <span style="font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(44,36,24,.4)">Instagram</span>
+      <span style="font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(33,30,25,.4)">Instagram</span>
     </a>
     <a class="footer-top" href="#">Inicio</a>
   </div>
@@ -186,11 +180,10 @@ fetch('perfumes.json')
     const p=perfumes[id];
     if(!p){
       document.getElementById('article-content').innerHTML=
-        '<p style="text-align:center;padding:4rem;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.2rem;color:var(--warm)">Reseña no encontrada.</p>';
+        '<p style="text-align:center;padding:4rem;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.2rem;color:var(--taupe)">Reseña no encontrada.</p>';
       return;
     }
 
-    // Actualizar título de la pestaña
     document.title=`Lucas Banega — ${p.nombre}`;
 
     const scoreWidth=p.puntuacion*10;
@@ -249,7 +242,7 @@ fetch('perfumes.json')
 
       <div class="article-footer reveal">
         <div class="nav-prev-next">${prevLink}</div>
-        <a href="resenas.html" style="font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);text-decoration:none">Ver todas</a>
+        <a href="resenas.html" style="font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);text-decoration:none">Ver todas</a>
         <div class="nav-prev-next">${nextLink}</div>
       </div>
     `;
@@ -258,7 +251,6 @@ fetch('perfumes.json')
     article.innerHTML=html;
     article.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-    // Animar la barra de score
     setTimeout(()=>{
       const bar=document.getElementById('score-bar');
       if(bar)bar.style.width=scoreWidth+'%';
@@ -266,7 +258,7 @@ fetch('perfumes.json')
   })
   .catch(()=>{
     document.getElementById('article-content').innerHTML=
-      '<p style="text-align:center;padding:4rem;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.2rem;color:var(--warm)">Error al cargar la reseña.</p>';
+      '<p style="text-align:center;padding:4rem;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.2rem;color:var(--taupe)">Error al cargar la reseña.</p>';
   });
 </script>
 </body>
