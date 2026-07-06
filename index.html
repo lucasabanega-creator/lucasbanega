@@ -183,11 +183,12 @@ footer{background:var(--paper);display:flex;flex-direction:column;align-items:st
 /* ── NEWSLETTER MODAL (Brevo, restyled) ── */
 .newsletter-overlay{position:fixed;inset:0;z-index:400;background:rgba(26,20,14,.55);display:none;align-items:center;justify-content:center;padding:1.5rem;opacity:0;transition:opacity .35s ease}
 .newsletter-overlay.open{display:flex;opacity:1}
-.newsletter-modal{background:var(--bone);width:100%;max-width:920px;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1.15fr;border:1px solid var(--terra);position:relative;transform:translateY(14px);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.newsletter-modal{background:var(--bone);width:100%;max-width:920px;min-height:560px;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1.15fr;border:1px solid var(--terra);position:relative;transform:translateY(14px);transition:transform .35s cubic-bezier(.16,1,.3,1)}
 .newsletter-overlay.open .newsletter-modal{transform:translateY(0)}
 .newsletter-modal-image{position:relative;min-height:340px}
 .newsletter-modal-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.newsletter-modal-form{padding:3.2rem 3rem;position:relative}
+.newsletter-modal-form{padding:3.2rem 3rem;position:relative;display:flex;flex-direction:column;justify-content:center;min-height:100%}
+@media(max-width:720px){.newsletter-modal{min-height:0}}
 .newsletter-close{position:absolute;top:1.4rem;right:1.4rem;background:none;border:none;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--ink);opacity:.5;transition:opacity .3s}
 .newsletter-close:hover{opacity:1}
 .newsletter-close svg{width:18px;height:18px}
@@ -196,7 +197,11 @@ footer{background:var(--paper);display:flex;flex-direction:column;align-items:st
 .brevo-message{display:none;font-size:.78rem;line-height:1.6;padding:.9rem 1.1rem;margin-bottom:1.4rem;border:1px solid var(--line)}
 .brevo-message.show{display:block}
 .brevo-message--error{color:#7a2e2e;background:#fbeeee;border-color:#e2b4b4}
-.brevo-message--success{color:#2e5f3a;background:#eef7f0;border-color:#b7d9c0}
+.brevo-message--success{color:var(--ink);background:transparent;border:none;padding:0;text-align:left}
+.brevo-success-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;color:var(--ink);margin:0 0 .8rem}
+.brevo-success-sub{font-size:.82rem;line-height:1.8;color:var(--taupe);margin:0 0 2rem;max-width:340px}
+.brevo-success-btn{background:transparent;border:1px solid var(--terra);color:var(--ink);padding:.9rem 1.8rem;font-family:'Jost',sans-serif;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s}
+.brevo-success-btn:hover{background:var(--terra);color:#fff}
 
 .brevo-title p{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.9rem;color:var(--ink);margin:0 0 .5rem}
 .brevo-sub p{font-size:.8rem;line-height:1.7;color:var(--taupe);margin:0 0 1.8rem}
@@ -362,7 +367,7 @@ footer{background:var(--paper);display:flex;flex-direction:column;align-items:st
 <div class="newsletter-overlay" id="newsletter-overlay">
   <div class="newsletter-modal">
     <div class="newsletter-modal-image">
-      <img src="collezione_bg.jpg" alt="Lucas Banega"/>
+      <img src="Bottle-Mediterraneo.png" alt="Lucas Banega"/>
     </div>
     <div class="newsletter-modal-form">
       <button class="newsletter-close" id="newsletter-close" aria-label="Cerrar">
@@ -373,7 +378,9 @@ footer{background:var(--paper);display:flex;flex-direction:column;align-items:st
         No hemos podido validar tu suscripción.
       </div>
       <div id="success-message" class="brevo-message brevo-message--success">
-        Se ha realizado tu suscripción.
+        <p class="brevo-success-title">Gracias por tu suscripción</p>
+        <p class="brevo-success-sub">Pronto vas a recibir novedades de la colección por correo electrónico.</p>
+        <button type="button" class="brevo-success-btn" id="newsletter-success-close">Seguir navegando</button>
       </div>
 
       <div id="sib-form-container" class="sib-form-container">
@@ -533,6 +540,10 @@ const newsletterClose = document.getElementById('newsletter-close');
 
 function openNewsletter(email){
   if(email && brevoEmailInput) brevoEmailInput.value = email;
+  const sibFormContainer = document.getElementById('sib-form-container');
+  const successMessage = document.getElementById('success-message');
+  if(sibFormContainer) sibFormContainer.style.display = '';
+  if(successMessage) successMessage.classList.remove('show');
   newsletterOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
   setTimeout(() => {
@@ -557,6 +568,34 @@ if(newsletterOverlay) newsletterOverlay.addEventListener('click', function(e){
 });
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape' && newsletterOverlay.classList.contains('open')) closeNewsletter();
+});
+
+const newsletterSuccessClose = document.getElementById('newsletter-success-close');
+if(newsletterSuccessClose) newsletterSuccessClose.addEventListener('click', closeNewsletter);
+
+// Brevo toggles #success-message / #error-message visibility itself on submit.
+// Watch for that and swap our own form panel out so only the thank-you screen shows.
+const sibFormContainer = document.getElementById('sib-form-container');
+const successMessage = document.getElementById('success-message');
+const errorMessage = document.getElementById('error-message');
+
+function isVisible(el){
+  return el && getComputedStyle(el).display !== 'none';
+}
+
+function syncBrevoMessages(){
+  if(isVisible(successMessage)){
+    successMessage.classList.add('show');
+    if(sibFormContainer) sibFormContainer.style.display = 'none';
+  }
+  if(isVisible(errorMessage)){
+    errorMessage.classList.add('show');
+  }
+}
+
+[successMessage, errorMessage].forEach(el => {
+  if(!el) return;
+  new MutationObserver(syncBrevoMessages).observe(el, {attributes: true, attributeFilter: ['style', 'class']});
 });
 </script>
 
