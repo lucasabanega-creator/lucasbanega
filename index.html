@@ -11,7 +11,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bone:#FAF9F6;--bone-deep:#F3F1EC;--paper:#FFFFFF;--ink:#1A1816;--taupe:#726A5E;--terra:#B97A45;
+  --bone:#FFFFFF;--bone-deep:#FAFAFA;--paper:#FFFFFF;--ink:#1A1816;--taupe:#726A5E;--terra:#B97A45;
   --line:rgba(26,24,22,.12);--line-soft:rgba(26,24,22,.07);--bone-text:rgba(255,255,255,.96);
 }
 html{scroll-behavior:auto}
@@ -30,7 +30,7 @@ header.scrolled .nav-row a{color:var(--taupe);text-shadow:none}
 header.scrolled .nav-row a:hover{color:var(--ink)}
 .nav-row a:hover{color:var(--bone-text)}
 
-.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none;z-index:300;width:28px;height:28px;justify-content:center;align-items:center;position:absolute;top:1.7rem;right:2rem;filter:drop-shadow(0 1px 4px rgba(0,0,0,.35))}
+.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none;z-index:300;width:28px;height:28px;justify-content:center;align-items:center;position:absolute;top:50%;transform:translateY(-50%);right:2rem;filter:drop-shadow(0 1px 4px rgba(0,0,0,.35))}
 header.scrolled .nav-burger{filter:none}
 .nav-burger span{display:block;width:22px;height:1px;background:var(--bone-text);transition:transform .45s cubic-bezier(.23,1,.32,1),opacity .3s ease,width .35s cubic-bezier(.23,1,.32,1),background .4s;transform-origin:center}
 header.scrolled .nav-burger span{background:var(--ink)}
@@ -190,7 +190,7 @@ footer{background:var(--paper);display:flex;flex-direction:column;align-items:st
     <li><a href="#filosofia">Filosofía</a></li>
     <li><a href="#collezione">La Collezione</a></li>
     <li><a href="#contacto">Contacto</a></li>
-    <li><a href="https://le-carnet.netlify.app" target="_blank" style="font-style:italic">Casa Banega</a></li>
+    <li><a href="https://casabanega.com" target="_blank" style="font-style:italic">Casa Banega</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -203,7 +203,7 @@ footer{background:var(--paper);display:flex;flex-direction:column;align-items:st
   <a href="#filosofia" onclick="closeMenu()">Filosofía</a>
   <a href="#collezione" onclick="closeMenu()">La Collezione</a>
   <a href="#contacto" onclick="closeMenu()">Contacto</a>
-  <a href="https://le-carnet.netlify.app" target="_blank" onclick="closeMenu()" style="font-style:italic">Casa Banega</a>
+  <a href="https://casabanega.com" target="_blank" onclick="closeMenu()" style="font-style:italic">Casa Banega</a>
   <span class="nav-overlay-tag">Lucas Banega — Official Boutique</span>
 </div>
 
@@ -287,7 +287,7 @@ footer{background:var(--paper);display:flex;flex-direction:column;align-items:st
       </div>
       <div class="footer-col">
         <p class="footer-col-title">Casa Banega</p>
-        <a href="https://le-carnet.netlify.app" target="_blank">Visitar el sitio</a>
+        <a href="https://casabanega.com" target="_blank">Visitar el sitio</a>
       </div>
     </div>
 
