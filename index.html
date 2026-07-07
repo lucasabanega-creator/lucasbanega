@@ -573,53 +573,72 @@ document.addEventListener('keydown', function(e){
 const newsletterSuccessClose = document.getElementById('newsletter-success-close');
 if(newsletterSuccessClose) newsletterSuccessClose.addEventListener('click', closeNewsletter);
 
-// Brevo toggles #success-message / #error-message visibility itself on submit.
-// Watch for that and swap our own form panel out so only the thank-you screen shows.
+// Submit handled directly: validate, POST to Brevo's endpoint, then show our own thank-you screen.
+const sibForm = document.getElementById('sib-form');
 const sibFormContainer = document.getElementById('sib-form-container');
 const successMessage = document.getElementById('success-message');
 const errorMessage = document.getElementById('error-message');
 
-function isVisible(el){
-  return el && getComputedStyle(el).display !== 'none';
+function setFieldError(input, message){
+  const errorLabel = input.closest('.form__entry').querySelector('.entry__error');
+  if(errorLabel) errorLabel.textContent = message || '';
+  input.style.borderColor = message ? '#a33' : '';
 }
 
-function syncBrevoMessages(){
-  if(isVisible(successMessage)){
-    successMessage.classList.add('show');
+function isValidEmail(value){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+if(sibForm) sibForm.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const nombre = document.getElementById('NOMBRE');
+  const apellidos = document.getElementById('APELLIDOS');
+  const email = document.getElementById('EMAIL');
+  let valid = true;
+
+  [nombre, apellidos].forEach(input => {
+    if(!input.value.trim()){
+      setFieldError(input, 'Este campo no puede quedarse vacío.');
+      valid = false;
+    } else {
+      setFieldError(input, '');
+    }
+  });
+
+  if(!email.value.trim()){
+    setFieldError(email, 'Este campo no puede quedarse vacío.');
+    valid = false;
+  } else if(!isValidEmail(email.value.trim())){
+    setFieldError(email, 'La información que has proporcionado no es válida.');
+    valid = false;
+  } else {
+    setFieldError(email, '');
+  }
+
+  if(!valid){
+    errorMessage.classList.remove('show');
+    return;
+  }
+
+  const submitBtn = sibForm.querySelector('.sib-form-block__button');
+  if(submitBtn) submitBtn.disabled = true;
+
+  fetch(sibForm.action, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: new FormData(sibForm)
+  }).then(() => {
+    errorMessage.classList.remove('show');
     if(sibFormContainer) sibFormContainer.style.display = 'none';
-  }
-  if(isVisible(errorMessage)){
+    successMessage.classList.add('show');
+  }).catch(() => {
     errorMessage.classList.add('show');
-  }
-}
-
-[successMessage, errorMessage].forEach(el => {
-  if(!el) return;
-  new MutationObserver(syncBrevoMessages).observe(el, {attributes: true, attributeFilter: ['style', 'class']});
+  }).finally(() => {
+    if(submitBtn) submitBtn.disabled = false;
+  });
 });
 </script>
-
-<!-- Brevo form runtime -->
-<script>
-  window.REQUIRED_CODE_ERROR_MESSAGE = 'Elige un código de país';
-  window.LOCALE = 'es';
-  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "La información que has proporcionado no es válida. Compruebe el formato del campo e inténtalo de nuevo.";
-  window.REQUIRED_ERROR_MESSAGE = "Este campo no puede quedarse vacío. ";
-  window.GENERIC_INVALID_MESSAGE = "La información que has proporcionado no es válida. Compruebe el formato del campo e inténtalo de nuevo.";
-  window.INVALID_NUMBER = "La información que has proporcionado no es válida. Compruebe el formato del campo e inténtalo de nuevo.";
-  window.INVALID_DATE = "Introduce una fecha válida";
-  window.REQUIRED_MULTISELECT_MESSAGE = 'Selecciona al menos una opción';
-  window.translation = {
-    common: {
-      selectedList: '{quantity} lista seleccionada',
-      selectedLists: '{quantity} listas seleccionadas',
-      selectedOption: '{quantity} seleccionado',
-      selectedOptions: '{quantity} seleccionados',
-    }
-  };
-  var AUTOHIDE = Boolean(0);
-</script>
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
 </body>
 </html>
