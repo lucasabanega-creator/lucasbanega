@@ -14,16 +14,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 <style>
-/* ── HEADER: sitio principal (blanco, fijo en flujo normal) ── */
-header{position:relative;background:var(--bone);padding:1.6rem 3rem;box-shadow:0 1px 0 var(--line)}
+/* ── HEADER: sitio principal (blanco, MENÚ + logo, estilo Cucinelli) ── */
+header{flex-direction:row;justify-content:center;align-items:center;position:relative;background:var(--bone);padding:1.6rem 3rem;box-shadow:0 1px 0 var(--line)}
 header::before{content:none}
 header.scrolled{padding:1.6rem 3rem}
-.brand,header.scrolled .brand{color:var(--ink);text-shadow:none}
-.nav-row a,header.scrolled .nav-row a{color:var(--taupe);text-shadow:none}
-.nav-row a:hover,header.scrolled .nav-row a:hover{color:var(--terra)}
-.nav-row a.active,header.scrolled .nav-row a.active{color:var(--terra);border-color:var(--terra)}
-.nav-burger span,header.scrolled .nav-burger span{background:var(--ink)}
-.nav-burger{filter:none}
+header .brand,header.scrolled .brand{margin:0;color:var(--ink);text-shadow:none}
+.menu-trigger{position:absolute;left:3rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:0;font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--taupe);text-shadow:none;transition:color .3s}
+.menu-trigger:hover{color:var(--ink)}
+@media(max-width:640px){.menu-trigger{left:1.5rem}}
+.overlay-close{left:3rem;right:auto}
+@media(max-width:640px){.overlay-close{left:1.5rem}}
 
 /* ── MASTHEAD ── */
 .masthead{height:78vh;min-height:560px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
@@ -67,17 +67,8 @@ header.scrolled{padding:1.6rem 3rem}
 
 <!-- HEADER -->
 <header id="main-nav">
-  <div class="brand-row">
-    <a class="brand" href="/inicio" aria-label="Inicio">Lucas Banega</a>
-  </div>
-  <ul class="nav-row">
-    <li><a href="/filosofia">Filosofía</a></li>
-    <li><a href="/contacto">Contacto</a></li>
-    <li><a href="https://casabanega.com" target="_blank" rel="noopener" style="font-style:italic">Casa Banega</a></li>
-  </ul>
-  <button class="nav-burger" id="burger" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="menu-trigger" id="burger" aria-label="Menú">Menú</button>
+  <a class="brand" href="/inicio" aria-label="Inicio">Lucas Banega</a>
 </header>
 
 <!-- OVERLAY MOBILE -->

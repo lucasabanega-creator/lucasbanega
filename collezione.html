@@ -14,7 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 <style>
-/* ── PAGE HERO BAND ── */
+/* ── PAGE HERO BAND (foto detrás del título — necesario para que el header
+   transparente de la boutique tenga una superficie oscura debajo) ── */
 .page-hero{position:relative;height:56vh;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .page-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
 .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,.4) 60%,rgba(0,0,0,.55) 100%);z-index:1}
@@ -165,7 +166,7 @@
 <div class="newsletter-overlay" id="newsletter-overlay">
   <div class="newsletter-modal">
     <div class="newsletter-modal-image">
-      <img src="Bottle-Mediterraneo.jpg" srcset="Bottle-Mediterraneo-mobile.jpg 800w, Bottle-Mediterraneo.jpg 1792w" sizes="(max-width:720px) 100vw, 45vw" alt="Lucas Banega"/>
+      <img src="collezione_bg.jpg" srcset="collezione_bg-mobile.jpg 800w, collezione_bg.jpg 1920w" sizes="(max-width:720px) 100vw, 45vw" alt="Lucas Banega"/>
     </div>
     <div class="newsletter-modal-form">
       <button class="newsletter-close" id="newsletter-close" aria-label="Cerrar">
