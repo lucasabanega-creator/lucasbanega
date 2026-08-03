@@ -14,6 +14,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 <style>
+/* ── HEADER: sitio principal (blanco, fijo en flujo normal) ── */
+header{position:relative;background:var(--bone);padding:1.6rem 3rem;box-shadow:0 1px 0 var(--line)}
+header::before{content:none}
+header.scrolled{padding:1.6rem 3rem}
+.brand,header.scrolled .brand{color:var(--ink);text-shadow:none}
+.nav-row a,header.scrolled .nav-row a{color:var(--taupe);text-shadow:none}
+.nav-row a:hover,header.scrolled .nav-row a:hover{color:var(--terra)}
+.nav-row a.active,header.scrolled .nav-row a.active{color:var(--terra);border-color:var(--terra)}
+.nav-burger span,header.scrolled .nav-burger span{background:var(--ink)}
+.nav-burger{filter:none}
+
 /* ── PAGE HERO BAND ── */
 .page-hero{position:relative;height:56vh;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .page-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
@@ -51,7 +62,6 @@
   </div>
   <ul class="nav-row">
     <li><a href="/filosofia">Filosofía</a></li>
-    <li><a href="/collezione">La Collezione</a></li>
     <li><a class="active" href="/contacto">Contacto</a></li>
     <li><a href="https://casabanega.com" target="_blank" rel="noopener" style="font-style:italic">Casa Banega</a></li>
   </ul>
@@ -64,10 +74,9 @@
 <div class="nav-overlay" id="nav-overlay">
   <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú"></button>
   <a href="/filosofia" onclick="closeMenu()">Filosofía</a>
-  <a href="/collezione" onclick="closeMenu()">La Collezione</a>
   <a href="/contacto" onclick="closeMenu()">Contacto</a>
   <a href="https://casabanega.com" target="_blank" rel="noopener" onclick="closeMenu()" style="font-style:italic">Casa Banega</a>
-  <span class="nav-overlay-tag">Lucas Banega — Official Boutique</span>
+  <span class="nav-overlay-tag">Lucas Banega — Sprezzatura Italiana</span>
 </div>
 
 <!-- PAGE HERO -->
