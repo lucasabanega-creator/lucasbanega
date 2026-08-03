@@ -6,100 +6,126 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<title>Lucas Banega</title>
-<meta name="description" content="Filosofía, criterio y una colección que recién empieza. Descubrí Lucas Banega, Casa Banega y La Collezione."/>
-<link rel="canonical" href="https://lucasbanega.com/"/>
+<title>Filosofía — Lucas Banega</title>
+<meta name="description" content="Sprezzatura: la elegancia que no se esfuerza. La filosofía de Lucas Banega — criterio, tiempo y la dignidad del trabajo detrás de cada prenda."/>
+<link rel="canonical" href="https://lucasbanega.com/filosofia"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 <style>
-body{min-height:100vh}
+/* ── PAGE HERO BAND ── */
+.page-hero{position:relative;height:56vh;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.page-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,.4) 60%,rgba(0,0,0,.55) 100%);z-index:1}
+.page-hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem}
+.page-hero-eyebrow{font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.85);text-shadow:0 1px 10px rgba(0,0,0,.3);margin-bottom:1.4rem;opacity:0;animation:fadeIn .8s .2s forwards}
+.page-hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.4),0 2px 6px rgba(0,0,0,.35);opacity:0;animation:fadeIn 1s .5s forwards}
 
-/* ── QUOTE ── */
-.gate-quote{position:relative;min-height:68vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.gate-quote-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.gate-quote-overlay{position:absolute;inset:0;background:rgba(0,0,0,.48)}
-.gate-quote-content{position:relative;z-index:2;text-align:center;max-width:640px;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
-.gate-quote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.5;color:#fff;text-shadow:0 1px 16px rgba(0,0,0,.4);opacity:0;animation:fadeIn .8s .2s ease-out forwards}
-.gate-quote-attr{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:-1.2rem;opacity:0;animation:fadeIn .6s .5s ease-out forwards}
-.gate-quote-btn{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:8px;transition:border-color .3s;opacity:0;animation:fadeIn .6s .8s ease-out forwards}
-.gate-quote-btn:hover{border-color:#fff}
+/* ── ARTICLE ── */
+.article-wrap{background:var(--bone);display:flex;justify-content:center;padding:0 2rem}
+.article{max-width:640px;width:100%;padding:6.5rem 0}
+.article-block{margin-bottom:6rem}
+.article-block:last-of-type{margin-bottom:0}
+.article-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.3rem,2.1vw,1.6rem);line-height:1.75;color:var(--ink)}
+.article-text em{font-style:italic;color:var(--terra)}
+.article-quote-block{text-align:center;margin:7rem 0;padding:3.5rem 1rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.article-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.5;color:var(--ink)}
+.article-quote-attr{display:block;margin-top:1.6rem;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--taupe)}
+.article-closing{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.4rem,2.3vw,1.75rem);line-height:1.7;color:var(--ink);text-align:center}
 
-/* ── SPLIT ── */
-.gate-split{display:grid;grid-template-columns:1fr 1fr}
-.gate-block{position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-decoration:none}
-.gate-block-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease-out}
-.gate-block:hover .gate-block-media{transform:scale(1.04)}
-.gate-block-overlay{position:absolute;inset:0;background:rgba(0,0,0,.42);transition:background .5s ease-out}
-.gate-block:hover .gate-block-overlay{background:rgba(0,0,0,.32)}
-.gate-block-content{position:relative;z-index:2;text-align:center;padding:2rem;opacity:0;animation:fadeIn .8s .3s ease-out forwards}
-.gate-block-word{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.08em;text-transform:uppercase;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.4);margin-bottom:1rem}
-.gate-block-sub{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.82)}
-
-@media(max-width:760px){
-  .gate-split{grid-template-columns:1fr}
-  .gate-block{min-height:52vh}
+@media(max-width:640px){
+  .page-hero{height:46vh;min-height:340px}
+  .article{padding:4.5rem 0}
+  .article-block{margin-bottom:4rem}
+  .article-quote-block{margin:4.5rem 0;padding:2.5rem 0}
 }
-
-/* ── CASA BANEGA ── */
-.gate-casa{position:relative;min-height:64vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-decoration:none}
-.gate-casa-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;transition:transform .6s ease-out}
-.gate-casa:hover .gate-casa-media{transform:scale(1.04)}
-.gate-casa-overlay{position:absolute;inset:0;background:rgba(0,0,0,.44);transition:background .5s ease-out}
-.gate-casa:hover .gate-casa-overlay{background:rgba(0,0,0,.34)}
-.gate-casa-content{position:relative;z-index:2;text-align:center;padding:2rem;opacity:0;animation:fadeIn .8s .3s ease-out forwards}
-.gate-casa-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.8rem,3.4vw,2.6rem);color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.4);margin-bottom:1rem}
-.gate-casa-sub{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.82);transition:color .3s}
-.gate-casa:hover .gate-casa-sub{color:#fff}
-
-@media(max-width:640px){.gate-casa{min-height:52vh}}
 </style>
 </head>
 <body>
 
-<!-- QUOTE -->
-<section class="gate-quote">
-  <img class="gate-quote-media" src="filosofia_bg.jpg" srcset="filosofia_bg-mobile.jpg 800w, filosofia_bg.jpg 1920w" sizes="100vw" alt="Lucas Banega — Filosofía"/>
-  <div class="gate-quote-overlay"></div>
-  <div class="gate-quote-content">
-    <p class="gate-quote-text">"Nuestra vida es lo que nuestros pensamientos hacen de ella."</p>
-    <span class="gate-quote-attr">— Marco Aurelio</span>
-    <a class="gate-quote-btn" href="/filosofia">Explorar Filosofía</a>
+<!-- HEADER -->
+<header id="main-nav">
+  <div class="brand-row">
+    <a class="brand" href="/" aria-label="Inicio">Lucas Banega</a>
+  </div>
+  <ul class="nav-row">
+    <li><a class="active" href="/filosofia">Filosofía</a></li>
+    <li><a href="/inicio#collezione">La Collezione</a></li>
+    <li><a href="/inicio#contacto">Contacto</a></li>
+    <li><a href="https://casabanega.com" target="_blank" rel="noopener" style="font-style:italic">Casa Banega</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- OVERLAY MOBILE -->
+<div class="nav-overlay" id="nav-overlay">
+  <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú"></button>
+  <a href="/filosofia" onclick="closeMenu()">Filosofía</a>
+  <a href="/inicio#collezione" onclick="closeMenu()">La Collezione</a>
+  <a href="/inicio#contacto" onclick="closeMenu()">Contacto</a>
+  <a href="https://casabanega.com" target="_blank" rel="noopener" onclick="closeMenu()" style="font-style:italic">Casa Banega</a>
+  <span class="nav-overlay-tag">Lucas Banega — Official Boutique</span>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <img class="page-hero-media" src="filosofia_bg.jpg" srcset="filosofia_bg-mobile.jpg 800w, filosofia_bg.jpg 1920w" sizes="100vw" alt="Lucas Banega — Filosofía"/>
+  <div class="page-hero-content">
+    <p class="page-hero-eyebrow">Filosofía</p>
+    <h1 class="page-hero-title">Sprezzatura</h1>
   </div>
 </section>
 
-<!-- SPLIT -->
-<section class="gate-split">
-  <a class="gate-block" href="/filosofia">
-    <img class="gate-block-media" src="collezione_bg.jpg" srcset="collezione_bg-mobile.jpg 800w, collezione_bg.jpg 1920w" sizes="(max-width:760px) 100vw, 50vw" alt="Lucas Banega — Nuestro criterio, nuestra historia"/>
-    <div class="gate-block-overlay"></div>
-    <div class="gate-block-content">
-      <p class="gate-block-word">Lucas Banega</p>
-      <p class="gate-block-sub">Nuestro criterio, nuestra historia</p>
-    </div>
-  </a>
-  <a class="gate-block" href="/inicio#collezione">
-    <img class="gate-block-media" src="Bottle-Mediterraneo.jpg" srcset="Bottle-Mediterraneo-mobile.jpg 800w, Bottle-Mediterraneo.jpg 1792w" sizes="(max-width:760px) 100vw, 50vw" alt="La Collezione"/>
-    <div class="gate-block-overlay"></div>
-    <div class="gate-block-content">
-      <p class="gate-block-word">La Collezione</p>
-      <p class="gate-block-sub">Shop Online</p>
-    </div>
-  </a>
-</section>
+<!-- ARTICLE -->
+<div class="article-wrap">
+  <article class="article">
 
-<!-- CASA BANEGA -->
-<a class="gate-casa" href="https://casabanega.com" target="_blank" rel="noopener">
-  <img class="gate-casa-media" src="casabanega_bg.jpg" srcset="casabanega_bg-mobile.jpg 800w, casabanega_bg.jpg 1920w" sizes="100vw" alt="Casa Banega — nuestra guía de lugares"/>
-  <div class="gate-casa-overlay"></div>
-  <div class="gate-casa-content">
-    <p class="gate-casa-title">Casa Banega</p>
-    <p class="gate-casa-sub">Nuestra guía de lugares</p>
-  </div>
-</a>
+    <div class="article-block">
+      <p class="article-text reveal">
+        Hay una palabra italiana que no tiene traducción exacta:
+        <em>sprezzatura.</em> La elegancia que no se esfuerza.
+        El gesto justo que parece casual porque le sobra criterio,
+        no porque le falte cuidado.
+      </p>
+    </div>
 
-<!-- FOOTER -->
+    <div class="article-block">
+      <p class="article-text reveal">
+        Crecimos mirando esa diferencia entre vestirse para ser visto
+        y vestirse porque se entiende. La exclusividad no es precio,
+        es <em>criterio,</em> y el criterio no se compra: se cultiva
+        despacio, con años de mirar bien.
+      </p>
+    </div>
+
+    <div class="article-block">
+      <p class="article-text reveal">
+        Por eso no medimos el tiempo de esta casa en temporadas, sino
+        en decisiones. Preferimos una prenda bien pensada a diez bien
+        vendidas. El lujo, para nosotros, empieza en la <em>dignidad
+        del trabajo</em> detrás de cada pieza — de quien la cose, de
+        quien la piensa — antes que en la etiqueta.
+      </p>
+    </div>
+
+    <div class="article-quote-block reveal">
+      <p class="article-quote">"Nuestra vida es lo que nuestros pensamientos hacen de ella."</p>
+      <span class="article-quote-attr">Marco Aurelio, Meditaciones</span>
+    </div>
+
+    <div class="article-block">
+      <p class="article-closing reveal">
+        Esa es, en el fondo, la idea: que el criterio se construye
+        <em>por dentro,</em> y después se viste.
+      </p>
+    </div>
+
+  </article>
+</div>
+
 <footer id="contacto">
   <div class="footer-notify">
     <p class="footer-notify-tag">Lanzamiento</p>
@@ -111,9 +137,9 @@ body{min-height:100vh}
     <div class="footer-columns">
       <div class="footer-col">
         <p class="footer-col-title">Navegación</p>
-        <a href="/filosofia">Filosofía</a>
+        <a href="/inicio">Inicio</a>
         <a href="/inicio#collezione">La Collezione</a>
-        <a href="#contacto">Contacto</a>
+        <a href="/inicio#contacto">Contacto</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">Casa Banega</p>
