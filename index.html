@@ -31,30 +31,24 @@ header.scrolled .menu-trigger:hover{color:var(--ink)}
 .overlay-close{left:3rem;right:auto}
 @media(max-width:640px){.overlay-close{left:1.5rem}}
 
-/* ── QUOTE ── */
-.gate-quote{position:relative;min-height:68vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.gate-quote-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.gate-quote-overlay{position:absolute;inset:0;background:rgba(0,0,0,.48)}
-.gate-quote-content{position:relative;z-index:2;text-align:center;max-width:640px;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
-.gate-quote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.5;color:#fff;text-shadow:0 1px 16px rgba(0,0,0,.4);opacity:0;animation:fadeIn .8s .2s ease-out forwards}
-.gate-quote-attr{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:-1.2rem;opacity:0;animation:fadeIn .6s .5s ease-out forwards}
-.gate-quote-btn{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:8px;transition:border-color .3s;opacity:0;animation:fadeIn .6s .8s ease-out forwards}
-.gate-quote-btn:hover{border-color:#fff}
-
-/* ── SPLIT ── */
+/* ── CUADRANTE (split en dos, la cita vive dentro del primer bloque) ── */
 .gate-split{display:grid;grid-template-columns:1fr 1fr}
-.gate-block{position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-decoration:none}
+.gate-block{position:relative;min-height:68vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-decoration:none}
 .gate-block-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease-out}
 .gate-block:hover .gate-block-media{transform:scale(1.04)}
 .gate-block-overlay{position:absolute;inset:0;background:rgba(0,0,0,.42);transition:background .5s ease-out}
 .gate-block:hover .gate-block-overlay{background:rgba(0,0,0,.32)}
-.gate-block-content{position:relative;z-index:2;text-align:center;padding:2rem;opacity:0;animation:fadeIn .8s .3s ease-out forwards}
-.gate-block-word{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.08em;text-transform:uppercase;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.4);margin-bottom:1rem}
-.gate-block-sub{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.gate-block-content{position:relative;z-index:2;text-align:center;max-width:420px;padding:2rem;opacity:0;animation:fadeIn .8s .3s ease-out forwards}
+.gate-block-eyebrow{font-size:.54rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:1.8rem}
+.gate-block-quote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.15rem,2.1vw,1.55rem);line-height:1.5;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.4);margin-bottom:1.2rem}
+.gate-block-quote-attr{display:block;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:1.8rem}
+.gate-block-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.7rem,3.2vw,2.4rem);color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.4);margin-bottom:1.8rem}
+.gate-block-link{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:6px;transition:border-color .3s}
+.gate-block:hover .gate-block-link{border-color:#fff}
 
 @media(max-width:760px){
   .gate-split{grid-template-columns:1fr}
-  .gate-block{min-height:52vh}
+  .gate-block{min-height:56vh}
 }
 
 /* ── CASA BANEGA ── */
@@ -90,33 +84,25 @@ header.scrolled .menu-trigger:hover{color:var(--ink)}
   <span class="nav-overlay-tag">Lucas Banega — Official Boutique</span>
 </div>
 
-<!-- QUOTE -->
-<section class="gate-quote">
-  <img class="gate-quote-media" src="filosofia_bg.jpg" srcset="filosofia_bg-mobile.jpg 800w, filosofia_bg.jpg 1920w" sizes="100vw" alt="Lucas Banega — Filosofía"/>
-  <div class="gate-quote-overlay"></div>
-  <div class="gate-quote-content">
-    <p class="gate-quote-text">"Nuestra vida es lo que nuestros pensamientos hacen de ella."</p>
-    <span class="gate-quote-attr">— Marco Aurelio</span>
-    <a class="gate-quote-btn" href="/filosofia">Explorar Filosofía</a>
-  </div>
-</section>
-
-<!-- SPLIT -->
+<!-- CUADRANTE -->
 <section class="gate-split">
-  <a class="gate-block" href="/inicio">
-    <img class="gate-block-media" src="collezione_bg.jpg" srcset="collezione_bg-mobile.jpg 800w, collezione_bg.jpg 1920w" sizes="(max-width:760px) 100vw, 50vw" alt="Lucas Banega — Nuestro criterio, nuestra historia"/>
+  <a class="gate-block" href="/filosofia">
+    <img class="gate-block-media" src="filosofia_bg.jpg" srcset="filosofia_bg-mobile.jpg 800w, filosofia_bg.jpg 1920w" sizes="(max-width:760px) 100vw, 50vw" alt="Lucas Banega — Filosofía"/>
     <div class="gate-block-overlay"></div>
     <div class="gate-block-content">
-      <p class="gate-block-word">Lucas Banega</p>
-      <p class="gate-block-sub">Nuestro criterio, nuestra historia</p>
+      <p class="gate-block-eyebrow">Filosofía</p>
+      <p class="gate-block-quote-text">"Nuestra vida es lo que nuestros pensamientos hacen de ella."</p>
+      <span class="gate-block-quote-attr">— Marco Aurelio</span>
+      <span class="gate-block-link">Explorar Filosofía</span>
     </div>
   </a>
   <a class="gate-block" href="/collezione">
     <img class="gate-block-media" src="Bottle-Mediterraneo.jpg" srcset="Bottle-Mediterraneo-mobile.jpg 800w, Bottle-Mediterraneo.jpg 1792w" sizes="(max-width:760px) 100vw, 50vw" alt="La Collezione"/>
     <div class="gate-block-overlay"></div>
     <div class="gate-block-content">
-      <p class="gate-block-word">La Collezione</p>
-      <p class="gate-block-sub">Shop Online</p>
+      <p class="gate-block-eyebrow">La Collezione</p>
+      <p class="gate-block-title">Próximamente</p>
+      <span class="gate-block-link">Conocer la boutique</span>
     </div>
   </a>
 </section>
