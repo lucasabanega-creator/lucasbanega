@@ -34,7 +34,7 @@
 
   /* ── TIPOGRAFIA ────────────────────────────────────────────────── */
   --serif-display:'Bodoni Moda',Didot,'Times New Roman',serif;
-  --serif-voce:'Cormorant Garamond',Georgia,serif;
+  --serif-voce:var(--serif-display);
   --sans:'Jost',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
 
   --tracking-etichetta:.34em; /* eyebrow / occhiello                 */
@@ -59,7 +59,35 @@
 }
 
 html{scroll-behavior:auto;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body{background:var(--bianco);color:var(--inchiostro);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+body{background:var(--bianco);color:var(--inchiostro);font-family:var(--sans);font-weight:400;overflow-x:hidden}
+/* Presentación de prelanzamiento */
+.eyebrow{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:#655f57}
+.home-hero{background:var(--avorio)}
+.hero-photo{height:clamp(320px,46vw,580px);overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.hero-caption{text-align:center;padding:36px 24px 44px}
+.hero-caption h1{font-family:var(--serif-display);font-weight:400;font-size:clamp(2.6rem,5vw,4.4rem);line-height:1.15;margin:12px 0}
+.hero-caption>p:not(.eyebrow){font-size:1rem;line-height:1.7;color:#655f57}
+.text-link{display:inline-block;color:var(--inchiostro);font-size:.85rem;line-height:1.6;text-decoration:none;border-bottom:1px solid #a69b8c;padding:8px 0;margin-top:18px}
+.brand-intro{text-align:center;max-width:660px;margin:auto;padding:72px 24px}
+.brand-intro h2,.launch h2{font-family:var(--serif-display);font-weight:400;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.25;margin:16px 0}
+.brand-intro>p:not(.eyebrow){font-size:1rem;line-height:1.9;max-width:480px;margin:auto;color:#655f57}
+.launch{background:var(--avorio);text-align:center;padding:60px 24px}
+.launch>p:not(.eyebrow){max-width:440px;margin:auto;font-size:1rem;line-height:1.8;color:#655f57}
+.launch-form{max-width:510px;margin:28px auto 0;text-align:left;position:relative}
+.launch-form label{display:block;font-size:.85rem;margin-bottom:10px}
+.launch-fields{display:flex;gap:10px}
+.launch-fields input{min-width:0;flex:1;background:white;border:1px solid #b8afa3;border-radius:0;padding:14px;font:inherit;font-size:16px;color:var(--inchiostro)}
+.launch-fields button{border:1px solid var(--inchiostro);background:transparent;color:var(--inchiostro);padding:14px 18px;font:inherit;font-size:.85rem;cursor:pointer}
+.launch-fields button:hover{background:var(--inchiostro);color:white}
+.form-trap{position:absolute;left:-10000px;width:1px;height:1px}
+.site-footer{padding:36px 5vw;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.site-footer nav{display:flex;gap:24px;flex-wrap:wrap}
+.site-footer nav a{font-size:.85rem;color:#655f57;text-decoration:none}
+.site-footer small{font-size:.75rem;color:#655f57}
+:focus-visible{outline:2px solid #655f57;outline-offset:5px}
+#contacto{scroll-margin-top:80px}
+@media(max-width:640px){.hero-photo{height:320px}.hero-photo img{object-position:64% center}.hero-caption{padding:28px 24px 36px}.brand-intro{padding:48px 24px}.launch{padding:48px 24px}.launch-fields{flex-direction:column}.launch-fields button{min-height:48px}.site-footer{align-items:flex-start;flex-direction:column;padding:32px 24px}.site-footer nav{gap:18px 24px}}
 img{max-width:100%;display:block}
 
 /* ═══ ESCALA TIPOGRÁFICA ══════════════════════════════════════════ */
@@ -364,3 +392,12 @@ footer{background:var(--bianco);display:flex;flex-direction:column;align-items:s
 .contact-method-value{font-family:var(--serif-voce);font-weight:300;font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--inchiostro);transition:color var(--rapido)}
 .contact-method:hover .contact-method-value{color:var(--oro)}
 @media(max-width:640px){.contact-methods{margin-top:3rem;gap:2rem}}
+
+/* Jerarquía legible compartida */
+:root{--fumo:#655f57;--tracking-etichetta:.16em;--tracking-cta:.14em;--tracking-menu:.14em}
+.menu-trigger{font-size:.75rem;min-height:44px}
+.feed-eyebrow,.article-header-eyebrow,.breadcrumb,.page-hero-eyebrow,.contact-method-label{font-size:.75rem}
+.feed-desc{font-size:1rem}
+.feed-link,.cta,.btn{font-size:.8rem}
+header{min-height:72px}
+@media(max-width:640px){.menu-trigger{font-size:.7rem}.brand{font-size:.9rem}}
