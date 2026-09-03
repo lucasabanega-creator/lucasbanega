@@ -7,7 +7,8 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => ob
 // ── SMOOTH SCROLL (same-page anchors only) ──
 function elegantScrollTo(target, duration) {
   const start = window.scrollY;
-  const end = target.getBoundingClientRect().top + start;
+  const headerHeight = document.getElementById('main-nav')?.offsetHeight || 0;
+  const end = Math.max(0, target.getBoundingClientRect().top + start - headerHeight);
   const distance = end - start;
   let startTime = null;
   function easeInOutQuart(t) {
@@ -38,30 +39,49 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 // ── MOBILE MENU ──
 const burger = document.getElementById('burger');
 const overlay = document.getElementById('nav-overlay');
+const mobileNavigation = window.matchMedia('(max-width: 700px)');
+let previousOverflow = '';
 function closeMenu() {
-  burger.classList.remove('open');
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-  overlay.addEventListener('transitionend', () => {
-    if (!overlay.classList.contains('open')) overlay.style.display = 'none';
-  }, { once: true });
+  if (!burger || !overlay?.open) return;
+  overlay.close();
 }
-if (burger) burger.addEventListener('click', () => {
-  const isOpen = burger.classList.toggle('open');
-  if (isOpen) {
-    overlay.style.display = 'flex';
-    requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('open')));
+function restoreMenuState() {
+  burger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = previousOverflow;
+}
+if (burger && overlay) {
+  burger.addEventListener('click', () => {
+    if (!mobileNavigation.matches) return;
+    previousOverflow = document.body.style.overflow;
+    overlay.showModal();
+    burger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-  } else {
-    closeMenu();
+  });
+  overlay.addEventListener('close', restoreMenuState);
+  mobileNavigation.addEventListener('change', event => {
+    if (!event.matches && overlay.open) {
+      closeMenu();
+      document.querySelector('#main-nav .brand')?.focus();
+    }
+  });
+}
+
+// El mismo destino se identifica igual en ambas navegaciones.
+const currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+document.querySelectorAll('#main-nav a, #nav-overlay a').forEach(link => {
+  const destination = new URL(link.href);
+  if (destination.origin === window.location.origin && destination.pathname === currentPath) {
+    link.setAttribute('aria-current', 'page');
   }
 });
 
 // ── HEADER SCROLL STATE ──
 const mainNav = document.getElementById('main-nav');
-if (mainNav) window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY > 60;
-  mainNav.classList.toggle('scrolled', scrolled);
-}, { passive: true });
+if (mainNav) {
+  const updateHeaderState = () => mainNav.classList.toggle('scrolled', window.scrollY > 60);
+  updateHeaderState();
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+  window.addEventListener('pageshow', updateHeaderState);
+}
 
 // La suscripción se envía directamente a Brevo mediante el formulario HTML.

@@ -9,12 +9,12 @@
 <title>Gracias — Lucas Banega</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bone:#FFFFFF;--bone-deep:#FAF7F2;--ink:#1E1A16;--taupe:#7A736A;--terra:#B08D57;--line:rgba(30,26,22,.14)}
 html{scroll-behavior:smooth}
-body{background:var(--bone);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+body{background:var(--bone);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:flex-end;align-items:center;padding:1.8rem 3rem}
 .nav-links{display:flex;gap:1.8rem;list-style:none;flex-wrap:wrap;justify-content:flex-end}
@@ -27,8 +27,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
 .tag{font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:var(--taupe);margin-bottom:2rem;opacity:0;animation:fadeIn .9s .3s forwards}
 .line{width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--line),transparent);margin-bottom:2.5rem;opacity:0;animation:fadeIn .8s .7s forwards}
-.title{font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;letter-spacing:.01em;opacity:0;animation:fadeIn .9s 1s forwards}
-.title em{font-style:italic;color:var(--terra)}
+.title{font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;letter-spacing:.01em;opacity:0;animation:fadeIn .9s 1s forwards}
+.title em{font-style:normal;color:var(--terra)}
 .sub{margin-top:1.6rem;font-size:.78rem;letter-spacing:.08em;line-height:1.9;color:var(--taupe);max-width:360px;opacity:0;animation:fadeIn .8s 1.4s forwards}
 .back{margin-top:3rem;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .3s,border-color .3s;opacity:0;animation:fadeIn .8s 1.8s forwards}
 .back:hover{color:var(--ink);border-color:var(--ink)}
@@ -50,19 +50,31 @@ footer span{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:
 
 <nav>
   <ul class="nav-links">
-    <li><a href="/">Inicio</a></li>
-    <li><a href="/filosofia">Filosofía</a></li>
-    <li><a href="/collezione">La Collezione</a></li>
-    <li><a href="/contacto">Contacto</a></li>
-    <li><a href="https://casabanega.com" target="_blank" rel="noopener" style="font-style:italic">Casa Banega</a></li>
+    <li>
+<a href="/">Inicio</a>
+</li>
+    <li>
+<a href="/filosofia">Filosofía</a>
+</li>
+    <li>
+<a href="/collezione">La Collezione</a>
+</li>
+    <li>
+<a href="/contacto">Contacto</a>
+</li>
+    <li>
+<a href="https://casabanega.com" target="_blank" rel="noopener" >Casa Banega</a>
+</li>
   </ul>
 </nav>
 
 <main class="page">
   <div class="content">
     <p class="tag">Mensaje recibido</p>
-    <div class="line"></div>
-    <h1 class="title">Serás de los<br/>primeros en <em>saberlo</em></h1>
+    <div class="line">
+</div>
+    <h1 class="title">Serás de los<br/>primeros en <em>saberlo</em>
+</h1>
     <p class="sub">Cuando la colección esté lista, sos de los primeros en enterarte. Gracias por el interés.</p>
     <a class="back" href="/">Volver al inicio</a>
   </div>

@@ -16,25 +16,32 @@
 <link rel="canonical" href="https://lucasbanega.com/collezione"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 <!-- HEADER -->
 <header id="main-nav">
-  <button class="menu-trigger" id="burger" aria-label="Menú">Menú</button>
+  <button class="menu-trigger" id="burger" aria-label="Menú" aria-expanded="false" aria-controls="nav-overlay">Menú</button>
   <a class="brand" href="/" aria-label="Inicio">Lucas Banega</a>
+  <a class="header-contact" href="/contacto">Contacto</a>
+  <nav class="desktop-nav" aria-label="Navegación principal">
+<a href="/filosofia">Filosofía</a>
+<a href="/collezione">Lanzamiento</a>
+</nav>
 </header>
 <!-- OVERLAY DE NAVEGACIÓN -->
-<div class="nav-overlay" id="nav-overlay">
-  <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú"></button>
+<dialog class="nav-overlay" id="nav-overlay" aria-label="Navegación">
+  <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú">
+</button>
   <a href="/filosofia" onclick="closeMenu()">Filosofía</a>
-  <a href="/collezione" onclick="closeMenu()">La Collezione</a>
+  <a href="/collezione" onclick="closeMenu()">Lanzamiento</a>
   <a href="/contacto" onclick="closeMenu()">Contacto</a>
-  <span class="nav-overlay-rule"></span>
-  <a href="https://casabanega.com" target="_blank" rel="noopener" onclick="closeMenu()" style="font-style:italic;font-size:1.5rem">Casa Banega</a>
+  <span class="nav-overlay-rule">
+</span>
+  <a href="https://casabanega.com" target="_blank" rel="noopener" onclick="closeMenu()">Casa Banega</a>
   <span class="nav-overlay-tag">Lucas Banega — Sprezzatura Italiana</span>
-</div>
+</dialog>
 
 <!-- PAGE HERO -->
 <section class="page-hero">
@@ -79,6 +86,34 @@
   </article>
 </div>
 
-<footer id="contacto"><section class="launch"><p class="eyebrow">El lanzamiento</p><h2>Lo que viene.</h2><p>Dejá tu email para recibir novedades del lanzamiento de Lucas Banega.</p>
-<form class="launch-form" action="https://d080cbfe.sibforms.com/serve/MUIFADuLWxiPKrD7dMUi9eIUrVPKeL-IGfMZkcZKxFsI7DW9HNXN8Fm4n7VU2BXgTYBzNe_Br7mV5_MMAT4UmfHZ0lGsKHrP-sHfn_pt3O6d_0DYu314fBopCFP9ed363Ul-UJjkL9AdUgYF8FuUkjv1-C1xIO6IfY72mcTGDF9Vefxr60tWskF0GTtVDzO-3COO4pKjpiZ4_0DdKg==" method="POST"><label for="launch-email">Tu email</label><div class="launch-fields"><input id="launch-email" name="EMAIL" type="email" autocomplete="email" placeholder="nombre@ejemplo.com" required/><button type="submit">Recibir novedades</button></div><input type="text" name="email_address_check" value="" class="form-trap" tabindex="-1" aria-hidden="true" autocomplete="off"/><input type="hidden" name="locale" value="es"/></form></section>
-<div class="site-footer"><a class="brand" href="/">Lucas Banega</a><nav aria-label="Enlaces del pie"><a href="/filosofia">Filosofía</a><a href="/collezione">Lanzamiento</a><a href="/contacto">Contacto</a><a href="https://casabanega.com" target="_blank" rel="noopener">Casa Banega ↗</a><a href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener">Instagram ↗</a></nav><small>© 2026 Lucas Banega</small></div></footer><script src="main.js"></script></body></html>
+<footer id="contacto">
+<section class="launch">
+<p class="eyebrow">El lanzamiento</p>
+<h2>Recibí nuestras novedades</h2>
+<p>Dejá tu email para recibir novedades del lanzamiento de Lucas Banega.</p>
+<form class="launch-form" action="https://d080cbfe.sibforms.com/serve/MUIFADuLWxiPKrD7dMUi9eIUrVPKeL-IGfMZkcZKxFsI7DW9HNXN8Fm4n7VU2BXgTYBzNe_Br7mV5_MMAT4UmfHZ0lGsKHrP-sHfn_pt3O6d_0DYu314fBopCFP9ed363Ul-UJjkL9AdUgYF8FuUkjv1-C1xIO6IfY72mcTGDF9Vefxr60tWskF0GTtVDzO-3COO4pKjpiZ4_0DdKg==" method="POST">
+<label for="launch-email">Tu email</label>
+<div class="launch-fields">
+<input id="launch-email" name="EMAIL" type="email" autocomplete="email" placeholder="nombre@ejemplo.com" required/>
+<button type="submit">Recibir novedades</button>
+</div>
+<input type="text" name="email_address_check" value="" class="form-trap" tabindex="-1" aria-hidden="true" autocomplete="off"/>
+<input type="hidden" name="locale" value="es"/>
+</form>
+</section>
+<div class="site-footer">
+<a class="brand" href="/">Lucas Banega</a>
+<nav aria-label="Enlaces del pie">
+<a href="/filosofia">Filosofía</a>
+<a href="/collezione">Lanzamiento</a>
+<a href="/contacto">Contacto</a>
+<a href="https://casabanega.com" target="_blank" rel="noopener">Casa Banega ↗</a>
+<a href="https://www.instagram.com/lucasbanega_brand" target="_blank" rel="noopener">Instagram ↗</a>
+</nav>
+<small>© 2026 Lucas Banega</small>
+</div>
+</footer>
+<script src="main.js">
+</script>
+</body>
+</html>
