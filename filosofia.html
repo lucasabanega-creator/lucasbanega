@@ -6,80 +6,45 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<title>Filosofía — Lucas Banega</title>
-<meta name="description" content="Sprezzatura: la elegancia que no se esfuerza. La filosofía de Lucas Banega — criterio, tiempo y la dignidad del trabajo detrás de cada prenda."/>
+<title>Filosofía — Maison Lucas Banega</title>
+<meta name="description" content="Sprezzatura: la elegancia que no se esfuerza. La filosofía de la Maison Lucas Banega — criterio, tiempo y la dignidad del trabajo."/>
+<meta property="og:title" content="Filosofía — Maison Lucas Banega"/>
+<meta property="og:description" content="Sprezzatura: la elegancia que no se esfuerza. La filosofía de la Maison Lucas Banega — criterio, tiempo y la dignidad del trabajo."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://lucasbanega.com/filosofia"/>
+<meta property="og:image" content="https://lucasbanega.com/Bottle-Mediterraneo.jpg"/>
 <link rel="canonical" href="https://lucasbanega.com/filosofia"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
-<style>
-/* ── HEADER: sitio principal (blanco, MENÚ + logo, estilo Cucinelli) ── */
-header{flex-direction:row;justify-content:center;align-items:center;position:relative;background:var(--bone);padding:1.6rem 3rem;box-shadow:0 1px 0 var(--line)}
-header::before{content:none}
-header.scrolled{padding:1.6rem 3rem}
-header .brand,header.scrolled .brand{margin:0;color:var(--ink);text-shadow:none}
-.menu-trigger{position:absolute;left:3rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:0;font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--taupe);text-shadow:none;transition:color .3s}
-.menu-trigger:hover{color:var(--ink)}
-@media(max-width:640px){.menu-trigger{left:1.5rem}}
-.overlay-close{left:3rem;right:auto}
-@media(max-width:640px){.overlay-close{left:1.5rem}}
-
-/* ── ARTICLE HEADER (título en blanco + foto debajo) ── */
-.article-header{background:var(--bone);text-align:center;padding:5rem 2rem 3rem}
-.breadcrumb{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe);margin-bottom:2.6rem}
-.breadcrumb a{color:var(--taupe);text-decoration:none;transition:color .3s}
-.breadcrumb a:hover{color:var(--terra)}
-.breadcrumb span{color:var(--line);opacity:.9}
-.article-header-eyebrow{font-size:.56rem;letter-spacing:.4em;text-transform:uppercase;color:var(--terra);margin-bottom:1.2rem}
-.article-header-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.05;color:var(--ink)}
-
-.article-photo{width:100%;height:52vh;min-height:380px;overflow:hidden}
-.article-photo img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
-
-/* ── ARTICLE ── */
-.article-wrap{background:var(--bone);display:flex;justify-content:center;padding:0 2rem}
-.article{max-width:640px;width:100%;padding:6.5rem 0}
-.article-block{margin-bottom:6rem}
-.article-block:last-of-type{margin-bottom:0}
-.article-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.3rem,2.1vw,1.6rem);line-height:1.75;color:var(--ink)}
-.article-text em{font-style:italic;color:var(--terra)}
-.article-quote-block{text-align:center;margin:7rem 0;padding:3.5rem 1rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.article-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.5;color:var(--ink)}
-.article-quote-attr{display:block;margin-top:1.6rem;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--taupe)}
-.article-closing{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.4rem,2.3vw,1.75rem);line-height:1.7;color:var(--ink);text-align:center}
-
-@media(max-width:640px){
-  .article-header{padding:3.5rem 1.5rem 2.5rem}
-  .article-photo{height:38vh;min-height:280px}
-  .article{padding:4.5rem 0}
-  .article-block{margin-bottom:4rem}
-  .article-quote-block{margin:4.5rem 0;padding:2.5rem 0}
-}
-</style>
 </head>
 <body>
-
 <!-- HEADER -->
-<header id="main-nav">
+<header id="main-nav" class="header-chiaro">
   <button class="menu-trigger" id="burger" aria-label="Menú">Menú</button>
-  <a class="brand" href="/inicio" aria-label="Inicio">Lucas Banega</a>
+  <a class="brand-lockup" href="/inicio" aria-label="Maison Lucas Banega">
+    <span class="brand-maison">Maison</span>
+    <span class="brand">Lucas Banega</span>
+  </a>
 </header>
-
-<!-- OVERLAY MOBILE -->
+<!-- OVERLAY DI NAVIGAZIONE -->
 <div class="nav-overlay" id="nav-overlay">
   <button class="overlay-close" onclick="closeMenu()" aria-label="Cerrar menú"></button>
-  <a href="/inicio" onclick="closeMenu()">Inicio</a>
+  <a href="/inicio" onclick="closeMenu()">La Maison</a>
+  <a href="/fragranze" onclick="closeMenu()">Le Fragranze</a>
+  <a href="/collezione" onclick="closeMenu()">La Sartoria</a>
   <a href="/filosofia" onclick="closeMenu()">Filosofía</a>
   <a href="/contacto" onclick="closeMenu()">Contacto</a>
-  <a href="https://casabanega.com" target="_blank" rel="noopener" onclick="closeMenu()" style="font-style:italic">Casa Banega</a>
-  <span class="nav-overlay-tag">Lucas Banega — Sprezzatura Italiana</span>
+  <span class="nav-overlay-rule"></span>
+  <a href="https://casabanega.com" target="_blank" rel="noopener" onclick="closeMenu()" style="font-style:italic;font-size:1.5rem">Casa Banega</a>
+  <span class="nav-overlay-tag">Maison Lucas Banega — Fragranze &amp; Sartoria</span>
 </div>
 
 <!-- ARTICLE HEADER -->
 <div class="article-header">
   <nav class="breadcrumb">
-    <a href="/inicio">Inicio</a>
+    <a href="/inicio">La Maison</a>
     <span>/</span>
     <span>Filosofía</span>
   </nav>
@@ -88,7 +53,7 @@ header .brand,header.scrolled .brand{margin:0;color:var(--ink);text-shadow:none}
 </div>
 
 <div class="article-photo">
-  <img src="filosofia_bg.jpg" srcset="filosofia_bg-mobile.jpg 800w, filosofia_bg.jpg 1920w" sizes="100vw" alt="Lucas Banega — Filosofía"/>
+  <img src="filosofia_bg.jpg" srcset="filosofia_bg-mobile.jpg 800w, filosofia_bg.jpg 1920w" sizes="100vw" alt="Maison Lucas Banega — Filosofía"/>
 </div>
 
 <!-- ARTICLE -->
@@ -115,11 +80,20 @@ header .brand,header.scrolled .brand{margin:0;color:var(--ink);text-shadow:none}
 
     <div class="article-block">
       <p class="article-text reveal">
-        Por eso no medimos el tiempo de esta casa en temporadas, sino
-        en decisiones. Preferimos una prenda bien pensada a diez bien
-        vendidas. El lujo, para nosotros, empieza en la <em>dignidad
-        del trabajo</em> detrás de cada pieza — de quien la cose, de
-        quien la piensa — antes que en la etiqueta.
+        Por eso empezamos por el perfume. Es lo que menos se ve y lo que
+        más queda — no admite atajos ni marketing: o está bien compuesto,
+        o se nota. Un frasco no tiene talle ni temporada. Tiene
+        <em>una sola oportunidad</em> de ser cierto.
+      </p>
+    </div>
+
+    <div class="article-block">
+      <p class="article-text reveal">
+        No medimos el tiempo de esta casa en temporadas, sino en decisiones.
+        Preferimos una fragancia bien pensada a diez bien vendidas. El lujo,
+        para nosotros, empieza en la <em>dignidad del trabajo</em> detrás de
+        cada pieza — de quien la compone, de quien la piensa — antes que en
+        la etiqueta.
       </p>
     </div>
 
@@ -138,19 +112,32 @@ header .brand,header.scrolled .brand{margin:0;color:var(--ink);text-shadow:none}
   </article>
 </div>
 
+<!-- SIGILLO -->
+<div class="sigillo">
+  <img src="Monograma.png" alt="Maison Lucas Banega — Monograma" width="64" height="64"/>
+  <p class="sigillo-motto">Fatto con calma, come si deve.</p>
+</div>
+
+<!-- FOOTER -->
 <footer id="contacto">
   <div class="footer-notify">
     <p class="footer-notify-tag">Lanzamiento</p>
     <h2 class="footer-notify-title">Avisame cuando<br/><em>esté lista</em></h2>
-    <p class="footer-notify-sub">La colección está tomando forma. Dejá tu email y te escribo antes del lanzamiento.</p>
+    <p class="footer-notify-sub">Mediterraneo, la primera fragancia de la Maison, está en preparación. Dejá tu email y te escribo antes del lanzamiento.</p>
   </div>
 
   <div class="footer-main">
     <div class="footer-columns">
       <div class="footer-col">
-        <p class="footer-col-title">Navegación</p>
-        <a href="/inicio">Inicio</a>
-        <a href="/collezione">La Collezione</a>
+        <p class="footer-col-title">Le Fragranze</p>
+        <a href="/mediterraneo">Mediterraneo</a>
+        <a href="/fragranze">La colección</a>
+        <a href="/fragranze#famiglie">Familias olfativas</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">La Maison</p>
+        <a href="/filosofia">Filosofía</a>
+        <a href="/collezione">La Sartoria</a>
         <a href="/contacto">Contacto</a>
       </div>
       <div class="footer-col">
@@ -181,13 +168,14 @@ header .brand,header.scrolled .brand{margin:0;color:var(--ink);text-shadow:none}
   </div>
 
   <div class="footer-seal">
-    <img src="Monograma.png" alt="Lucas Banega — Monograma" width="80" height="80"/>
+    <img src="Monograma.png" alt="Maison Lucas Banega — Monograma" width="80" height="80"/>
+    <span class="footer-seal-tag">Maison Lucas Banega</span>
   </div>
 
   <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Lucas Banega</span>
+    <span class="footer-copy">© 2026 Maison Lucas Banega</span>
     <div class="footer-right">
-      <a class="footer-top-btn" href="#">Inicio ↑</a>
+      <a class="footer-top-btn" href="#">Volver arriba ↑</a>
     </div>
   </div>
 </footer>
@@ -208,7 +196,7 @@ header .brand,header.scrolled .brand{margin:0;color:var(--ink);text-shadow:none}
       </div>
       <div id="success-message" class="brevo-message brevo-message--success">
         <p class="brevo-success-title">Gracias por tu suscripción</p>
-        <p class="brevo-success-sub">Pronto vas a recibir novedades de la colección por correo electrónico.</p>
+        <p class="brevo-success-sub">Pronto vas a recibir novedades de la Maison por correo electrónico.</p>
         <button type="button" class="brevo-success-btn" id="newsletter-success-close">Seguir navegando</button>
       </div>
 
@@ -222,7 +210,7 @@ header .brand,header.scrolled .brand{margin:0;color:var(--ink);text-shadow:none}
 
             <div class="sib-form-block brevo-sub">
               <div class="sib-text-form-block">
-                <p>Sumate a la lista y te escribo antes del lanzamiento.</p>
+                <p>Sumate a la lista y te escribo antes de que salga Mediterraneo.</p>
               </div>
             </div>
 
