@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bone:#FFFFFF;--bone-deep:#FAF7F2;--ink:#1E1A16;--taupe:#7A736A;--terra:#B08D57;--line:rgba(30,26,22,.14)}
+:root{--bone:#fffefa;--bone-deep:#f5f3ee;--ink:#393730;--taupe:#716b61;--terra:#716b61;--line:#b6afa3}
 html{scroll-behavior:smooth}
 body{background:var(--bone);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 
@@ -44,6 +44,16 @@ footer span{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:
 .footer-top::after{content:'↑';font-size:.7rem}
 
 @keyframes fadeIn{to{opacity:1}}
+.line{display:none}
+.tag,.title,.sub,.back{opacity:1;animation:none}
+.title{font-size:clamp(24px,4vw,40px);letter-spacing:.01em;line-height:1.4}
+.sub{font-size:14px;font-weight:400}
+.back{border:0;min-height:44px;display:inline-flex;align-items:center;font-size:11px}
+footer{background:var(--bone-deep);color:var(--ink);border:0}
+footer span,.footer-top{color:var(--taupe)}
+.footer-ig{opacity:1}
+.nav-links a{font-size:11px;min-height:44px;display:inline-flex;align-items:center}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -57,7 +67,7 @@ footer span{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:
 <a href="/filosofia">Filosofía</a>
 </li>
     <li>
-<a href="/collezione">La Collezione</a>
+<a href="/collezione">Lanzamiento</a>
 </li>
     <li>
 <a href="/contacto">Contacto</a>
