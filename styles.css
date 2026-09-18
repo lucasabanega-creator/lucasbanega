@@ -1,5 +1,5 @@
-/* LUCAS BANEGA — luz natural, blanco cálido y piedra. */
-:root{--paper:#fffefa;--white:#fff;--ink:#393730;--ivory:#f5f3ee;--stone:#716b61;--line:#b6afa3;--nav-height:100px;--page-gutter:clamp(24px,3vw,48px);--font-brand:'Montserrat',Arial,sans-serif}
+/* LUCAS BANEGA — cuero curtido, hilo encerado y madera de taller. */
+:root{--paper:#f7f5f0;--white:#fffdf9;--ink:#413b33;--ivory:#ece7de;--stone:#746c60;--line:#d2c9bc;--brass:#9b8056;--tobacco:#6a5140;--nav-height:100px;--page-gutter:clamp(24px,3vw,48px);--font-brand:'Montserrat',Arial,sans-serif}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-brand);font-size:16px;font-weight:400;line-height:1.7}
@@ -24,7 +24,7 @@ header>.brand{grid-column:2;grid-row:1}
 .desktop-nav a[aria-current="page"],.header-contact[aria-current="page"]{text-decoration:underline;text-underline-offset:8px}
 .menu-trigger{display:none;background:none;border:0;color:inherit;width:44px;height:44px;padding:0}
 .menu-trigger::before{content:'';display:block;width:20px;height:8px;margin:auto;border-block:1px solid currentColor}
-.header-hero{position:fixed;left:0;right:0;background:transparent;color:var(--paper);transition:background-color .2s ease,color .2s ease}
+.header-hero{position:fixed;left:0;right:0;background:transparent;color:var(--ink);transition:background-color .2s ease,color .2s ease}
 .header-hero.scrolled{background:var(--white);color:var(--ink)}
 .nav-overlay{display:none;position:fixed;inset:0;z-index:40;margin:0;border:0;padding:80px 24px;width:100%;max-width:none;height:100%;height:100dvh;max-height:none;overflow-y:auto;background:var(--paper);color:var(--ink);flex-direction:column;align-items:center;justify-content:center;gap:24px}
 .nav-overlay[open]{display:flex}
@@ -36,13 +36,14 @@ header>.brand{grid-column:2;grid-row:1}
 .overlay-close::after{transform:rotate(-45deg)}
 .nav-overlay-rule{height:24px}
 .nav-overlay-tag{position:absolute;bottom:32px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
-.home-hero{position:relative;background:var(--ink);color:var(--paper)}
+.home-hero{position:relative;background:var(--ivory);color:var(--ink)}
 .hero-photo{height:100svh;min-height:560px;overflow:hidden}
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 55%}
-.hero-photo::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(27,32,28,.48),transparent 180px),linear-gradient(to top,rgba(27,32,28,.25),transparent 230px)}
-.hero-caption{position:absolute;bottom:48px;left:24px;right:24px;text-align:center}
-.hero-caption h1{font-size:clamp(30px,3.2vw,44px);line-height:1.4;letter-spacing:.025em}
-.hero-caption .text-link{margin-top:8px;color:var(--paper)}
+.hero-photo::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(247,245,240,.26),transparent 50%)}
+.hero-caption{position:absolute;bottom:18%;left:clamp(24px,12vw,180px);max-width:430px;text-align:left}
+.hero-kicker{font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px;color:var(--tobacco)}
+.hero-caption h1{font-size:clamp(32px,4vw,54px);line-height:1.18;letter-spacing:-.02em}
+.hero-caption .text-link{margin-top:12px;color:var(--ink)}
 .text-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:24px;font-size:12px;font-weight:400;letter-spacing:.06em;text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:1px}
 .eyebrow,.article-header-eyebrow,.page-hero-eyebrow{font-size:11px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
 .page-hero-eyebrow{color:inherit}
@@ -51,13 +52,13 @@ header>.brand{grid-column:2;grid-row:1}
 .brand-intro>p:not(.eyebrow){max-width:540px;margin:auto;font-size:16px;line-height:1.9;color:var(--stone)}
 .launch{padding:80px 24px 88px;background:var(--ivory);color:var(--ink);text-align:center}
 .launch h2{font-size:clamp(20px,2vw,26px);line-height:1.5;letter-spacing:.005em;margin:20px 0}
-.launch>p:not(.eyebrow){max-width:480px;margin:auto;font-size:14px;line-height:1.9;color:var(--stone)}
+.launch .eyebrow,.launch>p:not(.eyebrow){color:var(--stone)}
 .launch-form{position:relative;max-width:600px;margin:36px auto 0;text-align:left}
 .launch-form label{display:block;font-size:12px;letter-spacing:.01em;margin-bottom:8px}
 .launch-fields{display:flex;align-items:center;gap:24px}
 .launch-fields input{flex:1;min-width:0;min-height:48px;padding:12px 0;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);font-size:16px}
 .launch-fields input::placeholder{color:var(--stone);opacity:1}
-.launch-fields input:focus{outline:none;border-bottom:2px solid var(--stone);padding-bottom:11px}
+.launch-fields input:focus{outline:none;border-bottom:2px solid var(--tobacco);padding-bottom:11px}
 .launch-fields button{min-height:48px;padding:12px 0;background:none;border:0;color:var(--ink);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:400}
 .form-trap{position:absolute;left:-10000px;width:1px;height:1px}
 .site-footer{display:grid;grid-template-columns:1fr auto;gap:48px;padding:68px var(--page-gutter) 32px;background:var(--paper);color:var(--ink)}
@@ -102,7 +103,7 @@ header>.brand{grid-column:2;grid-row:1}
   .desktop-nav,.header-contact{display:none}
   .hero-photo{min-height:520px}
   .hero-photo img{object-position:58% center}
-  .hero-caption{bottom:32px}
+  .hero-caption{bottom:32px;left:24px;right:24px;max-width:none;text-align:center}
   .hero-caption h1{font-size:32px}
   .brand-intro{padding:68px 24px}
   .brand-intro h2{font-size:22px}
