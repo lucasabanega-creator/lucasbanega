@@ -16,14 +16,14 @@
 <link rel="canonical" href="https://lucasbanega.com/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 <!-- HEADER -->
 <header id="main-nav" class="header-hero">
   <button class="menu-trigger" id="burger" aria-label="Menú" aria-expanded="false" aria-controls="nav-overlay">Menú</button>
-  <a class="brand" href="/" aria-label="Inicio">Lucas Banega</a>
+  <a class="brand" href="/" aria-label="Inicio"><img src="logo-lucas-banega.png" width="900" height="270" alt="Lucas Banega"/></a>
   <a class="header-contact" href="/contacto">Contacto</a>
   <nav class="desktop-nav" aria-label="Navegación principal">
 <a href="/filosofia">El oficio</a>
@@ -48,16 +48,29 @@
 <img src="leathercraft-hero-luminous.png" sizes="100vw" width="1680" height="945" alt="Bolso de cuero hecho a mano en travertino y lino" fetchpriority="high"/>
 </div>
 <div class="hero-caption">
-<p class="hero-kicker">Leathercraft · Hecho a mano</p>
-<h1 id="hero-title">Objetos para toda una vida.</h1>
-<a class="text-link" href="#contacto">Conocer las piezas</a>
+<p class="hero-kicker">Buenos Aires · Leathercraft</p>
+<h1 id="hero-title">La belleza<br/>del uso.</h1>
+<a class="text-link" href="#oficio">Descubrir el oficio <span aria-hidden="true">↘</span></a>
 </div>
 </section>
-<section class="brand-intro">
-<p class="eyebrow">El oficio</p>
-<h2>Cuero honesto. Manos pacientes.</h2>
-<p>Cada pieza nace en el taller: se corta, se cose y se termina a mano para ganar carácter con el uso.</p>
-<a class="text-link" href="/filosofia">Conocer el proceso</a>
+<section class="brand-intro" id="oficio">
+<p class="eyebrow">01 — El oficio</p>
+<h2>Objetos hechos a mano,<br/>pensados para acompañarte.</h2>
+<p>Cada pieza nace lentamente en el taller. Cuero de curtido vegetal, hilo encerado y decisiones que dejan lugar al tiempo.</p>
+<a class="text-link" href="/filosofia">Conocer el proceso <span aria-hidden="true">↗</span></a>
+</section>
+<section class="home-story" aria-label="Una pieza, muchos años">
+  <div class="story-image"><img src="Bottle-Mediterraneo.png" width="1792" height="2400" alt="Detalle de objeto artesanal sobre fondo cálido" loading="lazy"/></div>
+  <div class="story-copy">
+    <p class="eyebrow">Materia que cambia</p>
+    <h2>Una pátina<br/>que es tuya.</h2>
+    <p>El cuero no se queda quieto. La luz, las manos y los días lo transforman hasta hacerlo irrepetible.</p>
+    <a class="text-link" href="/collezione">Ver las piezas <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+<section class="home-manifesto">
+  <p>“Lo que está hecho con paciencia,<br/>envejece con belleza.”</p>
+  <span>Lucas Banega</span>
 </section>
 </main>
 <footer id="contacto">
@@ -76,7 +89,7 @@
 </form>
 </section>
 <div class="site-footer">
-<a class="brand" href="/">Lucas Banega</a>
+<a class="brand" href="/" aria-label="Inicio"><img src="logo-lucas-banega.png" width="900" height="270" alt="Lucas Banega"/></a>
 <nav aria-label="Enlaces del pie">
 <a href="/filosofia">El oficio</a>
 <a href="/collezione">Piezas</a>
