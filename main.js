@@ -1,3 +1,26 @@
+// ── HERO COMPOSITION ──
+// Referencia de comportamiento: contenido al llegar y apertura lateral al comenzar el scroll.
+// Se mantiene como una implementación propia y se desactiva si el usuario reduce movimiento.
+const retailHero = document.querySelector('.home-hero');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (retailHero && !reducedMotion.matches) {
+  let heroFrame = null;
+  const updateHeroComposition = () => {
+    heroFrame = null;
+    const desktop = window.innerWidth > 700;
+    const travel = Math.max(retailHero.offsetHeight * .72, 1);
+    const progress = Math.min(Math.max(window.scrollY / travel, 0), 1);
+    const initialBreath = desktop ? Math.min(48, window.innerWidth * .03) : 0;
+    retailHero.style.setProperty('--hero-breath', `${Math.round(initialBreath * (1 - progress))}px`);
+  };
+  const requestHeroComposition = () => {
+    if (heroFrame === null) heroFrame = requestAnimationFrame(updateHeroComposition);
+  };
+  updateHeroComposition();
+  window.addEventListener('scroll', requestHeroComposition, { passive: true });
+  window.addEventListener('resize', requestHeroComposition, { passive: true });
+}
+
 // ── SCROLL REVEAL ──
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
