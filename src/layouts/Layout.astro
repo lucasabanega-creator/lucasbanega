@@ -10,7 +10,7 @@ interface Props {
 }
 const { title, description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
-const indexable = site.live && !noindex;
+const indexable = site.public && !noindex;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -68,7 +68,7 @@ const jsonLd = {
       content="Lucas Banega: imágenes conceptuales de campaña."
     />
     <meta name="twitter:card" content="summary_large_image" />
-    {site.live && (
+    {site.public && (
       <script
         type="application/ld+json"
         set:html={JSON.stringify(jsonLd).replace(/</g, '\u003c')}

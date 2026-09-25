@@ -8,9 +8,11 @@ if (
   url.pathname !== '/'
 )
   throw new Error('SITE_URL debe ser un origen HTTPS real.');
-const live =
-  env('PUBLICATION_MODE') === 'live' &&
-  (!env('CONTEXT') || env('CONTEXT') === 'production');
+const productionContext = !env('CONTEXT') || env('CONTEXT') === 'production';
+const live = env('PUBLICATION_MODE') === 'live' && productionContext;
+const publicPrelaunch =
+  env('PUBLICATION_MODE') === 'public-prelaunch' && productionContext;
+const publicSite = live || publicPrelaunch;
 const contact = env('CONTACT_EMAIL');
 if (contact && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact))
   throw new Error('CONTACT_EMAIL inválido.');
@@ -42,10 +44,11 @@ if (
 export const site = {
   url: url.origin,
   live,
+  public: publicSite,
   mode: 'prelaunch' as 'prelaunch' | 'commerce',
   contact,
   newsletter: live && privacyReady && providerReady && limiterReady,
   privacy,
-  previewPassword: env('PREVIEW_PASSWORD'),
+  previewPassword: publicSite ? '' : env('PREVIEW_PASSWORD'),
 };
 export const serverEnv = env;

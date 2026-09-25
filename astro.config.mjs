@@ -6,9 +6,10 @@ const env = {
   ...loadEnv(process.env.NODE_ENV || 'production', process.cwd(), ''),
   ...process.env,
 };
-const live =
-  env.PUBLICATION_MODE === 'live' &&
-  (!env.CONTEXT || env.CONTEXT === 'production');
+const productionContext = !env.CONTEXT || env.CONTEXT === 'production';
+const live = env.PUBLICATION_MODE === 'live' && productionContext;
+const publicPrelaunch =
+  env.PUBLICATION_MODE === 'public-prelaunch' && productionContext;
 if (
   live &&
   (!env.SITE_URL ||
@@ -29,7 +30,7 @@ if (
   throw new Error(
     'Publicación bloqueada: completar datos reales, privacidad, imágenes, altas y protección contra abuso.',
   );
-if (env.NETLIFY && !live && !env.PREVIEW_PASSWORD)
+if (env.NETLIFY && !live && !publicPrelaunch && !env.PREVIEW_PASSWORD)
   throw new Error(
     'Configurar PREVIEW_PASSWORD para proteger la preview en Netlify.',
   );

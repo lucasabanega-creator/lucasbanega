@@ -12,8 +12,19 @@ test('production build refuses incomplete real data', () => {
   assert.notEqual(r.status, 0);
   assert.match(r.stderr, /Publicación bloqueada/);
 });
+test('public prelaunch build allows a disabled newsletter without a preview password', () => {
+  assert.equal(
+    run({
+      NETLIFY: 'true',
+      PUBLICATION_MODE: 'public-prelaunch',
+      CONTEXT: 'production',
+      PREVIEW_PASSWORD: '',
+    }).status,
+    0,
+  );
+});
 test('Netlify preview refuses missing password, including live deploy-preview context', () => {
-  for (const mode of ['preview', 'live']) {
+  for (const mode of ['preview', 'live', 'public-prelaunch']) {
     const r = run({
       NETLIFY: 'true',
       PUBLICATION_MODE: mode,

@@ -1,7 +1,7 @@
 import { defineMiddleware } from 'astro:middleware';
 import { site } from './lib/config';
 export const onRequest = defineMiddleware(async ({ request }, next) => {
-  if (!site.live && site.previewPassword) {
+  if (!site.public && site.previewPassword) {
     const expected =
       'Basic ' +
       Buffer.from('preview:' + site.previewPassword).toString('base64');
@@ -20,9 +20,9 @@ export const onRequest = defineMiddleware(async ({ request }, next) => {
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' ws:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net; img-src 'self' data: https://p.typekit.net; font-src 'self' https://use.typekit.net; connect-src 'self' ws:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
   );
-  if (!site.live) {
+  if (!site.public) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow');
     response.headers.set('Cache-Control', 'no-store');
   }

@@ -1,6 +1,6 @@
 # LUCAS BANEGA — prelanzamiento
 
-Web editorial nueva en Astro + TypeScript, preparada para **lucasbanega.com / Netlify**. Estado entregado: **preview local**, no publicada, sin recepción de datos personales. Se reemplazaron las páginas, estilos, scripts y recursos anteriores; se conservó el historial Git y la configuración del editor.
+Web editorial en Astro + TypeScript para **lucasbanega.com / Netlify**. El modo `public-prelaunch` publica la web sin activar la suscripción ni recibir consultas por formulario. La recepción de datos personales requiere completar las condiciones de lanzamiento. Se reemplazaron las páginas, estilos, scripts y recursos anteriores; se conservó el historial Git y la configuración del editor.
 
 ## Usar localmente
 
@@ -28,11 +28,10 @@ Para revisar exactamente el código compilado, detener primero el servidor de de
 
 `netlify.toml` establece `npm run check && npm run build`, publicación `dist`, Node 24 y el dominio confirmado mediante `SITE_URL=https://lucasbanega.com`. No se modificaron DNS, cuenta, repositorio remoto ni despliegues.
 
-1. Confirmar en Netlify que este repositorio y directorio son la fuente correcta.
-2. Antes de cualquier push que dispare un despliegue, definir **PREVIEW_PASSWORD** como secreto disponible en build y Functions. Usuario de preview: `preview`. No poner la clave en Git.
-3. Mantener `PUBLICATION_MODE=preview`. Las páginas llevan `noindex` también en la respuesta HTTP, el sitemap no enumera rutas y las altas están deshabilitadas. El build en Netlify falla si falta protección. Se recomienda activar además la protección de acceso de Netlify para cubrir los assets estáticos; el middleware protege páginas y endpoints, no los archivos del CDN.
-4. Revisar la preview protegida. No se ha hecho push ni deploy desde esta tarea.
-5. Solo después de cerrar los pendientes, cambiar el valor comprometido `PUBLICATION_MODE` en `netlify.toml` a `live` y realizar un despliegue autorizado. Las previews de ramas siguen protegidas y no indexables por el contexto de Netlify.
+1. Confirmar en Netlify que este repositorio, la rama `main` y el directorio raíz son la fuente del dominio.
+2. El modo actual `PUBLICATION_MODE=public-prelaunch` permite publicar la portada y las páginas editoriales sin contraseña en el contexto de producción. El formulario queda desactivado. Netlify debe ejecutar `npm run check && npm run build` y publicar `dist`.
+3. Los deploys de ramas y pull requests siguen siendo previews privadas: requieren **PREVIEW_PASSWORD** como secreto disponible en Build y Functions. Usuario: `preview`. No poner la clave en Git.
+4. Para abrir las inscripciones y el lanzamiento completo, cerrar los pendientes, cambiar `PUBLICATION_MODE` a `live` y hacer un nuevo despliegue.
 
 ## Pendientes reales para abrir el prelanzamiento
 
@@ -40,7 +39,7 @@ Para revisar exactamente el código compilado, detener primero el servidor de de
 - Proveedor de suscripciones confirmado. Se incluye **un adaptador opcional para Brevo con doble confirmación**, todavía no conectado. No se creó una cuenta ni se contrató un servicio. Si el proveedor elegido es otro, sustituir `servicesFor().send` y su validación.
 - Si se usa ese adaptador: remitente y dominio verificados, lista, plantilla de doble confirmación, baja operativa, `BREVO_API_KEY`, `BREVO_LIST_ID`, `BREVO_TEMPLATE_ID`, `NEWSLETTER_PROVIDER=brevo`.
 - Limitador compartido entre funciones: instancia Upstash Redis y secretos `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`, o reemplazo equivalente. Se limita atómicamente a cinco solicitudes por IP en diez minutos. Solo se almacena un HMAC temporal de la IP, nunca su texto ni el correo; falla cerrado si el servicio no responde.
-- Responsable y política real: completar `src/content/privacy.json` con `controller`, `updated` y `sections` (objetos `{title, body}`), revisar finalidades, proveedores, conservación, transferencias, derechos y contacto. Después marcar `approved: true` y `PRIVACY_APPROVED=true`. El texto actual solo informa del estado de la preview.
+- Responsable y política real: completar `src/content/privacy.json` con `controller`, `updated` y `sections` (objetos `{title, body}`), revisar finalidades, proveedores, conservación, transferencias, derechos y contacto. Después marcar `approved: true` y `PRIVACY_APPROVED=true`. El texto actual solo informa del estado del prelanzamiento sin altas.
 - Reemplazar las referencias generadas por fotografías propias o licenciadas aprobadas. Revisar el registro de assets, alt, pies y social. Marcar `IMAGES_APPROVED=true` solo después.
 - Prueba real con dirección controlada: entrega del email, enlace de confirmación, persistencia en lista, baja y reintento. No basta una respuesta HTTP favorable.
 - Comprobar el despliegue HTTPS, los redirects de dominio y el 404 en Netlify; validar canonical, sitemap, metadatos, ausencia de `noindex` en producción y permanencia de `noindex` en previews. Configurar Search Console y enviar el sitemap después.

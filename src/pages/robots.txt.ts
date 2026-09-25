@@ -3,6 +3,6 @@ import { site } from '../lib/config';
 export const GET: APIRoute = () =>
   new Response(
     'User-agent: *\nAllow: /\n' +
-      (site.live ? `Sitemap: ${site.url}/sitemap.xml\n` : ''),
+      (site.public ? `Sitemap: ${site.url}/sitemap.xml\n` : ''),
     { headers: { 'Content-Type': 'text/plain; charset=utf-8' } },
   );

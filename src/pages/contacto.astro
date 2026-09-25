@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LaunchForm from '../components/LaunchForm.astro';
 import { site } from '../lib/config';
 ---
 
 <Layout
   title="Contacto | Lucas Banega"
-  description="Contacto y novedades del primer lanzamiento de Lucas Banega."
+  description="El canal de consultas de Lucas Banega estará disponible próximamente."
+  noindex={!site.contact}
 >
   <section class="page-heading wrap contact-heading">
     <p class="eyebrow">CONTACTO</p>
@@ -22,8 +22,8 @@ import { site } from '../lib/config';
       <>
         <p>Estamos preparando nuestro canal de contacto.</p>
         <p class="small">
-          El correo oficial se incorporará antes del lanzamiento. Esta preview
-          todavía no recibe consultas.
+          El correo oficial se incorporará antes del lanzamiento. Por ahora no
+          recibimos consultas a través de esta web.
         </p>
       </>
     )}
@@ -31,5 +31,4 @@ import { site } from '../lib/config';
       Conocé nuestro primer proyecto <span aria-hidden="true">↗</span>
     </a>
   </section>
-  <LaunchForm />
 </Layout>

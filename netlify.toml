@@ -4,7 +4,7 @@
 [build.environment]
   NODE_VERSION = "24"
   SITE_URL = "https://lucasbanega.com"
-  PUBLICATION_MODE = "preview"
+  PUBLICATION_MODE = "public-prelaunch"
 [[headers]]
   for = "/fonts/*"
   [headers.values]
