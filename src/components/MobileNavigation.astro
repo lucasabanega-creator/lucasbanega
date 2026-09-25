@@ -44,20 +44,7 @@ import Wordmark from './Wordmark.astro';
   </div>
   <nav aria-label="Navegación móvil">
     {es.navigation.map((item) => (
-      <a href={item.href}>
-        {item.label}
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.1"
-          aria-hidden="true"
-        >
-          <path d="m9 4 8 8-8 8" />
-        </svg>
-      </a>
+      <a href={item.href}>{item.label}</a>
     ))}
   </nav>
   <div class="menu-utility">

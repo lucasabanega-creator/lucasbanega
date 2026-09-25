@@ -339,10 +339,6 @@ dialog nav a {
   text-transform: uppercase;
   text-decoration: none;
 }
-dialog nav a svg {
-  margin-left: auto;
-  flex-shrink: 0;
-}
 .menu-utility {
   display: grid;
   gap: 2px;
@@ -421,18 +417,8 @@ dialog nav a svg {
   letter-spacing: 0.16em;
   text-decoration: none;
 }
-.campaign-links a:hover,
-.campaign-down:hover {
+.campaign-links a:hover {
   color: white;
-}
-.campaign-down {
-  position: absolute;
-  bottom: 20px;
-  left: calc(50% - 24px);
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
 }
 .campaign-stories {
   max-width: 1410px;
@@ -996,12 +982,12 @@ input::placeholder {
 }
 .campaign-home .campaign-copy h1 {
   font-family: var(--font-light);
-  font-size: clamp(32px, 3vw, 48px);
+  font-size: clamp(27px, 2.15vw, 35px);
   font-weight: 200;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 .campaign-home .campaign-copy p {
-  font-size: clamp(16px, 1.4vw, 20px);
+  font-size: clamp(15px, 1.15vw, 17px);
 }
 .campaign-home .campaign-links a,
 .campaign-home .collection-nav a {
@@ -1141,7 +1127,10 @@ input::placeholder {
     padding: 90px 22px 60px;
   }
   .campaign-home .campaign-copy h1 {
-    font-size: clamp(31px, 8vw, 39px);
+    font-size: clamp(27px, 7vw, 31px);
+  }
+  .campaign-home .campaign-copy p {
+    font-size: 14px;
   }
   .campaign-home .campaign-stories {
     max-width: none;
