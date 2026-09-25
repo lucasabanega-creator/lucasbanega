@@ -809,6 +809,9 @@ input::placeholder {
   .brand-signature .wordmark {
     width: 185px;
   }
+  .dialog-top .wordmark {
+    width: min(185px, 100%);
+  }
   .campaign-hero {
     min-height: 570px;
     max-height: 850px;
