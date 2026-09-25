@@ -3,7 +3,7 @@ export const es = {
   home: {
     title: 'Lucas Banega | Official Boutique',
     description:
-      'Conocé Lucas Banega: diseño, materia y atención al uso. Descubrí la visión de la marca y recibí novedades de su primer weekender de cuero.',
+      'Conocé Lucas Banega: diseño, materia y atención al uso. Descubrí la visión de la marca y su primer tarjetero de cuero en desarrollo.',
   },
   navigation: [
     { href: '/maison', label: 'Maison' },
@@ -13,7 +13,7 @@ export const es = {
   ],
   hero: {
     title: 'La elegancia se descubre en el uso.',
-    text: 'Estamos desarrollando nuestro primer objeto: un weekender de cuero de producción limitada.',
+    text: 'Estamos desarrollando nuestro primer objeto: un tarjetero de cuero.',
   },
   idea: {
     title: 'Formas precisas. Materiales vivos.',
@@ -25,6 +25,6 @@ export const es = {
   },
   first: {
     title: 'Un primer objeto, pensado para acompañar.',
-    text: 'El weekender será el punto de partida de Lucas Banega. Su desarrollo reúne diseño, materia y atención al uso.',
+    text: 'El tarjetero será el punto de partida de Lucas Banega. Su desarrollo reúne diseño, materia y atención al uso.',
   },
 };

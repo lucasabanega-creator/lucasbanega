@@ -691,19 +691,17 @@ input::placeholder {
 .project-copy .text-link {
   margin-top: 20px;
 }
-.project-word {
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: clamp(40px, 5vw, 72px);
-  border: 1px solid var(--color-line);
+.cardholder-concept img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center bottom;
+  background: #fff;
 }
-.project-word span {
+.cardholder-concept figcaption {
+  margin-top: 10px;
+  color: var(--color-muted);
   font-size: 11px;
-  letter-spacing: 0.18em;
-  margin-top: 20px;
 }
 .project-copy h2 {
   margin-bottom: 24px;
@@ -877,9 +875,6 @@ input::placeholder {
   .contact-heading {
     min-height: 480px;
   }
-  .project-word {
-    min-height: 300px;
-  }
   .dialog-top {
     padding-inline: 14px;
   }
@@ -1007,8 +1002,8 @@ input::placeholder {
   aspect-ratio: 1;
   background: #eae7e2;
 }
-.campaign-home .story-detail img {
-  object-position: 50% 40%;
+.campaign-home .story-object img {
+  object-position: center bottom;
 }
 .campaign-home .story h2 {
   margin-top: 12px;
@@ -1040,7 +1035,7 @@ input::placeholder {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 65% center;
+  object-position: 35% center;
 }
 .campaign-feature-copy {
   max-width: 470px;
@@ -1153,6 +1148,9 @@ input::placeholder {
   .campaign-feature-visual {
     height: 56svh;
     min-height: 320px;
+  }
+  .campaign-feature-visual img {
+    object-position: 20% center;
   }
   .campaign-home .campaign-statement {
     padding: 66px 24px 72px;

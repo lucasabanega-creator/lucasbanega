@@ -1,40 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LaunchForm from '../components/LaunchForm.astro';
+import CardholderConcept from '../components/CardholderConcept.astro';
 ---
 
 <Layout
-  title="Nuestro primer objeto | Lucas Banega"
-  description="Un weekender de cuero de producción limitada, todavía en desarrollo. Conocé el primer proyecto de Lucas Banega."
+  title="Tarjetero | Lucas Banega"
+  description="Conocé el primer objeto de Lucas Banega: un tarjetero de cuero en desarrollo, presentado mediante imágenes conceptuales."
 >
   <section class="page-heading wrap">
-    <p class="eyebrow">EN DESARROLLO</p>
-    <h1>Nuestro primer objeto</h1>
+    <p class="eyebrow">PRIMER OBJETO / EN DESARROLLO</p>
+    <h1>El tarjetero</h1>
     <p>
-      Un weekender de cuero de producción limitada. El comienzo de una búsqueda
-      entre diseño, materia y atención al uso.
+      Una primera exploración de pequeño formato, pensada desde la proporción,
+      la materia y los gestos cotidianos.
     </p>
   </section>
   <section class="project-editorial wrap">
-    <div class="project-word" aria-hidden="true">
-      Weekender<span>01 / EL COMIENZO</span>
-    </div>
+    <CardholderConcept />
     <div class="project-copy">
-      <h2>Pensado para acompañar.</h2>
+      <h2>Lo esencial, de cerca.</h2>
       <p>
-        El weekender será el punto de partida de Lucas Banega. Su desarrollo
-        reúne diseño, materia y atención al uso.
+        El tarjetero será el punto de partida de Lucas Banega. Buscamos una
+        silueta delgada, ranuras de acceso simple y costuras discretas.
       </p>
       <p>
-        La forma, las dimensiones y los detalles se definirán durante el
-        desarrollo. Compartiremos el objeto cuando podamos mostrarlo con
-        precisión.
+        Las imágenes muestran una intención de diseño. El cuero, las medidas y
+        las terminaciones finales se definirán después de las pruebas.
       </p>
-      <p class="small">Todavía no hay una fecha de lanzamiento confirmada.</p>
+      <p class="small">
+        Producto en desarrollo. Todavía no está disponible para comprar ni hay
+        una fecha de lanzamiento confirmada.
+      </p>
       <a class="text-link" href="/maison">
         La visión detrás del objeto
       </a>
     </div>
   </section>
-  <LaunchForm />
 </Layout>
