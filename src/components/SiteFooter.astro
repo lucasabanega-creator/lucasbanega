@@ -1,0 +1,36 @@
+---
+import Wordmark from './Wordmark.astro';
+import LaunchForm from './LaunchForm.astro';
+---
+
+<footer class="site-footer">
+  <LaunchForm />
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <Wordmark />
+        <p class="small">
+          Formas precisas, materiales vivos y una
+          <br class="desktop-break" /> elegancia que se descubre en el uso.
+        </p>
+      </div>
+      <nav aria-label="Explorar">
+        <p class="footer-label">Explorar</p>
+        <a href="/maison">Maison</a>
+        <a href="/primer-objeto">Primer objeto</a>
+      </nav>
+      <nav aria-label="Enlaces útiles">
+        <p class="footer-label">Información</p>
+        <a href="/contacto">Contacto</a>
+        <a href="/privacidad">Privacidad</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} Lucas Banega</p>
+      <p>Imágenes conceptuales de campaña.</p>
+      <a href="#contenido">
+        Volver al comienzo <span aria-hidden="true">↑</span>
+      </a>
+    </div>
+  </div>
+</footer>

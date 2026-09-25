@@ -1,0 +1,64 @@
+---
+interface Props {
+  variant?: 'hero' | 'detail';
+  priority?: boolean;
+  caption?: boolean;
+}
+const { variant = 'hero', priority = false, caption = true } = Astro.props;
+---
+
+<figure class:list={['material-image', variant]}>
+  <picture>
+    {variant === 'hero' && (
+      <source
+        media="(max-width:767px)"
+        type="image/avif"
+        srcset="/images/hero-mobile-480.avif 480w, /images/hero-mobile-800.avif 800w"
+        sizes="100vw"
+      />
+    )}
+    {variant === 'hero' && (
+      <source
+        media="(max-width:767px)"
+        type="image/webp"
+        srcset="/images/hero-mobile-480.webp 480w, /images/hero-mobile-800.webp 800w"
+        sizes="100vw"
+      />
+    )}
+    {variant === 'hero' && (
+      <source
+        media="(max-width:767px)"
+        type="image/jpeg"
+        srcset="/images/hero-mobile-800.jpg"
+      />
+    )}
+    <source
+      type="image/avif"
+      srcset={`/images/${variant}-800.avif 800w, /images/${variant}-1440.avif 1440w`}
+      sizes="(min-width:1440px) 800px, (min-width:768px) 55vw, 100vw"
+    />
+    <source
+      type="image/webp"
+      srcset={`/images/${variant}-800.webp 800w, /images/${variant}-1440.webp 1440w`}
+      sizes="(min-width:1440px) 800px, (min-width:768px) 55vw, 100vw"
+    />
+    <img
+      src={`/images/${variant}-800.jpg`}
+      alt={
+        variant === 'hero'
+          ? 'Estudio conceptual de una superficie de cuero con un pliegue bajo luz suave, generado con IA.'
+          : 'Detalle conceptual de la textura del cuero, generado con IA; no es la materia final del weekender.'
+      }
+      width="1440"
+      height={variant === 'detail' ? 1440 : 1800}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : 'auto'}
+      decoding="async"
+    />
+  </picture>
+  {caption && (
+    <figcaption>
+      Estudio visual de materia · Imagen conceptual generada con IA.
+    </figcaption>
+  )}
+</figure>

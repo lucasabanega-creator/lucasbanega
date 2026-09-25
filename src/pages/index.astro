@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EditorialHero from '../components/EditorialHero.astro';
+import { es } from '../content/es';
+---
+
+<Layout {...es.home}>
+  <EditorialHero />
+
+  <section
+    id="materia"
+    class="campaign-stories editorial-chapter"
+    aria-label="Explorar Lucas Banega"
+  >
+    <a class="story" href="/maison">
+      <div class="story-image">
+        <img
+          src="/images/material-v2.webp"
+          width="1122"
+          height="1402"
+          alt="Cuero taupe y tejido claro bajo luz natural."
+          loading="lazy"
+        />
+      </div>
+      <h2>La belleza de la materia</h2>
+      <span>Explorar la maison</span>
+    </a>
+    <a class="story" href="/primer-objeto">
+      <div class="story-image story-detail">
+        <img
+          src="/images/hero-1440.webp"
+          width="1440"
+          height="1800"
+          alt="Detalle de la textura y los pliegues del cuero."
+          loading="lazy"
+        />
+      </div>
+      <h2>El valor de un gesto</h2>
+      <span>Nuestro primer objeto</span>
+    </a>
+  </section>
+
+  <section
+    class="campaign-feature editorial-chapter"
+    aria-labelledby="feature-title"
+  >
+    <div class="campaign-feature-visual">
+      <img
+        src="/images/campaign-v2.webp"
+        width="1536"
+        height="1024"
+        alt="Mano sobre una mesa de madera junto a una muestra de cuero, en un estudio luminoso."
+        loading="lazy"
+      />
+    </div>
+    <div class="campaign-feature-copy">
+      <p class="eyebrow">EL PRIMER CAPÍTULO</p>
+      <h2 id="feature-title">Diseñar para acompañar.</h2>
+      <p>
+        La forma nace de la atención a la materia, al gesto y a la vida
+        cotidiana.
+      </p>
+      <a class="quiet-link" href="/primer-objeto">
+        Conocer el primer objeto
+      </a>
+    </div>
+  </section>
+
+  <section
+    class="campaign-statement editorial-chapter"
+    aria-labelledby="statement-title"
+  >
+    <p class="eyebrow">Lucas Banega</p>
+    <h2 id="statement-title">Objetos para acompañar.</h2>
+    <p>
+      Diseño, materia y atención al uso.
+      <br />
+      Nuestro primer weekender está en desarrollo.
+    </p>
+    <a class="quiet-link" href="/maison">
+      Descubrir la maison
+    </a>
+  </section>
+</Layout>

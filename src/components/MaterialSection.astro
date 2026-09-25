@@ -1,0 +1,21 @@
+---
+import { es } from '../content/es';
+import MaterialImage from './MaterialImage.astro';
+---
+
+<section id="materia" class="material-section">
+  <div class="wrap material-grid">
+    <MaterialImage variant="detail" />
+    <div class="material-copy">
+      <p class="eyebrow">01 / MATERIA</p>
+      <h2>{es.material.title}</h2>
+      <p>{es.material.text}</p>
+      <p class="small">
+        Una exploración visual. La materia final todavía está por definirse.
+      </p>
+      <a class="text-link" href="/primer-objeto">
+        Del material al objeto <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>

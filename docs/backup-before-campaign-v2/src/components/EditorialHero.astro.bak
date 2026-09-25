@@ -1,0 +1,24 @@
+---
+import { es } from '../content/es';
+import MaterialImage from './MaterialImage.astro';
+---
+
+<section class="editorial-hero wrap" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow">LUCAS BANEGA</p>
+    <h1 id="hero-title">{es.hero.title}</h1>
+    <p class="hero-description">{es.hero.text}</p>
+    <div class="hero-actions">
+      <a class="button" href="#novedades">
+        Recibir novedades <span aria-hidden="true">↗</span>
+      </a>
+      <a class="text-link" href="/maison">
+        Nuestra visión
+      </a>
+    </div>
+    <a class="hero-footnote" href="#materia">
+      Una mirada a la materia <span aria-hidden="true">↓</span>
+    </a>
+  </div>
+  <MaterialImage priority />
+</section>

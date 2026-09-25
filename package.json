@@ -1,0 +1,36 @@
+{
+  "name": "lucas-banega",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro check",
+    "build": "astro build",
+    "start": "astro dev --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "format": "prettier --write src scripts tests astro.config.mjs package.json tsconfig.json"
+  },
+  "dependencies": {
+    "@astrojs/netlify": "^8.2.6",
+    "@fontsource-variable/source-serif-4": "^5.3.0",
+    "astro": "^7.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "lighthouse": "^13.5.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.0.1",
+    "sharp": "^0.35.4",
+    "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "sharp": "$sharp"
+  }
+}

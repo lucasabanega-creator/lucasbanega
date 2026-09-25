@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+Astro.response.status = 404;
+---
+
+<Layout
+  title="Página no encontrada | Lucas Banega"
+  description="Esta página no está disponible. Volvé al inicio de Lucas Banega."
+  noindex
+>
+  <section class="page-heading wrap error-page">
+    <p class="eyebrow">404</p>
+    <h1>Tomemos otro camino.</h1>
+    <p>La página que buscás no existe o cambió de lugar.</p>
+    <div class="hero-actions">
+      <a class="button" href="/">
+        Volver al inicio <span aria-hidden="true">↗</span>
+      </a>
+      <a class="text-link" href="/contacto">
+        Contacto
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,49 @@
+---
+import Wordmark from './Wordmark.astro';
+import MobileNavigation from './MobileNavigation.astro';
+import { es } from '../content/es';
+---
+
+<a class="skip-link" href="#contenido">
+  Saltar al contenido
+</a>
+<header class="site-header">
+  <div class="header-inner">
+    <nav class="desktop-nav" aria-label="La marca">
+      {es.navigation.slice(0, 2).map((item) => (
+        <a
+          href={item.href}
+          aria-current={Astro.url.pathname === item.href ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <MobileNavigation />
+    <Wordmark />
+    <nav class="desktop-nav nav-right" aria-label="Información">
+      {es.navigation.slice(2).map((item) => (
+        <a
+          href={item.href}
+          aria-current={Astro.url.pathname === item.href ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <span class="mobile-balance" aria-hidden="true"></span>
+  </div>
+</header>
+<noscript>
+  <nav class="nojs-nav" aria-label="Navegación">
+    {es.navigation.map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+  </nav>
+</noscript>
+<script>
+  const header = document.querySelector('.site-header');
+  const update = () => header?.classList.toggle('scrolled', scrollY > 24);
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+</script>

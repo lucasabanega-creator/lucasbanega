@@ -1,0 +1,109 @@
+---
+import { es } from '../content/es';
+import Wordmark from './Wordmark.astro';
+---
+
+<button
+  class="menu-trigger"
+  aria-haspopup="dialog"
+  aria-controls="mobile-navigation"
+  aria-expanded="false"
+>
+  <span class="menu-lines" aria-hidden="true"></span>Menú
+</button>
+<dialog id="mobile-navigation" aria-label="Navegación principal">
+  <div class="dialog-top">
+    <button class="menu-close" aria-label="Cerrar menú" autofocus>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.1"
+        aria-hidden="true"
+      >
+        <path d="M5 5 19 19M19 5 5 19" />
+      </svg>
+    </button>
+    <Wordmark />
+    <a class="menu-news" href="/#novedades" aria-label="Novedades">
+      <svg
+        width="21"
+        height="21"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.1"
+        aria-hidden="true"
+      >
+        <rect x="3" y="5" width="18" height="14" rx="0.5" />
+        <path d="m3 6 9 7 9-7" />
+      </svg>
+    </a>
+  </div>
+  <nav aria-label="Navegación móvil">
+    {es.navigation.map((item) => (
+      <a href={item.href}>
+        {item.label}
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.1"
+          aria-hidden="true"
+        >
+          <path d="m9 4 8 8-8 8" />
+        </svg>
+      </a>
+    ))}
+  </nav>
+  <div class="menu-utility">
+    <a href="/contacto">Contacto</a>
+    <a href="/privacidad">Privacidad</a>
+  </div>
+</dialog>
+<script>
+  const trigger = document.querySelector<HTMLButtonElement>('.menu-trigger');
+  const dialog =
+    document.querySelector<HTMLDialogElement>('#mobile-navigation');
+  if (trigger && dialog) {
+    const close = () => dialog.close();
+    trigger.addEventListener('click', () => {
+      dialog.showModal();
+      document.documentElement.classList.add('menu-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    });
+    dialog.querySelector('.menu-close')?.addEventListener('click', close);
+    dialog
+      .querySelectorAll('a')
+      .forEach((a) => a.addEventListener('click', close));
+    dialog.addEventListener('close', () => {
+      document.documentElement.classList.remove('menu-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.focus({ preventScroll: true });
+    });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const elements = [
+        ...dialog.querySelectorAll<HTMLElement>(
+          'a[href],button:not([disabled])',
+        ),
+      ];
+      const first = elements[0],
+        last = elements[elements.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+    matchMedia('(min-width:1024px)').addEventListener('change', (e) => {
+      if (e.matches && dialog.open) close();
+    });
+  }
+</script>

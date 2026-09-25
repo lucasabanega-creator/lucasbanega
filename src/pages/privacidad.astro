@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../lib/config';
+type Section = { title: string; body: string };
+---
+
+<Layout
+  title="Privacidad | Lucas Banega"
+  description="Información sobre la privacidad y el estado de la recepción de datos en Lucas Banega."
+  noindex={!site.live}
+>
+  <section class="page-heading wrap legal">
+    <p class="eyebrow">INFORMACIÓN</p>
+    <h1>Privacidad</h1>
+    {site.live ? (
+      <>
+        <p>Responsable: {site.privacy.controller}</p>
+        <p class="small">Actualización: {site.privacy.updated}</p>
+        {(site.privacy.sections as Section[]).map((section) => (
+          <section>
+            <h2>{section.title}</h2>
+            <p>{section.body}</p>
+          </section>
+        ))}
+      </>
+    ) : (
+      <>
+        <h2>Una preview sin altas.</h2>
+        <p>
+          Los campos de suscripción están deshabilitados y no se reciben correos
+          ni solicitudes de contacto a través de esta versión.
+        </p>
+        <p>
+          No incorporamos herramientas publicitarias ni cookies de analítica.
+          Los registros técnicos que pueda generar el alojamiento dependen de su
+          configuración.
+        </p>
+        <p>
+          La información definitiva sobre el responsable, el proveedor de
+          suscripciones, la finalidad, los plazos de conservación y el ejercicio
+          de derechos se publicará antes de abrir las inscripciones.
+        </p>
+        <p class="small">
+          Este aviso describe el estado de la preview. No sustituye la política
+          de privacidad del futuro servicio.
+        </p>
+      </>
+    )}
+    <a class="text-link" href="/">
+      Volver al inicio <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+</Layout>

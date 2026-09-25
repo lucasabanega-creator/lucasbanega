@@ -1,0 +1,126 @@
+---
+import { site } from '../lib/config';
+---
+
+<section
+  id="novedades"
+  class="launch-section"
+  aria-labelledby="newsletter-title"
+>
+  <div class="wrap launch-grid">
+    <div class="newsletter-intro">
+      <h2 id="newsletter-title">Novedades</h2>
+      <p>Enterate del primer lanzamiento.</p>
+    </div>
+    <div class="launch-fields">
+      <form
+        action="/api/novedades"
+        method="post"
+        aria-describedby="form-note"
+        data-launch-form
+      >
+        <fieldset disabled={!site.newsletter}>
+          <legend class="sr-only">Recibir novedades del lanzamiento</legend>
+          <label class="sr-only" for="launch-email">
+            Correo electrónico
+          </label>
+          <div class="email-row">
+            <input
+              id="launch-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="Correo electrónico"
+              maxlength="254"
+              required
+            />
+            <button class="button" type="submit">
+              Suscribirme <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consent" value="yes" required />
+            <span>
+              Quiero recibir novedades y acepto la{' '}
+              <a href="/privacidad">política de privacidad</a>.
+            </span>
+          </label>
+          <div class="honey" aria-hidden="true">
+            <label>
+              Sitio web
+              <input
+                name="website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </label>
+          </div>
+        </fieldset>
+        <p id="form-note" class="small">
+          {site.newsletter
+            ? 'Podés darte de baja cuando quieras.'
+            : 'Las inscripciones abrirán próximamente.'}
+        </p>
+        <p
+          class="form-status small"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+        <noscript>
+          <p class="small">
+            El formulario funciona también sin JavaScript cuando las
+            inscripciones estén abiertas.
+          </p>
+        </noscript>
+      </form>
+    </div>
+  </div>
+</section>
+<script>
+  document
+    .querySelectorAll<HTMLFormElement>('[data-launch-form]')
+    .forEach((form) => {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const button = form.querySelector<HTMLButtonElement>('button')!;
+        const status = form.querySelector<HTMLElement>('.form-status')!;
+        button.disabled = true;
+        form.setAttribute('aria-busy', 'true');
+        status.textContent = 'Enviando tu solicitud…';
+        status.classList.remove('error');
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000);
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+            signal: controller.signal,
+          });
+          const data = await response.json();
+          if (!response.ok)
+            throw new Error(
+              data.message ||
+                'No pudimos enviar la solicitud. Intentá de nuevo.',
+            );
+          status.textContent = data.message;
+          form.reset();
+        } catch (error) {
+          status.textContent =
+            error instanceof Error &&
+            error.name !== 'AbortError' &&
+            error.name !== 'TypeError'
+              ? error.message
+              : 'No pudimos conectar. Intentá de nuevo en unos minutos.';
+          status.classList.add('error');
+        } finally {
+          clearTimeout(timeout);
+          button.disabled = false;
+          form.removeAttribute('aria-busy');
+        }
+      });
+    });
+</script>
