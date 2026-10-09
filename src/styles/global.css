@@ -432,7 +432,8 @@ dialog nav a {
 }
 .campaign-copy h1 {
   font-size: clamp(32px, 3.1vw, 46px);
-  margin-bottom: 20px;
+  /* Centra el bloque cuando un max-width (p. ej. 18ch en móvil) lo angosta. */
+  margin: 0 auto 20px;
   letter-spacing: 0.005em;
 }
 .campaign-copy p {
@@ -456,6 +457,9 @@ dialog nav a {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.16em;
+  /* El tracking deja aire tras la última letra; se compensa a la izquierda
+     para que texto y subrayado queden centrados sobre el mismo eje. */
+  padding-inline-start: 0.16em;
   text-decoration: none;
 }
 .campaign-links a:hover {
@@ -1052,36 +1056,36 @@ fieldset:disabled .consent {
   max-height: none;
   background: #8a7f73;
 }
-/* Fotografía en color; un velo cálido y localizado da contraste al texto. */
+/* Velo oscuro, neutro y uniforme: da contraste al texto blanco sin
+   desaturar la fotografía (solo baja la luminancia). */
 .campaign-home .campaign-shade {
-  background:
-    radial-gradient(
-      ellipse 46% 38% at 50% 56%,
-      rgb(46 33 22 / 34%),
-      rgb(46 33 22 / 0%) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgb(46 33 22 / 14%),
-      rgb(46 33 22 / 20%) 52%,
-      rgb(46 33 22 / 8%)
-    );
+  background: rgb(22 17 13 / 30%);
 }
+/* Bloque de texto centrado vertical y horizontalmente sobre la imagen. */
 .campaign-home .campaign-copy {
-  text-shadow: 0 1px 18px rgb(46 33 22 / 28%);
-}
-.campaign-home .campaign-copy {
-  padding-top: 145px;
+  padding: 40px 24px;
   font-family: var(--font-light);
+  text-shadow: 0 1px 14px rgb(22 17 13 / 22%);
 }
 .campaign-home .campaign-copy h1 {
   font-family: var(--font-serif);
   font-size: clamp(30px, 2.6vw, 42px);
   font-weight: 300;
+  line-height: 1.18;
   letter-spacing: -0.005em;
+  margin-bottom: 16px;
 }
 .campaign-home .campaign-copy p {
   font-size: clamp(15px, 1.15vw, 17px);
+}
+.campaign-home .campaign-links {
+  margin-top: 30px;
+}
+/* Ambos enlaces con el mismo ancho: subrayados iguales y más anchos que el texto. */
+.campaign-home .campaign-links a {
+  justify-content: center;
+  width: 250px;
+  min-height: 48px;
 }
 .campaign-home .collection-nav a {
   font-family: var(--font-light);
@@ -1211,37 +1215,32 @@ fieldset:disabled .consent {
     min-height: 600px;
     height: 100svh;
   }
-  /* Recorte vertical: la mano queda visible bajo el texto. */
-  .campaign-home .campaign-hero {
-    place-items: start center;
-  }
   .campaign-home .campaign-visual img {
     object-position: 30% center;
   }
-  .campaign-home .campaign-shade {
-    background:
-      radial-gradient(
-        ellipse 80% 30% at 50% 30%,
-        rgb(46 33 22 / 30%),
-        rgb(46 33 22 / 0%) 100%
-      ),
-      linear-gradient(
-        180deg,
-        rgb(46 33 22 / 20%),
-        rgb(46 33 22 / 14%) 45%,
-        rgb(46 33 22 / 0%) 70%
-      );
-  }
   .campaign-home .campaign-copy {
-    padding: 132px 22px 40px;
+    padding: 40px 20px;
   }
   .campaign-home .campaign-copy h1 {
-    font-size: clamp(30px, 8vw, 34px);
+    font-size: 32px;
   }
+  /* Una sola línea en celular con margen para fuentes más anchas (iOS);
+     si aun así no entra, se parte en dos líneas equilibradas. */
   .campaign-home .campaign-copy p {
-    max-width: 30ch;
-    font-size: 15px;
+    max-width: none;
+    font-size: 14px;
+    letter-spacing: 0.02em;
     text-wrap: balance;
+  }
+  .campaign-home .campaign-links {
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .campaign-home .campaign-links a {
+    width: 240px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    padding-inline-start: 0.2em;
   }
   .campaign-home .campaign-stories {
     max-width: none;
