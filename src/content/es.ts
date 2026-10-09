@@ -1,7 +1,7 @@
 export const es = {
   brand: 'Lucas Banega',
   home: {
-    title: 'Lucas Banega | Official Boutique',
+    title: 'Lucas Banega | Objetos en desarrollo',
     description:
       'Conocé Lucas Banega: diseño, materia y atención al uso. Descubrí la visión de la marca y su primer tarjetero de cuero en desarrollo.',
   },

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import EditorialHero from '../components/EditorialHero.astro';
+import LaunchForm from '../components/LaunchForm.astro';
 import { es } from '../content/es';
 ---
 
@@ -8,78 +9,142 @@ import { es } from '../content/es';
   <EditorialHero />
 
   <section
-    id="materia"
-    class="campaign-stories editorial-chapter"
-    aria-label="Explorar Lucas Banega"
+    id="autor"
+    class="maker-screen editorial-chapter"
+    aria-labelledby="quien-lo-hace"
   >
-    <a class="story" href="/maison">
-      <div class="story-image">
-        <img
-          src="/images/material-v2.webp"
-          width="1122"
-          height="1402"
-          alt="Cuero taupe y tejido claro bajo luz natural."
-          loading="lazy"
-        />
-      </div>
-      <h2>La belleza de la materia</h2>
-      <span>Explorar la maison</span>
-    </a>
-    <a class="story" href="/primer-objeto">
-      <div class="story-image story-object">
-        <img
-          src="/images/cardholder-concept.webp"
-          width="1086"
-          height="1448"
-          alt="Imagen conceptual de un tarjetero de cuero marfil con la firma Lucas Banega."
-          loading="lazy"
-        />
-      </div>
-      <h2>El primer objeto</h2>
-      <span>Tarjetero en desarrollo</span>
-    </a>
+    <h2 id="quien-lo-hace" data-motion>
+      Cada pieza la voy a hacer yo, con mis manos.
+    </h2>
+    {/* Futura foto propia del taller de Lucas: agregar maker-screen--with-photo a
+        esta sección, envolver el texto en un div y agregar un figure hermano con
+        img (alt, width, height y srcset). La variante CSS prepara texto + foto;
+        hasta contar con la fotografía aprobada, se muestra únicamente el texto. */}
   </section>
 
   <section
+    id="materia-y-gesto"
+    class="material-screen editorial-chapter"
+    aria-label="Materia y gesto"
+  >
+    <img
+      id="materia"
+      src="/images/material-v2.webp"
+      width="1122"
+      height="1402"
+      alt="Cuero taupe y tejido claro bajo luz natural."
+      loading="lazy"
+    />
+    <p data-motion>
+      Elijo el cuero por cómo se siente y cómo envejece con el uso.
+    </p>
+  </section>
+
+  <section
+    id="primer-objeto"
     class="campaign-feature editorial-chapter"
     aria-labelledby="feature-title"
   >
-    <div class="campaign-feature-visual">
-      <img
-        src="/images/cardholder-editorial.webp"
-        width="1536"
-        height="1024"
-        alt="Imagen conceptual del tarjetero Lucas Banega sobre una superficie de piedra clara."
-        loading="lazy"
-      />
-    </div>
+    <figure class="campaign-feature-visual">
+      <div class="campaign-feature-photo">
+        <img
+          src="/images/cardholder-editorial.webp"
+          width="1536"
+          height="1024"
+          alt="Imagen conceptual del tarjetero Lucas Banega sobre una superficie de piedra clara."
+          loading="lazy"
+        />
+      </div>
+      <figcaption class="concept-caption" data-motion data-motion-later>
+        Imagen conceptual. Diseño sujeto a desarrollo.
+      </figcaption>
+    </figure>
     <div class="campaign-feature-copy">
-      <p class="eyebrow">EL PRIMER OBJETO</p>
-      <h2 id="feature-title">Una forma esencial.</h2>
-      <p>
-        Una propuesta de pequeño formato. El tarjetero está en desarrollo;
-        proporciones, cuero y terminaciones se definirán con las primeras
-        muestras.
+      <p class="eyebrow" data-motion>
+        EL PRIMER OBJETO
       </p>
-      <a class="quiet-link" href="/primer-objeto">
-        Conocer el primer objeto
-      </a>
+      <h2 id="feature-title" data-motion>
+        Una forma esencial.
+      </h2>
+      <div data-motion data-motion-later>
+        <p class="development-label">En desarrollo</p>
+        <p>
+          Una propuesta de pequeño formato. El tarjetero está en desarrollo;
+          proporciones, cuero y terminaciones se definirán con las primeras
+          muestras.
+        </p>
+        <a class="quiet-link" href="/primer-objeto">
+          Conocer el primer objeto
+        </a>
+      </div>
     </div>
   </section>
 
   <section
-    class="campaign-statement editorial-chapter"
-    aria-labelledby="statement-title"
+    id="novedades"
+    class="news-screen editorial-chapter"
+    aria-labelledby="news-proposal-title"
   >
-    <p class="eyebrow">Lucas Banega</p>
-    <h2 id="statement-title">Objetos para acompañar.</h2>
-    <p>
-      Diseño, materia y atención al uso.
-      <br />
-      Nuestro primer tarjetero está en desarrollo.
-    </p>
-    <a class="quiet-link" href="/maison">
-      Descubrir la maison
-    </a>
+    <h2
+      id="news-proposal-title"
+      class="news-proposal"
+      data-motion
+      data-motion-later
+    >
+      Cuando la primera pieza esté terminada, la voy a mostrar acá.
+    </h2>
+    <div>
+      <LaunchForm homeMotion anchorId={null} />
+    </div>
   </section>
+  <nav class="chapter-rail" aria-label="Capítulos de la portada">
+    <a href="#inicio" aria-label="Inicio">
+      <span aria-hidden="true"></span>
+    </a>
+    <a href="#autor" aria-label="Quién lo hace">
+      <span aria-hidden="true"></span>
+    </a>
+    <a href="#materia-y-gesto" aria-label="Materia y gesto">
+      <span aria-hidden="true"></span>
+    </a>
+    <a href="#primer-objeto" aria-label="El primer objeto">
+      <span aria-hidden="true"></span>
+    </a>
+    <a href="#novedades" aria-label="Novedades">
+      <span aria-hidden="true"></span>
+    </a>
+  </nav>
 </Layout>
+
+<script>
+  import { prepareChapterScroll } from '../lib/chapter-scroll';
+  import { prepareChapterRail } from '../lib/chapter-rail';
+  const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+  const chapters = document.querySelectorAll<HTMLElement>(
+    '.campaign-home .editorial-chapter',
+  );
+  prepareChapterScroll([...chapters]);
+  prepareChapterRail([...chapters]);
+  let observer: IntersectionObserver | undefined;
+  const prepareMotion = () => {
+    observer?.disconnect();
+    if (motionPreference.matches || !('IntersectionObserver' in window)) {
+      document.documentElement.classList.remove('motion-ready');
+      return;
+    }
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('motion-visible');
+          observer?.unobserve(entry.target);
+        }
+      },
+      { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+    );
+    chapters.forEach((chapter) => observer?.observe(chapter));
+    document.documentElement.classList.add('motion-ready');
+  };
+  prepareMotion();
+  motionPreference.addEventListener('change', prepareMotion);
+</script>

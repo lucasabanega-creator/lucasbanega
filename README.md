@@ -2,6 +2,10 @@
 
 Web editorial en Astro + TypeScript para **lucasbanega.com / Netlify**. El modo `public-prelaunch` publica la web sin activar la suscripción ni recibir consultas por formulario. La recepción de datos personales requiere completar las condiciones de lanzamiento. Se reemplazaron las páginas, estilos, scripts y recursos anteriores; se conservó el historial Git y la configuración del editor.
 
+## Agentes de la Maison
+
+`AGENTS.md` define la identidad compartida, las reglas de trabajo y cómo seleccionar automáticamente al especialista según el pedido. Los cinco agentes de Codex están en `.codex/agents/`: Maison Director, Product & Craft, Brand & Editorial, Digital Experience y Research & Sourcing. Director, Product, Brand y Research investigan y proponen con acceso de solo lectura; Digital Experience puede editar la web. `docs/maison/decisiones.md` conserva el estado y las decisiones confirmadas. En una tarea de este repositorio, describí lo que necesitás; podés nombrar un agente si preferís dirigirle el trabajo expresamente.
+
 ## Usar localmente
 
 Requiere Node 22.12 o superior (Netlify configurado con Node 24).
@@ -53,7 +57,7 @@ La apertura falla si faltan datos. **No usar los flags de aprobación para sorte
 - `src/components/`: SiteHeader, MobileNavigation, Wordmark, EditorialHero, MaterialSection, LaunchForm, SiteFooter y MaterialImage.
 - `src/lib/config.ts`: configuración validada exclusivamente del servidor; secretos fuera de scripts cliente.
 - `src/lib/subscription.mjs`: validación, límite real de cuerpo, origen, consentimiento, honeypot, limitador y proveedor.
-- `src/styles/global.css`: tokens de color, tipografía, espaciado y responsive. Una sola familia visual; Georgia solo fallback con métricas ajustadas. Sin librerías de animación.
+- `src/styles/global.css`: tokens de color, tipografía, espaciado y responsive. Fondo blanco con neutros cálidos; Source Serif 4 local para titulares (Georgia como fallback con métricas ajustadas) y Area (Adobe Fonts) para texto. Sin librerías de animación.
 - `public/`: WOFF2, licencia, wordmark vectorial, iconos, manifest y fotografías conceptuales optimizadas.
 - `assets/`: originales y fuente de construcción, no servidos por la web.
 - `tests/` / `docs/`: pruebas repetibles, evidencias y pendientes.

@@ -1,11 +1,20 @@
-<section class="campaign-hero editorial-chapter" aria-labelledby="hero-title">
+<section
+  id="inicio"
+  class="campaign-hero editorial-chapter"
+  aria-labelledby="hero-title"
+>
   <picture class="campaign-visual">
     <source
       media="(max-width:767px)"
-      srcset="/images/campaign-v2-mobile.webp"
+      srcset="/images/campaign-v2-mobile.webp 1024w"
+      sizes="100vw"
+      width="1024"
+      height="683"
     />
     <img
       src="/images/campaign-v2.webp"
+      srcset="/images/campaign-v2.webp 1536w"
+      sizes="100vw"
       width="1536"
       height="1024"
       alt="Estudio conceptual de Lucas Banega: cuero, madera y un gesto bajo luz natural."
@@ -14,9 +23,13 @@
   </picture>
   <div class="campaign-shade" aria-hidden="true"></div>
   <div class="campaign-copy">
-    <h1 id="hero-title">Formas precisas. Materiales vivos.</h1>
-    <p>Una elegancia que se descubre en el uso.</p>
-    <div class="campaign-links">
+    <h1 id="hero-title" data-motion>
+      Formas precisas. Materiales vivos.
+    </h1>
+    <p data-motion data-motion-later>
+      Una elegancia que se descubre en el uso.
+    </p>
+    <div class="campaign-links" data-motion data-motion-later>
       <a href="/maison">Descubrir la maison</a>
       <a href="/primer-objeto">Nuestro primer objeto</a>
     </div>

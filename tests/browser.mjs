@@ -2,6 +2,7 @@ import { chromium } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
+import { revealMotion } from './reveal-motion.mjs';
 const base = process.env.TEST_URL || 'http://127.0.0.1:4321';
 await mkdir('test-results', { recursive: true });
 const browser = await chromium.launch({ headless: true });
@@ -19,7 +20,8 @@ for (const width of [320, 375, 390, 768, 1024, 1440, 1920]) {
     () => document.documentElement.scrollWidth > innerWidth,
   );
   assert.equal(overflow, false, `Overflow ${width}`);
-  assert.equal(await page.locator('input[type=email]').isDisabled(), true);
+  assert.equal(await page.locator('input[type=email]').count(), 0);
+  assert.equal(await page.locator('[data-launch-form]').count(), 0);
   if (width === 390 || width === 1440)
     await page.screenshot({
       path: `test-results/home-${width}.png`,
@@ -27,6 +29,7 @@ for (const width of [320, 375, 390, 768, 1024, 1440, 1920]) {
     });
   results.widths.push({ width, overflow });
   if (width === 390 || width === 1440) {
+    await revealMotion(page);
     const audit = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
       .analyze();
@@ -48,7 +51,7 @@ assert.equal(await page.locator('dialog').evaluate((e) => e.open), true);
 await page.keyboard.press('Shift+Tab');
 assert.equal(
   await page.evaluate(() =>
-    document.activeElement.textContent.trim().includes('Contacto'),
+    document.activeElement.textContent.trim().includes('Privacidad'),
   ),
   true,
 );
@@ -62,12 +65,16 @@ assert.equal(
 await page.keyboard.press('Escape');
 assert.equal(await trigger.evaluate((e) => e === document.activeElement), true);
 await trigger.click();
-await page
-  .locator('dialog')
-  .getByRole('link', { name: /Novedades/ })
-  .click();
+await page.locator('dialog').locator('nav a[href="/#novedades"]').click();
 assert.equal(await page.locator('dialog').evaluate((e) => e.open), false);
 assert.ok(page.url().endsWith('#novedades'));
+await page.waitForFunction(() => document.activeElement.id === 'novedades');
+assert.equal(
+  await page
+    .locator('#novedades')
+    .evaluate((e) => e === document.activeElement),
+  true,
+);
 for (const route of [
   '/',
   '/maison',

@@ -57,20 +57,48 @@ import Wordmark from './Wordmark.astro';
   const dialog =
     document.querySelector<HTMLDialogElement>('#mobile-navigation');
   if (trigger && dialog) {
+    let destination: HTMLElement | undefined;
+    let navigating = false;
     const close = () => dialog.close();
     trigger.addEventListener('click', () => {
+      destination = undefined;
+      navigating = false;
       dialog.showModal();
       document.documentElement.classList.add('menu-open');
       trigger.setAttribute('aria-expanded', 'true');
     });
     dialog.querySelector('.menu-close')?.addEventListener('click', close);
-    dialog
-      .querySelectorAll('a')
-      .forEach((a) => a.addEventListener('click', close));
+    dialog.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+          return;
+        const url = new URL(a.href);
+        navigating = true;
+        if (
+          url.pathname === location.pathname &&
+          url.search === location.search &&
+          url.hash
+        ) {
+          destination =
+            document.getElementById(decodeURIComponent(url.hash.slice(1))) ??
+            undefined;
+          // El enlace conserva el desplazamiento nativo del navegador.
+        }
+        close();
+      }),
+    );
     dialog.addEventListener('close', () => {
       document.documentElement.classList.remove('menu-open');
       trigger.setAttribute('aria-expanded', 'false');
-      trigger.focus({ preventScroll: true });
+      if (destination) {
+        const target = destination;
+        requestAnimationFrame(() => {
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+        });
+      } else if (!navigating) {
+        trigger.focus({ preventScroll: true });
+      }
     });
     dialog.addEventListener('keydown', (e) => {
       if (e.key !== 'Tab') return;

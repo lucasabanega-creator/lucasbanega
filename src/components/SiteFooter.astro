@@ -1,10 +1,14 @@
 ---
 import Wordmark from './Wordmark.astro';
 import LaunchForm from './LaunchForm.astro';
+interface Props {
+  showLaunch?: boolean;
+}
+const { showLaunch = true } = Astro.props;
 ---
 
 <footer class="site-footer">
-  <LaunchForm />
+  {showLaunch && <LaunchForm />}
   <div class="wrap">
     <div class="footer-grid">
       <div>
@@ -26,7 +30,7 @@ import LaunchForm from './LaunchForm.astro';
       </nav>
     </div>
     <div class="footer-bottom">
-      <p>© {new Date().getFullYear()} Lucas Banega</p>
+      <p>© {new Date().getFullYear()} Maison Lucas Banega</p>
       <p>Imágenes conceptuales de campaña.</p>
       <a href="#contenido">Volver al comienzo</a>
     </div>

@@ -1,80 +1,103 @@
 ---
 import { site } from '../lib/config';
+interface Props {
+  homeMotion?: boolean;
+  anchorId?: string | null;
+}
+const { homeMotion = false, anchorId = 'novedades' } = Astro.props;
 ---
 
 <section
-  id="novedades"
+  id={anchorId || undefined}
   class="launch-section"
   aria-labelledby="newsletter-title"
 >
   <div class="wrap launch-grid">
     <div class="newsletter-intro">
-      <h2 id="newsletter-title">Novedades</h2>
-      <p>Enterate del primer lanzamiento.</p>
-    </div>
-    <div class="launch-fields">
-      <form
-        action="/api/novedades"
-        method="post"
-        aria-describedby="form-note"
-        data-launch-form
+      <h2 id="newsletter-title" data-motion={homeMotion || undefined}>
+        Novedades
+      </h2>
+      <p
+        data-motion={homeMotion || undefined}
+        data-motion-later={homeMotion || undefined}
       >
-        <fieldset disabled={!site.newsletter}>
-          <legend class="sr-only">Recibir novedades del lanzamiento</legend>
-          <label class="sr-only" for="launch-email">
-            Correo electrónico
-          </label>
-          <div class="email-row">
-            <input
-              id="launch-email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              placeholder="Correo electrónico"
-              maxlength="254"
-              required
-            />
-            <button class="button" type="submit">
-              Suscribirme
-            </button>
-          </div>
-          <label class="consent">
-            <input type="checkbox" name="consent" value="yes" required />
-            <span>
-              Quiero recibir novedades y acepto la{' '}
-              <a href="/privacidad">política de privacidad</a>.
-            </span>
-          </label>
-          <div class="honey" aria-hidden="true">
-            <label>
-              Sitio web
-              <input
-                name="website"
-                type="text"
-                tabindex="-1"
-                autocomplete="off"
-              />
+        {site.newsletter
+          ? 'Enterate del primer lanzamiento.'
+          : 'El primer tarjetero está en desarrollo.'}
+      </p>
+    </div>
+    <div
+      class="launch-fields"
+      data-motion={homeMotion || undefined}
+      data-motion-later={homeMotion || undefined}
+    >
+      {site.newsletter ? (
+        <form
+          action="/api/novedades"
+          method="post"
+          aria-describedby="form-note"
+          data-launch-form
+        >
+          <fieldset>
+            <legend class="sr-only">Recibir novedades del lanzamiento</legend>
+            <label class="sr-only" for="launch-email">
+              Correo electrónico
             </label>
-          </div>
-        </fieldset>
-        <p id="form-note" class="small">
-          {site.newsletter
-            ? 'Podés darte de baja cuando quieras.'
-            : 'Las inscripciones abrirán próximamente.'}
-        </p>
-        <p
-          class="form-status small"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        ></p>
-        <noscript>
-          <p class="small">
-            El formulario funciona también sin JavaScript cuando las
-            inscripciones estén abiertas.
+            <div class="email-row">
+              <input
+                id="launch-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="Correo electrónico"
+                maxlength="254"
+                required
+              />
+              <button class="button" type="submit">
+                Suscribirme
+              </button>
+            </div>
+            <label class="consent">
+              <input type="checkbox" name="consent" value="yes" required />
+              <span>
+                Quiero recibir novedades y acepto la{' '}
+                <a href="/privacidad">política de privacidad</a>.
+              </span>
+            </label>
+            <div class="honey" aria-hidden="true">
+              <label>
+                Sitio web
+                <input
+                  name="website"
+                  type="text"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </label>
+            </div>
+          </fieldset>
+          <p id="form-note" class="small">
+            Podés darte de baja cuando quieras.
           </p>
-        </noscript>
-      </form>
+          <p
+            class="form-status small"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
+          <noscript>
+            <p class="small">
+              El formulario funciona también sin JavaScript cuando las
+              inscripciones estén abiertas.
+            </p>
+          </noscript>
+        </form>
+      ) : (
+        <p class="small">
+          Todavía no hay una fecha de lanzamiento confirmada. Las inscripciones
+          no están abiertas; por ahora no recibimos datos a través de esta web.
+        </p>
+      )}
     </div>
   </div>
 </section>

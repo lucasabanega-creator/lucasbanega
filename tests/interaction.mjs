@@ -3,7 +3,35 @@ import assert from 'node:assert/strict';
 const browser = await chromium.launch();
 const context = await browser.newContext();
 const page = await context.newPage();
-await page.goto('http://127.0.0.1:4322');
+const base = process.env.TEST_URL || 'http://127.0.0.1:4322';
+await page.goto(base);
+// Public prelaunch has no subscription controls. Retain the live UI checks below
+// for a separately configured local live fixture; never enable the public form.
+if (!(await page.locator('[data-launch-form]').count())) {
+  assert.equal(await page.locator('#launch-email').count(), 0);
+  assert.match(
+    await page.locator('#novedades').innerText(),
+    /inscripciones no están abiertas/,
+  );
+  const response = await page.request.post(base + '/api/novedades', {
+    form: { email: 'controlled@example.test', consent: 'yes' },
+    headers: { Accept: 'application/json', Origin: base },
+  });
+  assert.equal(response.status(), 503);
+  await page.setViewportSize({ width: 640, height: 900 });
+  await page.addStyleTag({ content: 'html{zoom:2}' });
+  assert.equal(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth > innerWidth,
+    ),
+    false,
+  );
+  await browser.close();
+  console.log(
+    'Public prelaunch: no form, endpoint closed, 200% CSS zoom passed. Live form UI branch was not executed.',
+  );
+  process.exit(0);
+}
 await page.evaluate(() => document.fonts.ready);
 console.log(
   'fallback-width-ratio',
