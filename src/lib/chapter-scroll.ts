@@ -7,14 +7,14 @@ export function prepareChapterScroll(chapters: HTMLElement[]) {
   let frame = 0;
   let busy = false;
   let lastWheel = -Infinity;
-  let releaseAt = 0;
+  let consumed = false;
   let lastMagnitude = 0;
   let direction = 0;
   const cancel = () => {
     cancelAnimationFrame(frame);
     frame = 0;
     busy = false;
-    releaseAt = 0;
+    consumed = false;
     lastMagnitude = 0;
     direction = 0;
     lastWheel = -Infinity;
@@ -26,8 +26,8 @@ export function prepareChapterScroll(chapters: HTMLElement[]) {
   const move = (target: number) => {
     const from = scrollY;
     const start = performance.now();
-    // The inertia guard has a deadline; incoming events cannot extend it.
-    releaseAt = start + 970;
+    // One transition consumes the gesture, including inertia of any duration.
+    consumed = true;
     busy = true;
     const step = (now: number) => {
       const progress = Math.min(1, (now - start) / 850);
@@ -83,8 +83,11 @@ export function prepareChapterScroll(chapters: HTMLElement[]) {
       const nextDirection = Math.sign(delta);
       if (!nextDirection) return;
       const now = performance.now();
-      const quiet = now - lastWheel > 160;
       const magnitude = Math.abs(delta);
+      // A weaker residual event is still inertia even after a brief pause.
+      // Small new gestures work initially, after a stable pause, or in reverse.
+      const weakTail = magnitude < 12 && magnitude < lastMagnitude;
+      const quiet = now - lastWheel > 240 && !weakTail;
       const impulse = magnitude >= 12 && magnitude > lastMagnitude * 1.8;
       const reversed = direction !== 0 && nextDirection !== direction;
       if (reversed) cancel();
@@ -111,11 +114,9 @@ export function prepareChapterScroll(chapters: HTMLElement[]) {
         cancel();
         return;
       }
-      // Reversals are immediate. Same-direction inertia is absorbed only for
-      // the transition and a bounded 120ms arrival window. A fresh impulse or
-      // pause releases that arrival window early, while continuous input always
-      // resumes after the deadline instead of requiring silence indefinitely.
-      if (busy || (now < releaseAt && !quiet && !impulse)) {
+      // Elapsed time never starts another chapter. A new impulse or a pause
+      // without a fading residual starts a fresh gesture; reversals are immediate.
+      if (busy || (consumed && !quiet && !impulse)) {
         event.preventDefault();
         return;
       }

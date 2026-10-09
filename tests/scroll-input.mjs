@@ -23,7 +23,7 @@ for (const [engine, type] of [
   };
   const position = () => page.evaluate(() => scrollY);
   await reset();
-  // Continuous deliberate input must progress without a required quiet gap.
+  // A steady event stream cannot identify a new physical gesture by itself.
   for (let i = 0; i < 60; i++) {
     await page.mouse.wheel(0, 8);
     await page.waitForTimeout(40);
@@ -31,8 +31,8 @@ for (const [engine, type] of [
   await page.waitForTimeout(1100);
   const continuous = await position();
   assert.ok(
-    continuous >= 1800,
-    `${engine}: continuous wheel stuck at ${continuous}`,
+    Math.abs(continuous - 900) <= 2,
+    `${engine}: one steady gesture skipped a chapter at ${continuous}`,
   );
   await reset();
   await page.mouse.wheel(0, 50);
@@ -68,6 +68,45 @@ for (const [engine, type] of [
   assert.ok(
     Math.abs((await position()) - 900) <= 2,
     `${engine}: inertia skipped a chapter`,
+  );
+  await reset();
+  for (let i = 0; i < 32; i++) {
+    await page.mouse.wheel(0, 50 * 0.88 ** i);
+    await page.waitForTimeout(40);
+  }
+  await page.waitForTimeout(1100);
+  assert.ok(
+    Math.abs((await position()) - 900) <= 2,
+    `${engine}: long inertia advanced the second chapter`,
+  );
+  await reset();
+  await page.mouse.wheel(0, 50);
+  await page.waitForTimeout(1000);
+  await page.mouse.wheel(0, 1);
+  await page.waitForTimeout(1100);
+  assert.ok(
+    Math.abs((await position()) - 900) <= 2,
+    `${engine}: late weak residual advanced the second chapter`,
+  );
+  // A brief pause and noisy small tail are also part of the original gesture.
+  await reset();
+  await page.mouse.wheel(0, 50);
+  for (const delta of [30, 15, 8, 2, 4, 2]) {
+    await page.mouse.wheel(0, delta);
+    await page.waitForTimeout(100);
+  }
+  await page.waitForTimeout(300);
+  await page.mouse.wheel(0, 1);
+  await page.waitForTimeout(1100);
+  assert.ok(
+    Math.abs((await position()) - 900) <= 2,
+    `${engine}: noisy residual was mistaken for a fresh impulse`,
+  );
+  await page.mouse.wheel(0, 12);
+  await page.waitForTimeout(1100);
+  assert.ok(
+    Math.abs((await position()) - 1800) <= 2,
+    `${engine}: new short intentional gesture was swallowed`,
   );
   // The rail cancels an animation; the next wheel is immediately available.
   await page.mouse.wheel(0, 50);
@@ -111,6 +150,9 @@ for (const [engine, type] of [
     shortGesture: 'passed',
     nextGesture: 'passed',
     decayingInertia: 'passed',
+    longInertia: 'passed',
+    lateResidual: 'passed',
+    noisyTail: 'passed',
     railCancellation: 'passed',
     footer,
     reducedMotion: 'passed',
