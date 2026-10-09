@@ -53,7 +53,7 @@ La apertura falla si faltan datos. **No usar los flags de aprobación para sorte
 - `src/components/`: SiteHeader, MobileNavigation, Wordmark, EditorialHero, MaterialSection, LaunchForm, SiteFooter y MaterialImage.
 - `src/lib/config.ts`: configuración validada exclusivamente del servidor; secretos fuera de scripts cliente.
 - `src/lib/subscription.mjs`: validación, límite real de cuerpo, origen, consentimiento, honeypot, limitador y proveedor.
-- `src/styles/global.css`: tokens de color, tipografía, espaciado y responsive. Una sola familia visual; Georgia solo fallback con métricas ajustadas. Sin librerías de animación.
+- `src/styles/global.css`: tokens de color, tipografía, espaciado y responsive. Fondo blanco con neutros cálidos; Source Serif 4 local para titulares (Georgia como fallback con métricas ajustadas) y Area (Adobe Fonts) para texto. Sin librerías de animación.
 - `public/`: WOFF2, licencia, wordmark vectorial, iconos, manifest y fotografías conceptuales optimizadas.
 - `assets/`: originales y fuente de construcción, no servidos por la web.
 - `tests/` / `docs/`: pruebas repetibles, evidencias y pendientes.

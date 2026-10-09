@@ -18,13 +18,18 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': site.url + '/#website',
       url: site.url,
-      name: 'Lucas Banega',
+      name: 'Maison Lucas Banega',
+      alternateName: 'Lucas Banega',
       inLanguage: 'es',
+      publisher: { '@id': site.url + '/#organization' },
     },
     {
       '@type': 'Organization',
       '@id': site.url + '/#organization',
-      name: 'Lucas Banega',
+      name: 'Maison Lucas Banega',
+      alternateName: 'Lucas Banega',
+      description:
+        'Marroquinería de cuero. Primer objeto en desarrollo: un tarjetero.',
       url: site.url,
       logo: site.url + '/logo-banega.png',
     },
@@ -49,7 +54,17 @@ const jsonLd = {
     />
     <link rel="canonical" href={canonical} />
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-    <link rel="stylesheet" href="https://use.typekit.net/jme3jsg.css" />
+    <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+    {/* Adobe Fonts sin bloquear la primera pintura: se aplica al cargar. */}
+    <link
+      rel="preload"
+      href="https://use.typekit.net/jme3jsg.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://use.typekit.net/jme3jsg.css" />
+    </noscript>
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
@@ -57,7 +72,7 @@ const jsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="Lucas Banega" />
+    <meta property="og:site_name" content="Maison Lucas Banega" />
     <meta property="og:locale" content="es_AR" />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={site.url + '/images/social.jpg'} />

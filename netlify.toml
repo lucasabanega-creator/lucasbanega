@@ -9,6 +9,21 @@
   for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+# Archivos de Astro con hash en el nombre: caché larga e inmutable.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+# Imágenes y logo sin hash en el nombre: caché moderada (1 semana).
+# Si se reemplaza una imagen, conviene usar un nombre nuevo.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+[[headers]]
+  for = "/logo-banega.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
 [[headers]]
   for = "/*"
   [headers.values]

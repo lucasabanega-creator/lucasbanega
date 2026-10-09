@@ -1,13 +1,48 @@
-/* White editorial identity */
+/* Source Serif 4 (OFL), servida localmente para titulares. */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/fonts/source-serif-4-latin-variable.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/fonts/source-serif-4-latin-ext-variable.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Georgia con métricas ajustadas a Source Serif 4: evita saltos al cambiar. */
+@font-face {
+  font-family: 'Source Serif 4 Fallback';
+  src: local('Georgia');
+  size-adjust: 103.44%;
+  ascent-override: 100.15%;
+  descent-override: 32.39%;
+  line-gap-override: 0%;
+}
+/* White editorial identity with warm neutrals */
 :root {
   --font-light: 'area-normal-light', 'Helvetica Neue', Arial, sans-serif;
+  --font-regular: 'area-normal', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Source Serif 4', 'Source Serif 4 Fallback', Georgia, serif;
   --color-canvas: #fff;
   --color-surface: #fff;
-  --color-stone: #c8c1b8;
-  --color-ink: #353431;
-  --color-muted: #716e69;
-  --color-accent: #5e5a55;
-  --color-line: rgb(53 52 49 / 13%);
+  --color-stone: #d9cfc3;
+  --color-ink: #33302c;
+  --color-muted: #6a6157;
+  --color-accent: #6b5e52;
+  --color-disabled-bg: #ede8e2;
+  --color-line: rgb(80 62 46 / 15%);
   --color-error: #89554e;
   --gutter: clamp(20px, 4vw, 64px);
   --header-height: 168px;
@@ -27,7 +62,7 @@ body {
   margin: 0;
   background: #fff;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 300;
   line-height: 1.7;
 }
 h1,
@@ -40,8 +75,10 @@ figure {
 h1,
 h2,
 h3 {
-  font-weight: 200;
-  letter-spacing: -0.035em;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 h1 {
@@ -107,13 +144,16 @@ main:focus {
   padding-inline: var(--gutter);
 }
 .eyebrow {
-  font-family: var(--font-light);
+  font-family: var(--font-regular);
   font-size: 12px;
+  font-weight: 400;
   letter-spacing: 0.2em;
   line-height: 1.5;
 }
 .small {
-  font-size: 13px;
+  font-family: var(--font-regular);
+  font-size: 14px;
+  font-weight: 400;
   color: var(--color-muted);
 }
 .text-link,
@@ -123,7 +163,7 @@ main:focus {
   align-items: center;
   gap: 18px;
   min-height: 44px;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.1em;
 }
 .quiet-link {
@@ -143,7 +183,7 @@ main:focus {
   border: 1px solid var(--color-ink);
   color: var(--color-ink);
   border-radius: 0;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.06em;
   text-decoration: none;
 }
@@ -222,7 +262,7 @@ main:focus {
 .desktop-service,
 .header-news {
   font-family: var(--font-light);
-  font-size: 13px;
+  font-size: 14px;
   text-decoration: none;
   letter-spacing: 0.06em;
   min-height: 44px;
@@ -249,7 +289,7 @@ main:focus {
   align-items: center;
   min-height: 44px;
   text-decoration: none;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -343,7 +383,7 @@ dialog nav a {
   display: grid;
   gap: 2px;
   padding: 24px 28px 36px;
-  background: #faf9f7;
+  background: #faf8f5;
 }
 .menu-utility a {
   display: flex;
@@ -363,7 +403,7 @@ dialog nav a {
   place-items: center;
   text-align: center;
   color: #fff;
-  background: #696762;
+  background: #8a7f73;
 }
 .campaign-visual,
 .campaign-visual img,
@@ -380,9 +420,9 @@ dialog nav a {
 .campaign-shade {
   background: linear-gradient(
     180deg,
-    rgba(25, 20, 16, 0.08),
-    rgba(25, 20, 16, 0.48) 60%,
-    rgba(25, 20, 16, 0.2)
+    rgb(46 33 22 / 10%),
+    rgb(46 33 22 / 42%) 60%,
+    rgb(46 33 22 / 18%)
   );
 }
 .campaign-copy {
@@ -407,7 +447,8 @@ dialog nav a {
   margin-top: 28px;
 }
 .campaign-links a {
-  font-family: var(--font-light);
+  font-family: var(--font-regular);
+  font-weight: 400;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -434,7 +475,7 @@ dialog nav a {
 .story-image {
   aspect-ratio: 1;
   overflow: hidden;
-  background: #eae7e2;
+  background: #f1ece6;
 }
 .story-image img {
   width: 100%;
@@ -454,11 +495,11 @@ dialog nav a {
   margin-top: 12px;
 }
 .story > span {
-  font-family: var(--font-light);
+  font-family: var(--font-regular);
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.04em;
   color: var(--color-muted);
 }
@@ -539,12 +580,29 @@ input::placeholder {
   color: #fff;
   flex-shrink: 0;
 }
+/* Inscripciones cerradas: el formulario se ve claramente inactivo. */
+fieldset:disabled input[type='email'] {
+  background: #f8f6f3;
+  border-color: var(--color-line);
+  cursor: not-allowed;
+}
+fieldset:disabled .email-row .button,
+fieldset:disabled .email-row .button:hover {
+  background: var(--color-disabled-bg);
+  border-color: var(--color-disabled-bg);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+fieldset:disabled .consent {
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
 .consent {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 13px;
 }
 .consent input {
   flex-shrink: 0;
@@ -598,21 +656,23 @@ input::placeholder {
 .footer-label {
   margin-bottom: 8px;
   color: var(--color-muted);
-  font-size: 12px;
+  font-family: var(--font-regular);
+  font-weight: 400;
+  font-size: 13px;
   letter-spacing: 0.08em;
 }
 .footer-grid nav a:hover {
   text-decoration: underline;
 }
 .footer-bottom {
-  font-family: var(--font-light);
+  font-family: var(--font-regular);
   border-top: 1px solid var(--color-line);
   padding: 12px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   color: var(--color-muted);
 }
@@ -624,11 +684,17 @@ input::placeholder {
 .desktop-service,
 .header-news,
 .collection-nav a,
+.footer-grid nav a {
+  font-weight: 300;
+}
+.eyebrow,
 .campaign-links a,
 .story > span,
-.footer-grid nav a,
 .footer-bottom {
-  font-weight: 300;
+  font-weight: 400;
+}
+.footer-bottom p {
+  margin: 0;
 }
 .footer-bottom a {
   display: inline-flex;
@@ -671,7 +737,8 @@ input::placeholder {
   object-fit: cover;
 }
 .material-image figcaption {
-  font-size: 11px;
+  font-family: var(--font-regular);
+  font-size: 13px;
   color: var(--color-muted);
   margin-top: 12px;
 }
@@ -701,7 +768,8 @@ input::placeholder {
 .cardholder-concept figcaption {
   margin-top: 10px;
   color: var(--color-muted);
-  font-size: 11px;
+  font-family: var(--font-regular);
+  font-size: 13px;
 }
 .project-copy h2 {
   margin-bottom: 24px;
@@ -795,8 +863,8 @@ input::placeholder {
     gap: 18px;
   }
   .email-row .button {
-    padding-inline: 12px;
-    font-size: 12px;
+    padding-inline: 14px;
+    font-size: 13px;
   }
   .footer-grid .wordmark {
     width: 200px;
@@ -832,7 +900,7 @@ input::placeholder {
     margin-top: 24px;
   }
   .campaign-links a {
-    font-size: 11px;
+    font-size: 12px;
   }
   .campaign-stories {
     padding: 55px 20px;
@@ -879,7 +947,7 @@ input::placeholder {
     padding-inline: 14px;
   }
   .campaign-credit {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -913,8 +981,8 @@ input::placeholder {
   color: #fff;
   background: linear-gradient(
     180deg,
-    rgb(19 19 19 / 58%),
-    rgb(19 19 19 / 16%) 78%,
+    rgb(40 29 20 / 46%),
+    rgb(40 29 20 / 12%) 78%,
     transparent
   );
   border-bottom: 0;
@@ -982,33 +1050,39 @@ input::placeholder {
   height: 100svh;
   min-height: 620px;
   max-height: none;
-  background: #77716e;
+  background: #8a7f73;
 }
-.campaign-home .campaign-visual img {
-  filter: grayscale(1) brightness(0.76);
-}
+/* Fotografía en color; un velo cálido y localizado da contraste al texto. */
 .campaign-home .campaign-shade {
-  background: linear-gradient(
-    180deg,
-    rgb(0 0 0 / 17%),
-    rgb(0 0 0 / 25%) 52%,
-    rgb(0 0 0 / 19%)
-  );
+  background:
+    radial-gradient(
+      ellipse 46% 38% at 50% 56%,
+      rgb(46 33 22 / 34%),
+      rgb(46 33 22 / 0%) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(46 33 22 / 14%),
+      rgb(46 33 22 / 20%) 52%,
+      rgb(46 33 22 / 8%)
+    );
+}
+.campaign-home .campaign-copy {
+  text-shadow: 0 1px 18px rgb(46 33 22 / 28%);
 }
 .campaign-home .campaign-copy {
   padding-top: 145px;
   font-family: var(--font-light);
 }
 .campaign-home .campaign-copy h1 {
-  font-family: var(--font-light);
-  font-size: clamp(27px, 2.15vw, 35px);
-  font-weight: 200;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 2.6vw, 42px);
+  font-weight: 300;
+  letter-spacing: -0.005em;
 }
 .campaign-home .campaign-copy p {
   font-size: clamp(15px, 1.15vw, 17px);
 }
-.campaign-home .campaign-links a,
 .campaign-home .collection-nav a {
   font-family: var(--font-light);
 }
@@ -1021,19 +1095,17 @@ input::placeholder {
 }
 .campaign-home .story-image {
   aspect-ratio: 1;
-  background: #eae7e2;
+  background: #f1ece6;
 }
 .campaign-home .story-object img {
   object-position: center bottom;
 }
 .campaign-home .story h2 {
-  margin-top: 12px;
-  font-family: var(--font-light);
-  font-size: clamp(17px, 1.25vw, 21px);
-  letter-spacing: 0.01em;
-}
-.campaign-home .story > span {
-  font-family: var(--font-light);
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 1.5vw, 24px);
+  font-weight: 350;
+  letter-spacing: 0;
 }
 .campaign-feature {
   min-height: 100svh;
@@ -1050,7 +1122,7 @@ input::placeholder {
   height: min(68svh, 720px);
   min-height: 440px;
   overflow: hidden;
-  background: #eae7e2;
+  background: #f1ece6;
 }
 .campaign-feature-visual img {
   width: 100%;
@@ -1139,17 +1211,37 @@ input::placeholder {
     min-height: 600px;
     height: 100svh;
   }
+  /* Recorte vertical: la mano queda visible bajo el texto. */
+  .campaign-home .campaign-hero {
+    place-items: start center;
+  }
   .campaign-home .campaign-visual img {
-    object-position: 70% center;
+    object-position: 30% center;
+  }
+  .campaign-home .campaign-shade {
+    background:
+      radial-gradient(
+        ellipse 80% 30% at 50% 30%,
+        rgb(46 33 22 / 30%),
+        rgb(46 33 22 / 0%) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgb(46 33 22 / 20%),
+        rgb(46 33 22 / 14%) 45%,
+        rgb(46 33 22 / 0%) 70%
+      );
   }
   .campaign-home .campaign-copy {
-    padding: 90px 22px 60px;
+    padding: 132px 22px 40px;
   }
   .campaign-home .campaign-copy h1 {
-    font-size: clamp(27px, 7vw, 31px);
+    font-size: clamp(30px, 8vw, 34px);
   }
   .campaign-home .campaign-copy p {
-    font-size: 14px;
+    max-width: 30ch;
+    font-size: 15px;
+    text-wrap: balance;
   }
   .campaign-home .campaign-stories {
     max-width: none;
