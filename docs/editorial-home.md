@@ -10,7 +10,7 @@ Referencia observada: [Brunello Cucinelli, tienda ES](https://shop.brunellocucin
 
 ## Aplicación en Lucas Banega
 
-- El hero usa la fotografía conceptual propia `campaign-v2.webp` en escala de grises. El logo, las categorías y el copy se superponen a la imagen.
+- El hero usa la fotografía conceptual propia `campaign-v2.webp` en color (desde octubre 2026; antes en escala de grises). El logo, las categorías y el copy se superponen a la imagen.
 - El header de inicio pasa a una barra fija blanca al desplazarse. En móvil, las categorías quedan disponibles en una fila desplazable y se conserva el menú.
 - Las páginas siguientes muestran un díptico de materiales, una página de campaña con texto, una declaración de marca y novedades. Todas mantienen el fondo blanco.
 - En escritorio, el ajuste de desplazamiento CSS entre capítulos reproduce el ritmo de revista con scroll normal, sin capturar la rueda ni bloquear el teclado. En móvil se conserva el desplazamiento natural porque los capítulos pueden superar la altura de pantalla. La preferencia de movimiento reducido desactiva ese ajuste.
@@ -23,3 +23,7 @@ Las imágenes son las ya disponibles en el proyecto. El díptico usa primeros pl
 ## Ajuste visual posterior
 
 La paleta mantiene blanco puro como fondo, gris carbón cálido (`#353431`) para lectura, gris piedra (`#716e69`) para texto secundario y líneas muy tenues. El acento verdoso anterior se sustituyó por un gris taupe neutro. El escudo se retiró del header y el logo tipográfico quedó como firma única. La interfaz usa Area Normal Light del kit de Adobe Fonts; los metadatos de marca escriben “Lucas Banega” en formato de nombre propio.
+
+## Calidez (octubre 2026)
+
+Se mantiene el fondo blanco puro, como en la referencia. La calidez proviene de la fotografía en color (se quitó `grayscale() brightness()`), de un velo cálido y localizado detrás del texto del hero en lugar de oscurecer toda la imagen, de los titulares en Source Serif 4 y de neutros levemente cálidos: tinta `#33302c`, texto secundario `#6a6157` (6,1:1 sobre blanco), acento `#6b5e52`, líneas `rgb(80 62 46 / 15%)`. Los textos de apoyo pequeños suben a 13–14 px con Area Normal 400. En celular el hero usa un recorte vertical propio y el texto se ubica en la parte superior para que la mano quede visible.
