@@ -432,7 +432,8 @@ dialog nav a {
 }
 .campaign-copy h1 {
   font-size: clamp(32px, 3.1vw, 46px);
-  margin-bottom: 20px;
+  /* Centra el bloque cuando un max-width (p. ej. 18ch en móvil) lo angosta. */
+  margin: 0 auto 20px;
   letter-spacing: 0.005em;
 }
 .campaign-copy p {
@@ -456,6 +457,9 @@ dialog nav a {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.16em;
+  /* El tracking deja aire tras la última letra; se compensa a la izquierda
+     para que texto y subrayado queden centrados sobre el mismo eje. */
+  padding-inline-start: 0.16em;
   text-decoration: none;
 }
 .campaign-links a:hover {
